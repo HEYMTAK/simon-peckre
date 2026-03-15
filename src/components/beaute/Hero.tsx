@@ -12,42 +12,42 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ backgroundColor: "#221A10" }}
+      style={{ backgroundColor: "#2E2214" }}
     >
       {/* ══ FOND — calques de lumière chaude ══════════════════════════════════ */}
       <div className="absolute inset-0 pointer-events-none">
 
-        {/* Voile chaud principal — haut centre */}
+        {/* Voile ambré principal — haut centre */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "radial-gradient(ellipse 90% 65% at 50% 0%, rgba(210,160,80,0.22) 0%, transparent 68%)",
+          background: "radial-gradient(ellipse 95% 70% at 50% 0%, rgba(220,165,80,0.28) 0%, transparent 65%)",
         }} />
 
-        {/* Glow ambre chaud — droite */}
+        {/* Glow pêche/miel — droite */}
         <div style={{
           position: "absolute",
-          top: "5%", right: "-5%",
-          width: "50%", height: "75%",
-          background: "radial-gradient(ellipse, rgba(195,145,65,0.18) 0%, transparent 60%)",
-          filter: "blur(35px)",
+          top: "0%", right: "-5%",
+          width: "55%", height: "80%",
+          background: "radial-gradient(ellipse, rgba(210,155,75,0.22) 0%, transparent 58%)",
+          filter: "blur(30px)",
         }} />
 
-        {/* Glow terre cuite — bas gauche */}
+        {/* Glow cannelle — bas gauche */}
         <div style={{
           position: "absolute",
           bottom: "-5%", left: "-5%",
-          width: "45%", height: "55%",
-          background: "radial-gradient(ellipse, rgba(170,120,55,0.16) 0%, transparent 60%)",
-          filter: "blur(45px)",
+          width: "50%", height: "60%",
+          background: "radial-gradient(ellipse, rgba(190,130,60,0.2) 0%, transparent 58%)",
+          filter: "blur(40px)",
         }} />
 
-        {/* Accent caramel — centre-bas */}
+        {/* Halo centre — chaleur ambiante */}
         <div style={{
           position: "absolute",
-          bottom: "15%", left: "50%", transform: "translateX(-50%)",
-          width: "60%", height: "30%",
-          background: "radial-gradient(ellipse, rgba(180,135,60,0.1) 0%, transparent 70%)",
-          filter: "blur(50px)",
+          top: "30%", left: "50%", transform: "translateX(-50%)",
+          width: "70%", height: "40%",
+          background: "radial-gradient(ellipse, rgba(200,150,65,0.12) 0%, transparent 65%)",
+          filter: "blur(55px)",
         }} />
 
         {/* Grain / texture tissu */}
@@ -165,7 +165,7 @@ export default function Hero() {
                 fontWeight: 300,
                 lineHeight: 1.06,
                 letterSpacing: "-0.01em",
-                color: "#F0EAE0",
+                color: "#F5EDD8",
                 marginBottom: "2rem",
               }}
             >
@@ -173,7 +173,7 @@ export default function Hero() {
               <span style={{
                 fontStyle: "italic",
                 fontWeight: 400,
-                background: "linear-gradient(135deg, #C4A96A 0%, #E2C98A 45%, #C4A96A 100%)",
+                background: "linear-gradient(135deg, #CFA55C 0%, #E2C98A 45%, #CFA55C 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -215,7 +215,7 @@ export default function Hero() {
             >
               Vos avis Google attirent l&apos;attention. Votre site web premium déclenche
               la réservation. Offrez à vos futurs clients l&apos;accueil digital qu&apos;ils méritent,{" "}
-              <span style={{ color: "#C4A96A", fontWeight: 500 }}>à partir de 350€.</span>
+              <span style={{ color: "#CFA55C", fontWeight: 500 }}>à partir de 350€.</span>
             </motion.p>
 
             {/* CTAs */}
@@ -231,8 +231,8 @@ export default function Hero() {
                 className="group inline-flex items-center gap-3"
                 style={{
                   padding: "14px 32px",
-                  background: "linear-gradient(135deg, #C4A96A 0%, #DEC48A 100%)",
-                  color: "#221A10",
+                  background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
+                  color: "#2E2214",
                   fontFamily: "var(--font-inter)",
                   fontSize: "13px",
                   fontWeight: 600,
@@ -279,7 +279,7 @@ export default function Hero() {
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLElement).style.borderColor = "rgba(196,169,106,0.5)";
-                  (e.currentTarget as HTMLElement).style.color = "#C4A96A";
+                  (e.currentTarget as HTMLElement).style.color = "#CFA55C";
                   (e.currentTarget as HTMLElement).style.background = "rgba(196,169,106,0.07)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                 }}
@@ -320,7 +320,7 @@ export default function Hero() {
                     fontSize: "1.7rem",
                     fontWeight: 500,
                     lineHeight: 1,
-                    color: "#C4A96A",
+                    color: "#CFA55C",
                   }}>{n}</span>
                   <span style={{
                     fontFamily: "var(--font-inter)",
@@ -374,7 +374,7 @@ export default function Hero() {
         />
         {/* Flèche bas */}
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ opacity: 0.4 }}>
-          <path d="M1 1L5 5L9 1" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M1 1L5 5L9 1" stroke="#CFA55C" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </motion.div>
 

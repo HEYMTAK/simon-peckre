@@ -7,14 +7,14 @@
   --font-inter: 'Inter', system-ui, sans-serif;
 
   /* Palette Kaki Studio */
-  --bg-base:     #221A10;
-  --bg-surface:  #2D2418;
-  --gold:        #C4A96A;
-  --gold-light:  #DEC48A;
-  --sand:        #E8DFD0;
-  --sand-muted:  #9E9080;
-  --sage:        #8A9E7A;
-  --border:      rgba(196,169,106,0.14);
+  --bg-base:     #2E2214;
+  --bg-surface:  #3A2C1A;
+  --gold:        #CFA55C;
+  --gold-light:  #E8C07A;
+  --sand:        #F5EDD8;
+  --sand-muted:  #B0A08A;
+  --sage:        #96A882;
+  --border:      rgba(207,165,92,0.16);
 }
 
 * {
@@ -39,7 +39,7 @@ body {
 
 /* ─── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #221A10; }
+::-webkit-scrollbar-track { background: #2E2214; }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
 /* ─── Selection ─────────────────────────────────────── */

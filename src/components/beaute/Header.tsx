@@ -60,9 +60,9 @@ export default function Header() {
             textDecoration: "none",
           }}
         >
-          <span style={{ color: "#C4A96A", fontStyle: "italic" }}>Kaki</span>
+          <span style={{ color: "#CFA55C", fontStyle: "italic" }}>Kaki</span>
           <span style={{
-            color: "#F0EAE0",
+            color: "#F5EDD8",
             fontStyle: "normal",
             marginLeft: "6px",
           }}>Studio</span>
@@ -71,7 +71,7 @@ export default function Header() {
             width: "5px",
             height: "5px",
             borderRadius: "50%",
-            background: "#C4A96A",
+            background: "#CFA55C",
             marginLeft: "3px",
             marginBottom: "2px",
             alignSelf: "flex-end",
@@ -94,7 +94,7 @@ export default function Header() {
                 textDecoration: "none",
                 transition: "color 0.25s ease",
               }}
-              onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#C4A96A"}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#CFA55C"}
               onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(232,223,208,0.45)"}
             >
               {l.label}
@@ -112,10 +112,10 @@ export default function Header() {
               fontWeight: 600,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "#221A10",
+              color: "#2E2214",
               textDecoration: "none",
               padding: "10px 24px",
-              background: "linear-gradient(135deg, #C4A96A 0%, #DEC48A 100%)",
+              background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
               borderRadius: "4px",
               transition: "all 0.3s ease",
               boxShadow: "0 4px 16px rgba(196,169,106,0.18)",
@@ -195,8 +195,8 @@ export default function Header() {
                 style={{
                   marginTop: "8px",
                   padding: "14px 24px",
-                  background: "linear-gradient(135deg, #C4A96A 0%, #DEC48A 100%)",
-                  color: "#221A10",
+                  background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
+                  color: "#2E2214",
                   fontFamily: "var(--font-inter)",
                   fontSize: "12px",
                   fontWeight: 600,
