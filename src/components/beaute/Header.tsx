@@ -60,10 +60,10 @@ export default function Header() {
             textDecoration: "none",
           }}
         >
-          <span style={{ color: "#F0EAE0" }}>Kaki</span>
+          <span style={{ color: "#C4A96A", fontStyle: "italic" }}>Kaki</span>
           <span style={{
-            color: "#C4A96A",
-            fontStyle: "italic",
+            color: "#F0EAE0",
+            fontStyle: "normal",
             marginLeft: "6px",
           }}>Studio</span>
           <span style={{

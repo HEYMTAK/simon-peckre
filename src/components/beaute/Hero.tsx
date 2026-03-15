@@ -335,43 +335,42 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ══ SCROLL INDICATOR ════════════════════════════════════════════════ */}
+      {/* ══ SCROLL INDICATOR — droite, visible dès l'arrivée ══════════════ */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 0.9, duration: 0.8 }}
         style={{
           position: "absolute",
-          bottom: "40px", left: "calc(50% - 60px)",
-          display: "flex", flexDirection: "row", alignItems: "center", gap: "12px",
+          bottom: "48px", right: "8%",
+          display: "flex", flexDirection: "column", alignItems: "center", gap: "10px",
         }}
       >
-        <motion.div
-          animate={{ x: [-4, 4, -4] }}
-          transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-          style={{
-            width: "32px", height: "1px",
-            background: "linear-gradient(to right, transparent, rgba(196,169,106,0.5))",
-          }}
-        />
         <span style={{
           fontFamily: "var(--font-inter)",
           fontSize: "9px",
           letterSpacing: "0.22em",
           textTransform: "uppercase",
-          color: "rgba(196,169,106,0.35)",
-          whiteSpace: "nowrap",
+          color: "rgba(196,169,106,0.45)",
+          writingMode: "vertical-rl",
+          textOrientation: "mixed",
+          transform: "rotate(180deg)",
         }}>
           Défiler
         </span>
         <motion.div
-          animate={{ x: [4, -4, 4] }}
-          transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+          animate={{ scaleY: [0.4, 1, 0.4], opacity: [0.3, 0.7, 0.3] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
           style={{
-            width: "32px", height: "1px",
-            background: "linear-gradient(to left, transparent, rgba(196,169,106,0.5))",
+            width: "1px", height: "52px",
+            background: "linear-gradient(to bottom, rgba(196,169,106,0.6), transparent)",
+            transformOrigin: "top",
           }}
         />
+        {/* Flèche bas */}
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ opacity: 0.4 }}>
+          <path d="M1 1L5 5L9 1" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
       </motion.div>
 
       {/* Ligne séparatrice bas de section */}
