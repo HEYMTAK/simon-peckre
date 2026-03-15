@@ -103,33 +103,71 @@ export default function Header() {
         </nav>
 
         {/* ── CTA desktop ── */}
-        <div className="hidden md:block">
+        <div className="hidden md:block" style={{ position: "relative" }}>
           <a
             href="#contact"
+            className="group"
             style={{
+              position: "relative",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
               fontFamily: "var(--font-inter)",
-              fontSize: "12px",
+              fontSize: "11px",
               fontWeight: 600,
-              letterSpacing: "0.1em",
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "#2E2214",
               textDecoration: "none",
-              padding: "10px 24px",
-              background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
-              borderRadius: "4px",
-              transition: "all 0.3s ease",
-              boxShadow: "0 4px 16px rgba(196,169,106,0.18)",
+              padding: "11px 26px",
+              background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 40%, #CFA55C 100%)",
+              backgroundSize: "200% 200%",
+              borderRadius: "100px",
+              transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)",
+              boxShadow: "0 0 0 1px rgba(232,192,122,0.4), 0 4px 20px rgba(207,165,92,0.25), inset 0 1px 0 rgba(255,255,255,0.25)",
+              overflow: "hidden",
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 24px rgba(196,169,106,0.32)";
-              (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
+              const el = e.currentTarget as HTMLElement;
+              el.style.boxShadow = "0 0 0 1px rgba(232,192,122,0.6), 0 8px 32px rgba(207,165,92,0.45), inset 0 1px 0 rgba(255,255,255,0.3)";
+              el.style.transform = "translateY(-2px) scale(1.02)";
+              el.style.backgroundPosition = "100% 100%";
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(196,169,106,0.18)";
-              (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+              const el = e.currentTarget as HTMLElement;
+              el.style.boxShadow = "0 0 0 1px rgba(232,192,122,0.4), 0 4px 20px rgba(207,165,92,0.25), inset 0 1px 0 rgba(255,255,255,0.25)";
+              el.style.transform = "translateY(0) scale(1)";
+              el.style.backgroundPosition = "0% 0%";
             }}
           >
-            Prendre RDV
+            {/* Shimmer layer */}
+            <span style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%)",
+              backgroundSize: "200% 100%",
+              backgroundPosition: "-100% 0",
+              transition: "background-position 0.6s ease",
+              borderRadius: "inherit",
+              pointerEvents: "none",
+            }}
+              className="shimmer"
+            />
+            <span style={{ position: "relative", zIndex: 1 }}>Prendre RDV</span>
+            {/* Petite flèche */}
+            <span style={{
+              position: "relative", zIndex: 1,
+              display: "inline-flex",
+              width: "18px", height: "18px",
+              borderRadius: "50%",
+              background: "rgba(46,34,20,0.15)",
+              alignItems: "center", justifyContent: "center",
+              transition: "transform 0.3s ease",
+            }}>
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <path d="M1.5 6.5L6.5 1.5M6.5 1.5H2.5M6.5 1.5V5.5" stroke="#2E2214" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
           </a>
         </div>
 
