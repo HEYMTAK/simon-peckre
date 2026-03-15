@@ -243,11 +243,10 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-6 mt-20 pt-8 border-t border-zinc-800/60">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-cinzel text-sm text-zinc-500">
-            <span className="text-white font-bold">Simon Peckre.</span> Webdesigner
-            indépendant
+            <span className="text-white font-bold">Kaki Studio.</span> Agence web premium
           </p>
           <p className="text-zinc-600 text-xs">
-            © {new Date().getFullYear()} Simon Peckre — Tous droits réservés
+            © {new Date().getFullYear()} Kaki Studio — Tous droits réservés
           </p>
         </div>
       </div>

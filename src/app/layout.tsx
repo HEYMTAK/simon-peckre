@@ -15,13 +15,13 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Simon Peckre — Webdesigner",
+  title: "Kaki Studio — Agence Web Premium",
   description:
-    "Webdesigner indépendant. Sites web premium pour instituts de beauté, salons de massage, auto detailing et artisans. À partir de 350€.",
-  keywords: ["webdesigner", "site web", "vitrine", "réservation en ligne", "salon de massage", "institut de beauté"],
-  authors: [{ name: "Simon Peckre" }],
+    "Kaki Studio. Sites web premium pour instituts de beauté, salons de massage, auto detailing et artisans. À partir de 350€.",
+  keywords: ["kaki studio", "agence web", "site web premium", "vitrine", "réservation en ligne", "salon de massage", "institut de beauté"],
+  authors: [{ name: "Kaki Studio" }],
   openGraph: {
-    title: "Simon Peckre — Webdesigner",
+    title: "Kaki Studio — Agence Web Premium",
     description: "Sites web premium qui convertissent vos visiteurs en clients.",
     type: "website",
   },

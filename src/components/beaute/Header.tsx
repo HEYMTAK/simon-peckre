@@ -34,10 +34,13 @@ export default function Header() {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="font-cinzel text-xl font-bold tracking-widest">
-          <span className="text-white">Simon</span>
-          <span className="text-yellow-500"> Peckre</span>
-          <span className="text-yellow-500">.</span>
+        <a href="#" className="font-cinzel text-xl font-bold tracking-widest flex items-center gap-1">
+          <span className="text-white">Kaki</span>
+          <span style={{ color: "#C8A45E" }}> Studio</span>
+          <span
+            className="inline-block w-1.5 h-1.5 rounded-full ml-0.5 mb-3"
+            style={{ backgroundColor: "#C8A45E" }}
+          />
         </a>
 
         {/* Nav desktop */}
