@@ -203,10 +203,12 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               style={{
-                fontFamily: "var(--font-inter)",
-                fontSize: "clamp(0.95rem, 1.8vw, 1.08rem)",
-                lineHeight: 1.75,
-                color: "rgba(232,223,208,0.55)",
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+                fontSize: "clamp(1.15rem, 2.2vw, 1.4rem)",
+                lineHeight: 1.7,
+                color: "rgba(232,223,208,0.6)",
                 maxWidth: "520px",
                 marginBottom: "2.75rem",
               }}
