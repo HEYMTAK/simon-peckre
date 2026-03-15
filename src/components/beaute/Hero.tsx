@@ -206,9 +206,9 @@ export default function Hero() {
                 fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontStyle: "italic",
                 fontWeight: 400,
-                fontSize: "clamp(1.15rem, 2.2vw, 1.4rem)",
+                fontSize: "clamp(0.95rem, 1.8vw, 1.2rem)",
                 lineHeight: 1.7,
-                color: "rgba(232,223,208,0.6)",
+                color: "rgba(240,234,224,0.85)",
                 maxWidth: "520px",
                 marginBottom: "2.75rem",
               }}
