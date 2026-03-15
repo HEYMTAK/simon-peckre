@@ -118,7 +118,7 @@ export default function StatsSection() {
   ];
 
   return (
-    <section id="roi" className="py-24 bg-zinc-950 relative overflow-hidden">
+    <section id="roi" className="py-24 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
 
       {/* BG glow */}

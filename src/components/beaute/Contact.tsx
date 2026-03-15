@@ -22,7 +22,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-zinc-950 relative overflow-hidden">
+    <section id="contact" className="py-24 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
 
       {/* Glow */}

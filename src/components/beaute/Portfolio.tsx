@@ -28,7 +28,7 @@ export default function Portfolio() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="portfolio" className="py-24 bg-zinc-950 relative overflow-hidden">
+    <section id="portfolio" className="py-24 relative overflow-hidden">
       {/* Background accent */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent" />
 

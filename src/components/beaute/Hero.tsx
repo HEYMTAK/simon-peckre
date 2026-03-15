@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ backgroundColor: "#100E0A" }}
+      style={{ backgroundColor: "#221A10" }}
     >
       {/* ══ FOND — calques de lumière chaude ══════════════════════════════════ */}
       <div className="absolute inset-0 pointer-events-none">
@@ -20,24 +20,33 @@ export default function Hero() {
         {/* Voile chaud principal — haut centre */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "radial-gradient(ellipse 80% 60% at 50% -5%, rgba(196,169,106,0.11) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 90% 65% at 50% 0%, rgba(210,160,80,0.22) 0%, transparent 68%)",
         }} />
 
-        {/* Glow ambre droit */}
+        {/* Glow ambre chaud — droite */}
         <div style={{
           position: "absolute",
-          top: "10%", right: "-5%",
-          width: "45%", height: "70%",
-          background: "radial-gradient(ellipse, rgba(180,140,70,0.08) 0%, transparent 65%)",
-          filter: "blur(40px)",
+          top: "5%", right: "-5%",
+          width: "50%", height: "75%",
+          background: "radial-gradient(ellipse, rgba(195,145,65,0.18) 0%, transparent 60%)",
+          filter: "blur(35px)",
         }} />
 
-        {/* Glow terre cuite bas gauche */}
+        {/* Glow terre cuite — bas gauche */}
         <div style={{
           position: "absolute",
-          bottom: "-10%", left: "-5%",
-          width: "40%", height: "50%",
-          background: "radial-gradient(ellipse, rgba(140,110,60,0.07) 0%, transparent 65%)",
+          bottom: "-5%", left: "-5%",
+          width: "45%", height: "55%",
+          background: "radial-gradient(ellipse, rgba(170,120,55,0.16) 0%, transparent 60%)",
+          filter: "blur(45px)",
+        }} />
+
+        {/* Accent caramel — centre-bas */}
+        <div style={{
+          position: "absolute",
+          bottom: "15%", left: "50%", transform: "translateX(-50%)",
+          width: "60%", height: "30%",
+          background: "radial-gradient(ellipse, rgba(180,135,60,0.1) 0%, transparent 70%)",
           filter: "blur(50px)",
         }} />
 
@@ -221,7 +230,7 @@ export default function Hero() {
                 style={{
                   padding: "14px 32px",
                   background: "linear-gradient(135deg, #C4A96A 0%, #DEC48A 100%)",
-                  color: "#100E0A",
+                  color: "#221A10",
                   fontFamily: "var(--font-inter)",
                   fontSize: "13px",
                   fontWeight: 600,
@@ -388,7 +397,7 @@ export default function Hero() {
                   fontFamily: "var(--font-cormorant), serif",
                   fontSize: "14px",
                   fontWeight: 600,
-                  color: "#100E0A",
+                  color: "#221A10",
                   flexShrink: 0,
                 }}>
                   S
