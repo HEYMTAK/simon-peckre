@@ -1,342 +1,502 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, MoveRight } from "lucide-react";
+
+/* ─── Petites lignes décoratives ─── */
+function DecoLine({ className, style }: { className?: string; style?: React.CSSProperties }) {
+  return <div className={`absolute pointer-events-none ${className ?? ""}`} style={style} />;
+}
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      style={{ backgroundColor: "#100E0A" }}
+    >
+      {/* ══ FOND — calques de lumière chaude ══════════════════════════════════ */}
+      <div className="absolute inset-0 pointer-events-none">
 
-      {/* ── BASE BACKGROUND ─────────────────────────────────── */}
-      <div className="absolute inset-0" style={{ backgroundColor: "#0B0906" }} />
+        {/* Voile chaud principal — haut centre */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "radial-gradient(ellipse 80% 60% at 50% -5%, rgba(196,169,106,0.11) 0%, transparent 70%)",
+        }} />
 
-      {/* ── COLOUR BLOBS ────────────────────────────────────── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Main warm amber glow — centre */}
-        <div
-          className="absolute"
-          style={{
-            top: "10%", left: "50%", transform: "translateX(-50%)",
-            width: "900px", height: "700px",
-            borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(200,140,40,0.13) 0%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-        />
-        {/* Gold spot — top right */}
-        <div
-          className="absolute"
-          style={{
-            top: "-5%", right: "-10%",
-            width: "600px", height: "500px",
-            borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(220,170,70,0.08) 0%, transparent 65%)",
-            filter: "blur(80px)",
-          }}
-        />
-        {/* Warm copper — bottom left */}
-        <div
-          className="absolute"
-          style={{
-            bottom: "0%", left: "-5%",
-            width: "500px", height: "400px",
-            borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(160,100,30,0.1) 0%, transparent 65%)",
-            filter: "blur(80px)",
-          }}
-        />
-        {/* Tiny hot spot — left-centre */}
-        <div
-          className="absolute"
-          style={{
-            top: "40%", left: "15%",
-            width: "200px", height: "200px",
-            borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(230,180,80,0.07) 0%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
-        />
+        {/* Glow ambre droit */}
+        <div style={{
+          position: "absolute",
+          top: "10%", right: "-5%",
+          width: "45%", height: "70%",
+          background: "radial-gradient(ellipse, rgba(180,140,70,0.08) 0%, transparent 65%)",
+          filter: "blur(40px)",
+        }} />
+
+        {/* Glow terre cuite bas gauche */}
+        <div style={{
+          position: "absolute",
+          bottom: "-10%", left: "-5%",
+          width: "40%", height: "50%",
+          background: "radial-gradient(ellipse, rgba(140,110,60,0.07) 0%, transparent 65%)",
+          filter: "blur(50px)",
+        }} />
+
+        {/* Grain / texture tissu */}
+        <div style={{
+          position: "absolute", inset: 0,
+          opacity: 0.04,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)'/%3E%3C/svg%3E")`,
+          backgroundSize: "280px 280px",
+        }} />
+
+        {/* Grille très fine */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage:
+            "linear-gradient(rgba(196,169,106,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(196,169,106,0.03) 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
+        }} />
       </div>
 
-      {/* ── GRAIN / NOISE TEXTURE ───────────────────────────── */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          opacity: 0.045,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "220px 220px",
-        }}
-      />
+      {/* ══ ÉLÉMENTS DÉCORATIFS ════════════════════════════════════════════════ */}
 
-      {/* ── SUBTLE GRID ─────────────────────────────────────── */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(200,160,70,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,160,70,0.04) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
-
-      {/* ── DECORATIVE RING — top right ─────────────────────── */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.8, ease: "easeOut" }}
-        className="absolute pointer-events-none"
-        style={{
-          top: "-120px", right: "-120px",
-          width: "600px", height: "600px",
-          borderRadius: "50%",
-          border: "1px solid rgba(200,160,70,0.08)",
-        }}
-      />
+      {/* Grand arc de cercle — haut droite */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, delay: 0.2, ease: "easeOut" }}
-        className="absolute pointer-events-none"
+        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
         style={{
-          top: "-60px", right: "-60px",
-          width: "450px", height: "450px",
+          position: "absolute", pointerEvents: "none",
+          top: "-200px", right: "-200px",
+          width: "700px", height: "700px",
           borderRadius: "50%",
-          border: "1px solid rgba(200,160,70,0.05)",
+          border: "1px solid rgba(196,169,106,0.07)",
         }}
       />
-
-      {/* ── DECORATIVE RING — bottom left ───────────────────── */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 0.4 }}
-        className="absolute pointer-events-none"
+        initial={{ opacity: 0, scale: 0.85 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2.4, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         style={{
-          bottom: "-150px", left: "-150px",
+          position: "absolute", pointerEvents: "none",
+          top: "-100px", right: "-100px",
           width: "500px", height: "500px",
           borderRadius: "50%",
-          border: "1px solid rgba(200,160,70,0.06)",
+          border: "1px solid rgba(196,169,106,0.05)",
         }}
       />
 
-      {/* ── LIGHT STREAK — diagonal ─────────────────────────── */}
+      {/* Ligne horizontale déco — milieu gauche */}
       <motion.div
-        initial={{ opacity: 0, x: -80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-        className="absolute pointer-events-none"
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1 }}
+        transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
         style={{
-          top: "30%", left: "-10%",
-          width: "55%", height: "1px",
-          background: "linear-gradient(90deg, transparent, rgba(200,160,70,0.12), transparent)",
-          transform: "rotate(-15deg)",
-        }}
-      />
-      <motion.div
-        initial={{ opacity: 0, x: 80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.5, delay: 0.7 }}
-        className="absolute pointer-events-none"
-        style={{
-          top: "55%", right: "-10%",
-          width: "40%", height: "1px",
-          background: "linear-gradient(270deg, transparent, rgba(200,160,70,0.08), transparent)",
-          transform: "rotate(-15deg)",
+          position: "absolute", pointerEvents: "none",
+          top: "42%", left: 0,
+          width: "15%", height: "1px",
+          background: "linear-gradient(90deg, rgba(196,169,106,0.3), transparent)",
+          transformOrigin: "left",
         }}
       />
 
-      {/* ── LARGE GHOST NUMBER ──────────────────────────────── */}
-      <div
-        className="absolute pointer-events-none select-none font-cinzel font-bold"
-        style={{
-          bottom: "-60px", right: "-20px",
-          fontSize: "clamp(200px, 30vw, 400px)",
-          lineHeight: 1,
-          color: "rgba(200,160,70,0.025)",
-          letterSpacing: "-0.05em",
-        }}
-      >
+      {/* Numéro fantôme */}
+      <div style={{
+        position: "absolute", pointerEvents: "none", userSelect: "none",
+        bottom: "-80px", right: "-30px",
+        fontFamily: "var(--font-cormorant), Georgia, serif",
+        fontWeight: 300,
+        fontSize: "clamp(220px, 28vw, 420px)",
+        lineHeight: 1,
+        color: "rgba(196,169,106,0.028)",
+        letterSpacing: "-0.04em",
+      }}>
         01
       </div>
 
-      {/* ── CONTENT ─────────────────────────────────────────── */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-36 pb-24 text-center">
+      {/* ══ CONTENU PRINCIPAL ═════════════════════════════════════════════════ */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-8 sm:px-12 pt-36 pb-28">
 
-        {/* Eyebrow pill */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55 }}
-          className="inline-flex items-center gap-2.5 mb-10"
-        >
-          <span
-            className="flex items-center gap-2.5 px-5 py-2 text-xs font-semibold tracking-[0.18em] uppercase"
-            style={{
-              color: "#C8A45E",
-              border: "1px solid rgba(200,164,94,0.25)",
-              borderRadius: "100px",
-              background: "rgba(200,164,94,0.06)",
-              backdropFilter: "blur(6px)",
-            }}
-          >
-            {/* Dot pulse */}
-            <span className="relative flex h-1.5 w-1.5">
-              <span
-                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                style={{ backgroundColor: "#C8A45E" }}
-              />
-              <span
-                className="relative inline-flex rounded-full h-1.5 w-1.5"
-                style={{ backgroundColor: "#C8A45E" }}
-              />
-            </span>
-            Instituts de beauté · Salons de massage
-          </span>
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-16 items-center">
 
-        {/* H1 */}
-        <motion.h1
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.1 }}
-          className="font-cinzel font-bold leading-[1.08] tracking-tight mb-8"
-          style={{ fontSize: "clamp(2.6rem, 6.5vw, 5.2rem)" }}
-        >
-          <span className="block text-white">Transformez vos visiteurs</span>
-          <span className="block" style={{ color: "#C8A45E" }}>
-            Google Maps
-          </span>
-          <span className="block text-white">en clients fidèles.</span>
-        </motion.h1>
+          {/* ── Colonne gauche ── */}
+          <div>
 
-        {/* Separator line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="mx-auto mb-8 origin-center"
-          style={{
-            width: "60px", height: "1px",
-            background: "linear-gradient(90deg, transparent, #C8A45E, transparent)",
-          }}
-        />
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.3 }}
-          className="leading-relaxed max-w-2xl mx-auto mb-12"
-          style={{
-            color: "rgba(244,244,245,0.55)",
-            fontSize: "clamp(1rem, 2vw, 1.2rem)",
-          }}
-        >
-          Vos avis Google attirent l&apos;attention. Votre site web premium déclenche la
-          réservation. Offrez à vos futurs clients l&apos;accueil digital qu&apos;ils méritent,{" "}
-          <span style={{ color: "#C8A45E", fontWeight: 600 }}>à partir de 350€.</span>
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-        >
-          <a
-            href="#tarifs"
-            className="group relative flex items-center gap-3 px-8 py-4 font-bold text-sm tracking-wide rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5"
-            style={{
-              background: "linear-gradient(135deg, #C8A45E 0%, #E0C278 50%, #C8A45E 100%)",
-              backgroundSize: "200% 200%",
-              color: "#0B0906",
-              boxShadow: "0 0 40px rgba(200,164,94,0.25), inset 0 1px 0 rgba(255,255,255,0.2)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.boxShadow =
-                "0 0 60px rgba(200,164,94,0.4), inset 0 1px 0 rgba(255,255,255,0.2)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.boxShadow =
-                "0 0 40px rgba(200,164,94,0.25), inset 0 1px 0 rgba(255,255,255,0.2)";
-            }}
-          >
-            Découvrir l&apos;offre
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </a>
-
-          <a
-            href="#portfolio"
-            className="group flex items-center gap-3 px-8 py-4 font-semibold text-sm tracking-wide rounded-xl transition-all duration-300 hover:-translate-y-0.5"
-            style={{
-              color: "rgba(244,244,245,0.75)",
-              border: "1px solid rgba(200,164,94,0.2)",
-              background: "rgba(200,164,94,0.04)",
-              backdropFilter: "blur(8px)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,164,94,0.5)";
-              (e.currentTarget as HTMLElement).style.color = "#C8A45E";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,164,94,0.2)";
-              (e.currentTarget as HTMLElement).style.color = "rgba(244,244,245,0.75)";
-            }}
-          >
-            <Play size={13} className="fill-current" />
-            Voir mes réalisations
-          </a>
-        </motion.div>
-
-        {/* Proof bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.75 }}
-          className="flex flex-wrap justify-center gap-x-8 gap-y-3"
-        >
-          {[
-            { icon: "⚡", text: "Livré en 7 jours" },
-            { icon: "📱", text: "Mobile-first" },
-            { icon: "🌐", text: "Hébergement inclus" },
-            { icon: "📍", text: "SEO local optimisé" },
-          ].map(({ icon, text }) => (
-            <span
-              key={text}
-              className="flex items-center gap-2 text-xs tracking-wide whitespace-nowrap"
-              style={{ color: "rgba(200,164,94,0.45)" }}
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center gap-4 mb-10"
             >
-              <span style={{ filter: "grayscale(0.4)" }}>{icon}</span>
-              {text}
-            </span>
-          ))}
-        </motion.div>
+              <div style={{
+                width: "32px", height: "1px",
+                background: "rgba(196,169,106,0.6)",
+              }} />
+              <span style={{
+                fontFamily: "var(--font-inter)",
+                fontSize: "11px",
+                fontWeight: 500,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: "rgba(196,169,106,0.7)",
+              }}>
+                Instituts de beauté · Salons de massage
+              </span>
+            </motion.div>
+
+            {/* H1 — Cormorant, typographie éditoriale */}
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "clamp(3.2rem, 7vw, 6rem)",
+                fontWeight: 300,
+                lineHeight: 1.06,
+                letterSpacing: "-0.01em",
+                color: "#F0EAE0",
+                marginBottom: "2rem",
+              }}
+            >
+              Transformez vos visiteurs<br />
+              <span style={{
+                fontStyle: "italic",
+                fontWeight: 400,
+                background: "linear-gradient(135deg, #C4A96A 0%, #E2C98A 45%, #C4A96A 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                Google Maps
+              </span>
+              <br />
+              <span style={{ fontWeight: 300 }}>en clients fidèles.</span>
+            </motion.h1>
+
+            {/* Séparateur */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                width: "48px", height: "1px",
+                background: "rgba(196,169,106,0.45)",
+                marginBottom: "1.75rem",
+                transformOrigin: "left",
+              }}
+            />
+
+            {/* Sous-titre */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                fontFamily: "var(--font-inter)",
+                fontSize: "clamp(0.95rem, 1.8vw, 1.08rem)",
+                lineHeight: 1.75,
+                color: "rgba(232,223,208,0.55)",
+                maxWidth: "520px",
+                marginBottom: "2.75rem",
+              }}
+            >
+              Vos avis Google attirent l&apos;attention. Votre site web premium déclenche
+              la réservation. Offrez à vos futurs clients l&apos;accueil digital qu&apos;ils méritent,{" "}
+              <span style={{ color: "#C4A96A", fontWeight: 500 }}>à partir de 350€.</span>
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row gap-4 items-start"
+            >
+              {/* Bouton primaire */}
+              <a
+                href="#tarifs"
+                className="group inline-flex items-center gap-3"
+                style={{
+                  padding: "14px 32px",
+                  background: "linear-gradient(135deg, #C4A96A 0%, #DEC48A 100%)",
+                  color: "#100E0A",
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  borderRadius: "4px",
+                  boxShadow: "0 8px 32px rgba(196,169,106,0.2), 0 2px 8px rgba(196,169,106,0.15)",
+                  transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
+                  textDecoration: "none",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(196,169,106,0.35), 0 4px 12px rgba(196,169,106,0.2)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(196,169,106,0.2), 0 2px 8px rgba(196,169,106,0.15)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                }}
+              >
+                Découvrir l&apos;offre
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
+
+              {/* Bouton secondaire — ghost élégant */}
+              <a
+                href="#portfolio"
+                className="group inline-flex items-center gap-3"
+                style={{
+                  padding: "14px 28px",
+                  border: "1px solid rgba(196,169,106,0.22)",
+                  color: "rgba(232,223,208,0.65)",
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "13px",
+                  fontWeight: 500,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  borderRadius: "4px",
+                  background: "rgba(196,169,106,0.04)",
+                  transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
+                  textDecoration: "none",
+                  backdropFilter: "blur(8px)",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(196,169,106,0.5)";
+                  (e.currentTarget as HTMLElement).style.color = "#C4A96A";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(196,169,106,0.07)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(196,169,106,0.22)";
+                  (e.currentTarget as HTMLElement).style.color = "rgba(232,223,208,0.65)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(196,169,106,0.04)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                }}
+              >
+                Voir les réalisations
+                <MoveRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
+            </motion.div>
+
+            {/* Proof strip */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              style={{
+                marginTop: "3.5rem",
+                paddingTop: "2rem",
+                borderTop: "1px solid rgba(196,169,106,0.1)",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "2rem",
+              }}
+            >
+              {[
+                { n: "7j", label: "Délai livraison" },
+                { n: "350€", label: "À partir de" },
+                { n: "100%", label: "Mobile-first" },
+              ].map(({ n, label }) => (
+                <div key={label} style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                  <span style={{
+                    fontFamily: "var(--font-cormorant), Georgia, serif",
+                    fontSize: "1.7rem",
+                    fontWeight: 500,
+                    lineHeight: 1,
+                    color: "#C4A96A",
+                  }}>{n}</span>
+                  <span style={{
+                    fontFamily: "var(--font-inter)",
+                    fontSize: "11px",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "rgba(196,169,106,0.4)",
+                  }}>{label}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* ── Colonne droite — carte flottante ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 40, x: 20 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block"
+            style={{ width: "300px", flexShrink: 0 }}
+          >
+            {/* Carte principale */}
+            <div style={{
+              borderRadius: "16px",
+              border: "1px solid rgba(196,169,106,0.14)",
+              background: "linear-gradient(145deg, rgba(26,22,16,0.9) 0%, rgba(16,14,10,0.95) 100%)",
+              backdropFilter: "blur(20px)",
+              padding: "32px",
+              boxShadow: "0 40px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(196,169,106,0.06)",
+              position: "relative",
+              overflow: "hidden",
+            }}>
+              {/* Glow intérieur */}
+              <div style={{
+                position: "absolute", top: 0, left: 0, right: 0,
+                height: "100px",
+                background: "radial-gradient(ellipse at 50% 0%, rgba(196,169,106,0.08), transparent 70%)",
+                pointerEvents: "none",
+              }} />
+
+              {/* Icône */}
+              <div style={{
+                width: "44px", height: "44px",
+                borderRadius: "10px",
+                background: "rgba(196,169,106,0.1)",
+                border: "1px solid rgba(196,169,106,0.18)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                marginBottom: "20px",
+                fontSize: "20px",
+              }}>
+                ✦
+              </div>
+
+              <p style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "1.05rem",
+                fontWeight: 400,
+                fontStyle: "italic",
+                color: "rgba(232,223,208,0.7)",
+                lineHeight: 1.65,
+                marginBottom: "24px",
+              }}>
+                &ldquo;Notre taux de réservation en ligne a augmenté de 40% dès le premier mois.&rdquo;
+              </p>
+
+              <div style={{
+                display: "flex", alignItems: "center", gap: "12px",
+                paddingTop: "20px",
+                borderTop: "1px solid rgba(196,169,106,0.1)",
+              }}>
+                <div style={{
+                  width: "36px", height: "36px",
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, #C4A96A, #8A7A50)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontFamily: "var(--font-cormorant), serif",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#100E0A",
+                  flexShrink: 0,
+                }}>
+                  S
+                </div>
+                <div>
+                  <div style={{
+                    fontFamily: "var(--font-inter)",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                    color: "rgba(232,223,208,0.8)",
+                    letterSpacing: "0.04em",
+                  }}>
+                    Sakura Spa
+                  </div>
+                  <div style={{
+                    fontFamily: "var(--font-inter)",
+                    fontSize: "11px",
+                    color: "rgba(196,169,106,0.45)",
+                    letterSpacing: "0.08em",
+                  }}>
+                    Lyon · Client 2024
+                  </div>
+                </div>
+                {/* Étoiles */}
+                <div style={{
+                  marginLeft: "auto",
+                  color: "#C4A96A",
+                  fontSize: "11px",
+                  letterSpacing: "2px",
+                }}>
+                  ★★★★★
+                </div>
+              </div>
+            </div>
+
+            {/* Badge flottant sous la carte */}
+            <motion.div
+              animate={{ y: [0, -6, 0] }}
+              transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+              style={{
+                marginTop: "16px",
+                marginLeft: "20px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "10px 18px",
+                borderRadius: "100px",
+                background: "rgba(26,22,16,0.95)",
+                border: "1px solid rgba(196,169,106,0.16)",
+                backdropFilter: "blur(12px)",
+                boxShadow: "0 12px 32px rgba(0,0,0,0.3)",
+              }}
+            >
+              <span style={{
+                width: "7px", height: "7px",
+                borderRadius: "50%",
+                background: "#7DBE7A",
+                boxShadow: "0 0 8px rgba(125,190,122,0.7)",
+                flexShrink: 0,
+              }} />
+              <span style={{
+                fontFamily: "var(--font-inter)",
+                fontSize: "11px",
+                fontWeight: 500,
+                color: "rgba(232,223,208,0.7)",
+                letterSpacing: "0.06em",
+                whiteSpace: "nowrap",
+              }}>
+                Réservation 24/7 activée
+              </span>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* ── SCROLL INDICATOR ────────────────────────────────── */}
+      {/* ══ SCROLL INDICATOR ════════════════════════════════════════════════ */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        transition={{ delay: 1.5 }}
+        style={{
+          position: "absolute",
+          bottom: "32px", left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex", flexDirection: "column", alignItems: "center", gap: "8px",
+        }}
       >
-        <span
-          className="text-xs tracking-[0.2em] uppercase"
-          style={{ color: "rgba(200,164,94,0.3)" }}
-        >
-          Scroll
+        <span style={{
+          fontFamily: "var(--font-inter)",
+          fontSize: "9px",
+          letterSpacing: "0.25em",
+          textTransform: "uppercase",
+          color: "rgba(196,169,106,0.28)",
+        }}>
+          Défiler
         </span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           style={{
-            width: "1px", height: "36px",
-            background: "linear-gradient(to bottom, rgba(200,164,94,0.5), transparent)",
-            borderRadius: "1px",
+            width: "1px", height: "40px",
+            background: "linear-gradient(to bottom, rgba(196,169,106,0.45), transparent)",
           }}
         />
       </motion.div>
+
+      {/* Ligne séparatrice bas de section */}
+      <div className="absolute bottom-0 left-0 right-0 divider-gold" />
     </section>
   );
 }

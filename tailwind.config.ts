@@ -9,25 +9,32 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        cinzel: ["var(--font-cinzel)", "serif"],
-        sans: ["var(--font-nunito)", "sans-serif"],
+        serif: ["var(--font-cormorant)", "Georgia", "serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       colors: {
-        gold: {
-          300: "#E8D5A3",
-          400: "#D4B97A",
-          500: "#C8A45E",
-          600: "#B08D45",
+        stone: {
+          950: "#0F0D09",
+          900: "#1A1610",
+          800: "#2A2318",
+          700: "#3D3222",
         },
-      },
-      animation: {
-        "fade-up": "fadeUp 0.6s ease-out forwards",
-        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-      },
-      keyframes: {
-        fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        sand: {
+          100: "#F2EDE4",
+          200: "#E8DFD0",
+          300: "#D4C8B0",
+          400: "#B8A888",
+        },
+        gold: {
+          300: "#E2C98A",
+          400: "#CEB070",
+          500: "#B8955A",
+          600: "#9E7C44",
+        },
+        sage: {
+          400: "#9BAD8A",
+          500: "#7D9168",
+          600: "#62724F",
         },
       },
     },

@@ -1,27 +1,29 @@
 import type { Metadata } from "next";
-import { Cinzel, Nunito_Sans } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
-const cinzel = Cinzel({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-cinzel",
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const nunitoSans = Nunito_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-nunito",
+  variable: "--font-inter",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Kaki Studio — Agence Web Premium",
+  title: "Kaki Studio — Sites Web Premium",
   description:
     "Kaki Studio. Sites web premium pour instituts de beauté, salons de massage, auto detailing et artisans. À partir de 350€.",
-  keywords: ["kaki studio", "agence web", "site web premium", "vitrine", "réservation en ligne", "salon de massage", "institut de beauté"],
+  keywords: ["kaki studio", "agence web", "site web premium", "salon de massage", "institut de beauté"],
   authors: [{ name: "Kaki Studio" }],
   openGraph: {
-    title: "Kaki Studio — Agence Web Premium",
+    title: "Kaki Studio — Sites Web Premium",
     description: "Sites web premium qui convertissent vos visiteurs en clients.",
     type: "website",
   },
@@ -33,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${cinzel.variable} ${nunitoSans.variable}`}>
+    <html lang="fr" className={`${cormorant.variable} ${inter.variable}`}>
       <body>{children}</body>
     </html>
   );

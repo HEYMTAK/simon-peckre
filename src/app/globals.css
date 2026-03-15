@@ -3,8 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --font-cinzel: 'Cinzel', serif;
-  --font-nunito: 'Nunito Sans', sans-serif;
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+
+  /* Palette Kaki Studio */
+  --bg-base:     #100E0A;
+  --bg-surface:  #1A1610;
+  --gold:        #C4A96A;
+  --gold-light:  #DEC48A;
+  --sand:        #E8DFD0;
+  --sand-muted:  #9E9080;
+  --sage:        #8A9E7A;
+  --border:      rgba(196,169,106,0.14);
 }
 
 * {
@@ -18,27 +28,32 @@ html {
 }
 
 body {
-  background-color: #09090b;
-  color: #f4f4f5;
-  font-family: var(--font-nunito), sans-serif;
+  background-color: var(--bg-base);
+  color: var(--sand);
+  font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #09090b;
-}
-::-webkit-scrollbar-thumb {
-  background: #C8A45E;
-  border-radius: 3px;
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ─── Selection ─────────────────────────────────────── */
+::selection { background: rgba(196,169,106,0.18); color: var(--gold-light); }
+
+/* ─── Cormorant utility classes ─────────────────────── */
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
-/* Selection */
-::selection {
-  background: #C8A45E33;
-  color: #C8A45E;
+/* ─── Section dividers ──────────────────────────────── */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.25;
 }

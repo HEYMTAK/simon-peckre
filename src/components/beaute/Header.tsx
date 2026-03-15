@@ -9,7 +9,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -23,76 +23,168 @@ export default function Header() {
 
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800/60 shadow-xl"
-          : "bg-transparent"
-      }`}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      style={{
+        position: "fixed",
+        top: 0, left: 0, right: 0,
+        zIndex: 50,
+        transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)",
+        backgroundColor: scrolled ? "rgba(16,14,10,0.92)" : "transparent",
+        backdropFilter: scrolled ? "blur(16px) saturate(1.4)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(196,169,106,0.1)" : "1px solid transparent",
+      }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="font-cinzel text-xl font-bold tracking-widest flex items-center gap-1">
-          <span className="text-white">Kaki</span>
-          <span style={{ color: "#C8A45E" }}> Studio</span>
-          <span
-            className="inline-block w-1.5 h-1.5 rounded-full ml-0.5 mb-3"
-            style={{ backgroundColor: "#C8A45E" }}
-          />
+      <div style={{
+        maxWidth: "1200px",
+        margin: "0 auto",
+        padding: "0 32px",
+        height: "72px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}>
+
+        {/* ── Logo ── */}
+        <a
+          href="#"
+          style={{
+            display: "flex",
+            alignItems: "baseline",
+            gap: "1px",
+            fontFamily: "var(--font-cormorant), Georgia, serif",
+            fontSize: "1.35rem",
+            fontWeight: 500,
+            letterSpacing: "0.06em",
+            textDecoration: "none",
+          }}
+        >
+          <span style={{ color: "#F0EAE0" }}>Kaki</span>
+          <span style={{
+            color: "#C4A96A",
+            fontStyle: "italic",
+            marginLeft: "6px",
+          }}>Studio</span>
+          <span style={{
+            display: "inline-block",
+            width: "5px",
+            height: "5px",
+            borderRadius: "50%",
+            background: "#C4A96A",
+            marginLeft: "3px",
+            marginBottom: "2px",
+            alignSelf: "flex-end",
+          }} />
         </a>
 
-        {/* Nav desktop */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* ── Nav desktop ── */}
+        <nav style={{ display: "flex", alignItems: "center", gap: "40px" }} className="hidden md:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-zinc-400 hover:text-yellow-400 transition-colors duration-200 tracking-wide"
+              style={{
+                fontFamily: "var(--font-inter)",
+                fontSize: "12px",
+                fontWeight: 500,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "rgba(232,223,208,0.45)",
+                textDecoration: "none",
+                transition: "color 0.25s ease",
+              }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#C4A96A"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(232,223,208,0.45)"}
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* ── CTA desktop ── */}
+        <div className="hidden md:block">
           <a
             href="#contact"
-            className="px-5 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-zinc-950 text-sm font-bold tracking-wide rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-yellow-500/25"
+            style={{
+              fontFamily: "var(--font-inter)",
+              fontSize: "12px",
+              fontWeight: 600,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "#100E0A",
+              textDecoration: "none",
+              padding: "10px 24px",
+              background: "linear-gradient(135deg, #C4A96A 0%, #DEC48A 100%)",
+              borderRadius: "4px",
+              transition: "all 0.3s ease",
+              boxShadow: "0 4px 16px rgba(196,169,106,0.18)",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 24px rgba(196,169,106,0.32)";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(196,169,106,0.18)";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+            }}
           >
             Prendre RDV
           </a>
         </div>
 
-        {/* Burger mobile */}
+        {/* ── Burger mobile ── */}
         <button
-          className="md:hidden text-zinc-300 hover:text-yellow-400 transition-colors"
+          className="md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "rgba(196,169,106,0.7)",
+            padding: "4px",
+            transition: "color 0.2s ease",
+          }}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Menu mobile */}
+      {/* ── Menu mobile ── */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden bg-zinc-950/98 backdrop-blur-md border-t border-zinc-800/60"
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              overflow: "hidden",
+              background: "rgba(16,14,10,0.97)",
+              backdropFilter: "blur(20px)",
+              borderTop: "1px solid rgba(196,169,106,0.1)",
+            }}
           >
-            <div className="px-6 py-6 flex flex-col gap-5">
+            <div style={{
+              padding: "24px 32px 32px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+            }}>
               {links.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-zinc-300 hover:text-yellow-400 transition-colors text-base"
+                  style={{
+                    fontFamily: "var(--font-cormorant), Georgia, serif",
+                    fontSize: "1.5rem",
+                    fontWeight: 400,
+                    color: "rgba(232,223,208,0.7)",
+                    textDecoration: "none",
+                    transition: "color 0.2s ease",
+                  }}
                 >
                   {l.label}
                 </a>
@@ -100,7 +192,20 @@ export default function Header() {
               <a
                 href="#contact"
                 onClick={() => setMenuOpen(false)}
-                className="mt-2 px-5 py-3 bg-yellow-500 hover:bg-yellow-400 text-zinc-950 text-sm font-bold tracking-wide rounded-lg text-center transition-all duration-200"
+                style={{
+                  marginTop: "8px",
+                  padding: "14px 24px",
+                  background: "linear-gradient(135deg, #C4A96A 0%, #DEC48A 100%)",
+                  color: "#100E0A",
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "12px",
+                  fontWeight: 600,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  borderRadius: "4px",
+                  textAlign: "center",
+                  textDecoration: "none",
+                }}
               >
                 Prendre RDV
               </a>
