@@ -337,9 +337,12 @@ export default function Hero() {
 
       {/* ══ SCROLL INDICATOR — droite, visible dès l'arrivée ══════════════ */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.8 }}
+        initial={{ opacity: 0, y: 0 }}
+        animate={{ opacity: 1, y: [0, -30, 0] }}
+        transition={{
+          opacity: { delay: 0.9, duration: 0.8 },
+          y: { delay: 1.2, duration: 3.5, repeat: Infinity, ease: "easeInOut" },
+        }}
         style={{
           position: "absolute",
           bottom: "33%", right: "8%",
