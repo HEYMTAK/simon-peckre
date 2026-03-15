@@ -2,16 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { MapPin, Users, TrendingDown, TrendingUp, CalendarCheck } from "lucide-react";
-
-interface StatCardProps {
-  value: string;
-  title: string;
-  subtitle: string;
-  icon: React.ReactNode;
-  delay?: number;
-  highlight?: boolean;
-}
 
 function useCounter(target: number, duration: number, isInView: boolean) {
   const [count, setCount] = useState(0);
@@ -30,152 +20,185 @@ function useCounter(target: number, duration: number, isInView: boolean) {
   return count;
 }
 
-function StatCard({ value, title, subtitle, icon, delay = 0, highlight = false }: StatCardProps) {
+const stats = [
+  {
+    value: "86",
+    suffix: "%",
+    title: "Consultent Google Maps",
+    desc: "des Français utilisent Maps pour trouver un établissement de proximité.",
+    source: "Digitaleo",
+  },
+  {
+    value: "80",
+    suffix: "%",
+    title: "Vérifient le site web",
+    desc: "des consommateurs exigent un site web avant de se rendre sur place.",
+    source: "Médiamétrie",
+    highlight: true,
+  },
+  {
+    value: "31",
+    suffix: "%",
+    title: "Fuient sans site",
+    desc: "des clients refusent un pro sans site, le jugeant non professionnel.",
+    source: "Forbes",
+  },
+  {
+    value: "37",
+    suffix: "%",
+    title: "De CA en plus",
+    desc: "c'est l'augmentation moyenne des revenus avec la réservation en ligne 24/7.",
+    source: "Capterra",
+    prefix: "+",
+  },
+];
+
+function StatCard({ value, suffix, prefix = "", title, desc, source, highlight = false, delay = 0 }: {
+  value: string; suffix: string; prefix?: string; title: string; desc: string; source: string; highlight?: boolean; delay?: number;
+}) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  // Extract numeric part for animation
-  const numericMatch = value.match(/^(\d+)/);
-  const numericValue = numericMatch ? parseInt(numericMatch[1]) : 0;
-  const suffix = value.replace(/^\d+/, "");
-
-  const animatedNum = useCounter(numericValue, 1.8, isInView);
-  const displayValue = numericMatch ? `${animatedNum}${suffix}` : value;
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const num = useCounter(parseInt(value), 1.6, isInView);
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 32 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay }}
-      className={`relative p-7 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 ${
-        highlight
-          ? "border-yellow-500/40 bg-gradient-to-br from-yellow-500/10 to-zinc-900/60 shadow-xl shadow-yellow-500/5"
-          : "border-zinc-800/60 bg-zinc-900/40 hover:border-yellow-500/20"
-      }`}
+      transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
+      style={{
+        position: "relative",
+        padding: "36px 32px",
+        borderRadius: "16px",
+        border: highlight ? "1px solid rgba(207,165,92,0.35)" : "1px solid rgba(207,165,92,0.1)",
+        background: highlight
+          ? "linear-gradient(145deg, rgba(207,165,92,0.09) 0%, rgba(46,34,20,0.4) 100%)"
+          : "rgba(46,34,20,0.25)",
+        transition: "transform 0.35s ease, box-shadow 0.35s ease",
+        overflow: "hidden",
+      }}
+      whileHover={{ y: -4, transition: { duration: 0.25 } }}
     >
+      {/* Glow intérieur si highlight */}
       {highlight && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-yellow-500 text-zinc-950 text-xs font-bold rounded-full">
-          Chiffre clé
-        </div>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "80px", background: "radial-gradient(ellipse at 50% 0%, rgba(207,165,92,0.12), transparent 70%)", pointerEvents: "none" }} />
       )}
-      <div className="flex items-start justify-between mb-5">
-        <div
-          className={`p-3 rounded-xl ${
-            highlight ? "bg-yellow-500/20 text-yellow-400" : "bg-zinc-800/80 text-yellow-500"
-          }`}
-        >
-          {icon}
-        </div>
+
+      {/* Numéro */}
+      <div style={{
+        fontFamily: "var(--font-cormorant), Georgia, serif",
+        fontSize: "clamp(3rem, 5vw, 4.2rem)",
+        fontWeight: 300,
+        lineHeight: 1,
+        color: highlight ? "#E8C07A" : "#CFA55C",
+        letterSpacing: "-0.02em",
+        marginBottom: "16px",
+      }}>
+        {prefix}{num}{suffix}
       </div>
-      <div
-        className={`font-cinzel text-4xl font-bold mb-2 ${
-          highlight ? "text-yellow-400" : "text-white"
-        }`}
-      >
-        {displayValue}
+
+      {/* Séparateur */}
+      <div style={{ width: "28px", height: "1px", background: highlight ? "rgba(207,165,92,0.5)" : "rgba(207,165,92,0.25)", marginBottom: "16px" }} />
+
+      {/* Titre */}
+      <div style={{
+        fontFamily: "var(--font-inter)",
+        fontSize: "13px",
+        fontWeight: 600,
+        letterSpacing: "0.04em",
+        color: "#F5EDD8",
+        marginBottom: "10px",
+      }}>
+        {title}
       </div>
-      <h3 className="text-white font-semibold text-base mb-2">{title}</h3>
-      <p className="text-zinc-500 text-sm leading-relaxed">{subtitle}</p>
+
+      {/* Description */}
+      <p style={{
+        fontFamily: "var(--font-inter)",
+        fontSize: "12px",
+        lineHeight: 1.7,
+        color: "rgba(245,237,216,0.38)",
+        marginBottom: "14px",
+      }}>
+        {desc}
+      </p>
+
+      {/* Source */}
+      <span style={{
+        fontFamily: "var(--font-inter)",
+        fontSize: "10px",
+        letterSpacing: "0.1em",
+        textTransform: "uppercase",
+        color: "rgba(207,165,92,0.3)",
+      }}>
+        — {source}
+      </span>
     </motion.div>
   );
 }
 
 export default function StatsSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
-  const stats = [
-    {
-      value: "86%",
-      title: "Consultent Google Maps",
-      subtitle:
-        "86% des Français utilisent Maps pour trouver un établissement de proximité. Source: Digitaleo",
-      icon: <MapPin size={22} />,
-    },
-    {
-      value: "8 sur 10",
-      title: "Vérifient le site web",
-      subtitle:
-        "8 consommateurs sur 10 exigent de voir un site web avant de se rendre sur place. Source: Médiamétrie",
-      icon: <Users size={22} />,
-      highlight: true,
-    },
-    {
-      value: "31%",
-      title: "Fuient sans site",
-      subtitle:
-        "Près d'un tiers des clients refusent de consommer chez un pro s'il n'a pas de site web, le jugeant 'non professionnel'. Source: Forbes",
-      icon: <TrendingDown size={22} />,
-    },
-    {
-      value: "+37%",
-      title: "De Chiffre d'Affaires",
-      subtitle:
-        "C'est l'augmentation moyenne des revenus pour un commerce qui ajoute la réservation en ligne 24/7. Source: Capterra",
-      icon: <TrendingUp size={22} />,
-    },
-  ];
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="roi" className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
+    <section id="roi" className="relative overflow-hidden" style={{ padding: "120px 0" }}>
 
-      {/* BG glow */}
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/4 blur-[100px] pointer-events-none" />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.2), transparent)" }} />
 
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-6"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-500/20 bg-yellow-500/5 text-yellow-500 text-xs font-medium tracking-widest uppercase mb-5">
-            <CalendarCheck size={12} />
-            Machine à RDV & ROI
-          </div>
-          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            Votre fiche Google Maps attire.{" "}
-            <br className="hidden sm:block" />
-            <span className="text-yellow-500">Votre site web convertit 24h/24.</span>
-          </h2>
-        </motion.div>
+      {/* Glow droit */}
+      <div style={{ position: "absolute", top: "10%", right: "-8%", width: "45%", height: "70%", background: "radial-gradient(ellipse, rgba(207,165,92,0.06) 0%, transparent 65%)", filter: "blur(60px)", pointerEvents: "none" }} />
 
-        {/* Texte explicatif */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="max-w-3xl mx-auto mb-16 text-center"
-        >
-          <p className="text-zinc-400 text-lg leading-relaxed">
-            Aujourd&apos;hui, vos futurs clients vous cherchent sur leur smartphone. Ils voient vos
-            avis, mais exigent un site professionnel pour se rassurer avant de réserver. Sans site,
-            ils filent chez le concurrent. Avec notre{" "}
-            <span className="text-yellow-400 font-semibold">
-              module de réservation (+75€)
-            </span>
-            , votre site agit comme un réceptionniste ouvert 24/7 : le client réserve en 3 clics,
-            votre agenda Google se met à jour, et vous générez du chiffre d&apos;affaires{" "}
-            <span className="text-white font-semibold">même quand le salon est fermé.</span>
-          </p>
-        </motion.div>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 48px" }} ref={ref}>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* ── En-tête split ── */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "end", marginBottom: "80px" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "28px" }}>
+              <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
+              <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
+                Pourquoi un site web
+              </span>
+            </div>
+            <h2 style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "clamp(2.8rem, 4.5vw, 4.2rem)",
+              fontWeight: 300,
+              lineHeight: 1.05,
+              color: "#F5EDD8",
+              letterSpacing: "-0.01em",
+            }}>
+              Votre fiche Maps<br />attire.{" "}
+              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>Votre site</span><br />
+              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>convertit.</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.85, color: "rgba(245,237,216,0.5)" }}>
+              Aujourd&apos;hui vos futurs clients vous cherchent sur smartphone. Ils voient vos avis, mais exigent un site professionnel pour se rassurer. Sans site, ils filent chez le concurrent. Avec notre{" "}
+              <span style={{ color: "#CFA55C", fontWeight: 600 }}>module de réservation (+75€)</span>, votre site agit comme un réceptionniste 24/7 — le client réserve en 3 clics, même quand votre salon est fermé.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* ── Grille stats ── */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
           {stats.map((stat, i) => (
-            <StatCard
-              key={stat.title}
-              {...stat}
-              delay={0.1 * i + 0.2}
-            />
+            <StatCard key={stat.title} {...stat} delay={i * 0.1 + 0.2} />
           ))}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.12), transparent)" }} />
     </section>
   );
 }

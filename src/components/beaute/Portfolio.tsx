@@ -1,136 +1,161 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Globe, TrendingUp, Award } from "lucide-react";
 
 const videos = [
-  {
-    src: "/videos/demo-salon1.mp4",
-    label: "Institut de beauté — Paris 16e",
-    tag: "Essentiel",
-  },
-  {
-    src: "/videos/demo-salon2.mp4",
-    label: "Salon de massage — Lyon Centre",
-    tag: "Automatisé",
-  },
-  {
-    src: "/videos/demo-salon3.mp4",
-    label: "Spa urbain — Bordeaux",
-    tag: "Automatisé",
-  },
+  { src: "/videos/demo-salon1.mp4", label: "Institut de beauté", location: "Paris 16e", tag: "Essentiel" },
+  { src: "/videos/demo-salon2.mp4", label: "Salon de massage", location: "Lyon Centre", tag: "Automatisé" },
+  { src: "/videos/demo-salon3.mp4", label: "Spa urbain", location: "Bordeaux", tag: "Automatisé" },
 ];
 
 export default function Portfolio() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="portfolio" className="py-24 relative overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent" />
+    <section id="portfolio" className="relative overflow-hidden" style={{ padding: "120px 0" }}>
 
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-500/20 bg-yellow-500/5 text-yellow-500 text-xs font-medium tracking-widest uppercase mb-5">
-            <Award size={12} />
-            Réalisations
-          </div>
-          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            Un standing professionnel{" "}
-            <span className="text-yellow-500">instantané.</span>
-          </h2>
-          <p className="text-zinc-400 text-lg leading-relaxed max-w-3xl mx-auto">
-            Aux États-Unis,{" "}
-            <span className="text-zinc-200 font-semibold">83% des salons</span>{" "}
-            possèdent déjà un site web, car ils savent qu&apos;une entreprise sans site
-            n&apos;est plus prise au sérieux{" "}
-            <span className="text-zinc-500 text-sm">(Source: Forbes)</span>. En
-            France, démarquez-vous immédiatement. Lorsqu&apos;un client hésite entre votre
-            salon et celui d&apos;à côté sur Google Maps, c&apos;est la qualité de votre site web
-            qui fait pencher la balance.
-          </p>
-        </motion.div>
+      {/* Séparateur haut */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.2), transparent)" }} />
 
-        {/* Stats row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="grid grid-cols-3 gap-4 mb-14"
-        >
-          {[
-            { icon: Globe, value: "83%", label: "Salons aux US ont un site" },
-            { icon: TrendingUp, value: "7j", label: "Délai de livraison" },
-            { icon: Award, value: "350€", label: "Tarif de départ" },
-          ].map(({ icon: Icon, value, label }) => (
-            <div
-              key={label}
-              className="text-center p-5 rounded-xl border border-zinc-800/60 bg-zinc-900/40"
-            >
-              <Icon size={20} className="text-yellow-500 mx-auto mb-2" />
-              <div className="font-cinzel text-2xl font-bold text-yellow-400">{value}</div>
-              <div className="text-zinc-500 text-xs mt-1">{label}</div>
+      {/* Glow ambré gauche */}
+      <div style={{ position: "absolute", top: "20%", left: "-10%", width: "40%", height: "60%", background: "radial-gradient(ellipse, rgba(207,165,92,0.06) 0%, transparent 65%)", filter: "blur(60px)", pointerEvents: "none" }} />
+
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 48px" }} ref={ref}>
+
+        {/* ── En-tête éditorial ── */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "end", marginBottom: "80px" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Label */}
+            <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "28px" }}>
+              <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
+              <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
+                Réalisations
+              </span>
             </div>
-          ))}
-        </motion.div>
+            <h2 style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "clamp(2.8rem, 4.5vw, 4.2rem)",
+              fontWeight: 300,
+              lineHeight: 1.05,
+              color: "#F5EDD8",
+              letterSpacing: "-0.01em",
+            }}>
+              Un standing<br />
+              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>professionnel</span><br />
+              instantané.
+            </h2>
+          </motion.div>
 
-        {/* Video grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,237,216,0.5)", marginBottom: "32px" }}>
+              Aux États-Unis, <span style={{ color: "#F5EDD8", fontWeight: 600 }}>83% des salons</span> possèdent déjà un site web. En France, démarquez-vous immédiatement. Quand un client hésite entre votre salon et celui d&apos;à côté sur Google Maps, c&apos;est la qualité de votre site qui fait pencher la balance.
+            </p>
+            {/* Mini-stats en ligne */}
+            <div style={{ display: "flex", gap: "32px" }}>
+              {[
+                { n: "83%", l: "Salons US en ligne" },
+                { n: "7j", l: "Délai livraison" },
+                { n: "350€", l: "À partir de" },
+              ].map(({ n, l }) => (
+                <div key={l}>
+                  <div style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.8rem", fontWeight: 500, color: "#CFA55C", lineHeight: 1 }}>{n}</div>
+                  <div style={{ fontFamily: "var(--font-inter)", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(207,165,92,0.4)", marginTop: "4px" }}>{l}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ── Grille vidéos ── */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
           {videos.map((video, i) => (
             <motion.div
               key={video.src}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 36 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 * i + 0.2 }}
-              className="group relative rounded-2xl overflow-hidden border border-zinc-800/60 bg-zinc-900 shadow-2xl hover:border-yellow-500/30 transition-all duration-300"
+              transition={{ duration: 0.8, delay: i * 0.12 + 0.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                position: "relative",
+                borderRadius: "16px",
+                overflow: "hidden",
+                border: "1px solid rgba(207,165,92,0.1)",
+                boxShadow: "0 24px 48px rgba(0,0,0,0.3)",
+                cursor: "pointer",
+                transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease",
+              }}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
             >
               {/* Tag */}
-              <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-zinc-950/80 backdrop-blur-sm rounded-full text-yellow-400 text-xs font-semibold border border-yellow-500/20">
+              <div style={{
+                position: "absolute", top: "16px", left: "16px", zIndex: 10,
+                padding: "5px 12px",
+                borderRadius: "100px",
+                background: "rgba(46,34,20,0.75)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(207,165,92,0.25)",
+                fontFamily: "var(--font-inter)",
+                fontSize: "10px",
+                fontWeight: 600,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "#CFA55C",
+              }}>
                 {video.tag}
               </div>
 
-              {/* Video */}
-              <video
-                src={video.src}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full aspect-[9/16] object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              {/* Numéro */}
+              <div style={{
+                position: "absolute", top: "14px", right: "16px", zIndex: 10,
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "13px",
+                fontWeight: 400,
+                color: "rgba(245,237,216,0.3)",
+                letterSpacing: "0.1em",
+              }}>
+                0{i + 1}
+              </div>
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent" />
+              {/* Vidéo / placeholder */}
+              <div style={{ position: "relative", aspectRatio: "9/16", background: "linear-gradient(160deg, rgba(60,44,26,0.8), rgba(30,22,14,0.95))" }}>
+                <video src={video.src} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }} />
+                {/* Overlay gradient */}
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(30,22,14,0.9) 0%, rgba(30,22,14,0.1) 50%, transparent 100%)" }} />
+              </div>
 
-              {/* Label */}
-              <div className="absolute bottom-4 left-4 right-4">
-                <p className="text-white text-sm font-medium">{video.label}</p>
+              {/* Label bas */}
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 18px 18px" }}>
+                <div style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.15rem", fontWeight: 500, fontStyle: "italic", color: "#F5EDD8", lineHeight: 1.2 }}>
+                  {video.label}
+                </div>
+                <div style={{ fontFamily: "var(--font-inter)", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(207,165,92,0.5)", marginTop: "4px" }}>
+                  {video.location}
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Note placeholder videos */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center text-zinc-600 text-sm mt-8"
+          transition={{ duration: 0.5, delay: 0.6 }}
+          style={{ textAlign: "center", fontFamily: "var(--font-inter)", fontSize: "11px", color: "rgba(245,237,216,0.2)", marginTop: "32px", letterSpacing: "0.06em" }}
         >
-          * Les vidéos de démonstration seront remplacées par vos vraies réalisations.
+          * Vos propres réalisations remplaceront ces aperçus.
         </motion.p>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.12), transparent)" }} />
     </section>
   );
 }

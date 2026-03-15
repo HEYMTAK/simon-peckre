@@ -124,7 +124,7 @@ export default function Hero() {
       </div>
 
       {/* ══ CONTENU PRINCIPAL ═════════════════════════════════════════════════ */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-8 sm:px-12 pt-36 pb-28">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-8 sm:px-14 pt-40 pb-32">
 
         <div className="grid grid-cols-1 gap-16 items-center">
 
@@ -161,12 +161,12 @@ export default function Hero() {
               transition={{ duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontSize: "clamp(3.2rem, 7vw, 6rem)",
+                fontSize: "clamp(3.6rem, 8vw, 7.2rem)",
                 fontWeight: 300,
-                lineHeight: 1.06,
-                letterSpacing: "-0.01em",
+                lineHeight: 1.02,
+                letterSpacing: "-0.02em",
                 color: "#F5EDD8",
-                marginBottom: "2rem",
+                marginBottom: "2.25rem",
               }}
             >
               Transformez vos visiteurs<br />
