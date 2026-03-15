@@ -126,7 +126,7 @@ export default function Hero() {
       {/* ══ CONTENU PRINCIPAL ═════════════════════════════════════════════════ */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-8 sm:px-12 pt-36 pb-28">
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-16 items-center">
+        <div className="grid grid-cols-1 gap-16 items-center">
 
           {/* ── Colonne gauche ── */}
           <div>
@@ -332,144 +332,6 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Colonne droite — carte flottante ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 40, x: 20 }}
-            animate={{ opacity: 1, y: 0, x: 0 }}
-            transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:block"
-            style={{ width: "300px", flexShrink: 0 }}
-          >
-            {/* Carte principale */}
-            <div style={{
-              borderRadius: "16px",
-              border: "1px solid rgba(196,169,106,0.14)",
-              background: "linear-gradient(145deg, rgba(26,22,16,0.9) 0%, rgba(16,14,10,0.95) 100%)",
-              backdropFilter: "blur(20px)",
-              padding: "32px",
-              boxShadow: "0 40px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(196,169,106,0.06)",
-              position: "relative",
-              overflow: "hidden",
-            }}>
-              {/* Glow intérieur */}
-              <div style={{
-                position: "absolute", top: 0, left: 0, right: 0,
-                height: "100px",
-                background: "radial-gradient(ellipse at 50% 0%, rgba(196,169,106,0.08), transparent 70%)",
-                pointerEvents: "none",
-              }} />
-
-              {/* Icône */}
-              <div style={{
-                width: "44px", height: "44px",
-                borderRadius: "10px",
-                background: "rgba(196,169,106,0.1)",
-                border: "1px solid rgba(196,169,106,0.18)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                marginBottom: "20px",
-                fontSize: "20px",
-              }}>
-                ✦
-              </div>
-
-              <p style={{
-                fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontSize: "1.05rem",
-                fontWeight: 400,
-                fontStyle: "italic",
-                color: "rgba(232,223,208,0.7)",
-                lineHeight: 1.65,
-                marginBottom: "24px",
-              }}>
-                &ldquo;Notre taux de réservation en ligne a augmenté de 40% dès le premier mois.&rdquo;
-              </p>
-
-              <div style={{
-                display: "flex", alignItems: "center", gap: "12px",
-                paddingTop: "20px",
-                borderTop: "1px solid rgba(196,169,106,0.1)",
-              }}>
-                <div style={{
-                  width: "36px", height: "36px",
-                  borderRadius: "50%",
-                  background: "linear-gradient(135deg, #C4A96A, #8A7A50)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontFamily: "var(--font-cormorant), serif",
-                  fontSize: "14px",
-                  fontWeight: 600,
-                  color: "#221A10",
-                  flexShrink: 0,
-                }}>
-                  S
-                </div>
-                <div>
-                  <div style={{
-                    fontFamily: "var(--font-inter)",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    color: "rgba(232,223,208,0.8)",
-                    letterSpacing: "0.04em",
-                  }}>
-                    Sakura Spa
-                  </div>
-                  <div style={{
-                    fontFamily: "var(--font-inter)",
-                    fontSize: "11px",
-                    color: "rgba(196,169,106,0.45)",
-                    letterSpacing: "0.08em",
-                  }}>
-                    Lyon · Client 2024
-                  </div>
-                </div>
-                {/* Étoiles */}
-                <div style={{
-                  marginLeft: "auto",
-                  color: "#C4A96A",
-                  fontSize: "11px",
-                  letterSpacing: "2px",
-                }}>
-                  ★★★★★
-                </div>
-              </div>
-            </div>
-
-            {/* Badge flottant sous la carte */}
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-              style={{
-                marginTop: "16px",
-                marginLeft: "20px",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "10px 18px",
-                borderRadius: "100px",
-                background: "rgba(26,22,16,0.95)",
-                border: "1px solid rgba(196,169,106,0.16)",
-                backdropFilter: "blur(12px)",
-                boxShadow: "0 12px 32px rgba(0,0,0,0.3)",
-              }}
-            >
-              <span style={{
-                width: "7px", height: "7px",
-                borderRadius: "50%",
-                background: "#7DBE7A",
-                boxShadow: "0 0 8px rgba(125,190,122,0.7)",
-                flexShrink: 0,
-              }} />
-              <span style={{
-                fontFamily: "var(--font-inter)",
-                fontSize: "11px",
-                fontWeight: 500,
-                color: "rgba(232,223,208,0.7)",
-                letterSpacing: "0.06em",
-                whiteSpace: "nowrap",
-              }}>
-                Réservation 24/7 activée
-              </span>
-            </motion.div>
-          </motion.div>
         </div>
       </div>
 
@@ -480,26 +342,34 @@ export default function Hero() {
         transition={{ delay: 1.5 }}
         style={{
           position: "absolute",
-          bottom: "32px", left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex", flexDirection: "column", alignItems: "center", gap: "8px",
+          bottom: "40px", left: "calc(50% - 60px)",
+          display: "flex", flexDirection: "row", alignItems: "center", gap: "12px",
         }}
       >
+        <motion.div
+          animate={{ x: [-4, 4, -4] }}
+          transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+          style={{
+            width: "32px", height: "1px",
+            background: "linear-gradient(to right, transparent, rgba(196,169,106,0.5))",
+          }}
+        />
         <span style={{
           fontFamily: "var(--font-inter)",
           fontSize: "9px",
-          letterSpacing: "0.25em",
+          letterSpacing: "0.22em",
           textTransform: "uppercase",
-          color: "rgba(196,169,106,0.28)",
+          color: "rgba(196,169,106,0.35)",
+          whiteSpace: "nowrap",
         }}>
           Défiler
         </span>
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          animate={{ x: [4, -4, 4] }}
+          transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
           style={{
-            width: "1px", height: "40px",
-            background: "linear-gradient(to bottom, rgba(196,169,106,0.45), transparent)",
+            width: "32px", height: "1px",
+            background: "linear-gradient(to left, transparent, rgba(196,169,106,0.5))",
           }}
         />
       </motion.div>
