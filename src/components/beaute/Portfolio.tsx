@@ -69,14 +69,8 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
         {/* Inner card */}
         <div style={{ borderRadius: "19px", overflow: "hidden", background: "#0E0B07" }}>
 
-          {/* Barre top dorée */}
-          <div style={{
-            height: "2px",
-            background: "linear-gradient(90deg, transparent 0%, rgba(207,165,92,0.6) 40%, rgba(224,194,120,0.9) 60%, transparent 100%)",
-          }} />
-
           {/* Header overlay : tag + numéro */}
-          <div style={{ position: "relative" }}>
+          <div style={{ position: "relative", lineHeight: 0, fontSize: 0 }}>
             {/* Numéro watermark */}
             <div style={{
               position: "absolute", top: "12px", right: "20px", zIndex: 10,
