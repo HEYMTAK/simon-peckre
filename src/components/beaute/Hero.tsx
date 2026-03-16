@@ -346,7 +346,7 @@ export default function Hero() {
         }}
         style={{
           position: "absolute",
-          bottom: "42%", right: "8%",
+          bottom: "calc(42% + 40px)", right: "8%",
           display: "flex", flexDirection: "column", alignItems: "center", gap: "10px",
         }}
       >
