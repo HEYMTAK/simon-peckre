@@ -15,92 +15,167 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          el.play().catch(() => {});
-        } else {
-          el.pause();
-        }
+        if (entry.isIntersecting) el.play().catch(() => {});
+        else el.pause();
       },
       { threshold: 0.3 }
     );
-
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   return (
     <motion.div
-      key={video.src}
-      initial={{ opacity: 0, y: 36 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.12 + 0.2, ease: [0.16, 1, 0.3, 1] }}
-      style={{
-        position: "relative",
-        borderRadius: "16px",
-        overflow: "hidden",
-        border: "1px solid rgba(207,165,92,0.1)",
-        boxShadow: "0 24px 48px rgba(0,0,0,0.3)",
-        cursor: "pointer",
-        transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease",
-      }}
-      whileHover={{ y: -6, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0, x: index * 18 - 18, y: 48 }}
+      animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
+      transition={{ duration: 1, delay: index * 0.18 + 0.2, ease: [0.16, 1, 0.3, 1] }}
+      style={{ position: "relative" }}
     >
-      {/* Tag */}
+      {/* Glow ambiant derrière la card */}
       <div style={{
-        position: "absolute", top: "16px", left: "16px", zIndex: 10,
-        padding: "5px 12px",
-        borderRadius: "100px",
-        background: "rgba(46,34,20,0.75)",
-        backdropFilter: "blur(8px)",
-        border: "1px solid rgba(207,165,92,0.25)",
-        fontFamily: "var(--font-inter)",
-        fontSize: "10px",
-        fontWeight: 600,
-        letterSpacing: "0.1em",
-        textTransform: "uppercase",
-        color: "#CFA55C",
-      }}>
-        {video.tag}
-      </div>
+        position: "absolute",
+        inset: "-24px",
+        borderRadius: "32px",
+        background: "radial-gradient(ellipse at 40% 60%, rgba(207,165,92,0.10) 0%, transparent 70%)",
+        filter: "blur(24px)",
+        pointerEvents: "none",
+        zIndex: 0,
+      }} />
 
-      {/* Numéro */}
-      <div style={{
-        position: "absolute", top: "14px", right: "16px", zIndex: 10,
-        fontFamily: "var(--font-cormorant), Georgia, serif",
-        fontSize: "13px",
-        fontWeight: 400,
-        color: "rgba(245,237,216,0.3)",
-        letterSpacing: "0.1em",
-      }}>
-        0{index + 1}
-      </div>
+      <motion.div
+        whileHover={{ y: -8, scale: 1.012, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+        style={{
+          position: "relative",
+          zIndex: 1,
+          borderRadius: "20px",
+          overflow: "hidden",
+          cursor: "pointer",
+          /* Double bordure : fine ligne or externe + fond sombre */
+          background: "linear-gradient(145deg, rgba(207,165,92,0.18) 0%, rgba(207,165,92,0.04) 50%, rgba(207,165,92,0.10) 100%)",
+          padding: "1px",
+          boxShadow: "0 32px 80px rgba(0,0,0,0.55), 0 0 0 0.5px rgba(207,165,92,0.08), inset 0 1px 0 rgba(245,237,216,0.06)",
+        }}
+      >
+        {/* Inner card */}
+        <div style={{ borderRadius: "19px", overflow: "hidden", background: "#0E0B07" }}>
 
-      {/* Vidéo */}
-      <div style={{ position: "relative", background: "linear-gradient(160deg, rgba(60,44,26,0.8), rgba(30,22,14,0.95))" }}>
-        <video
-          ref={videoRef}
-          src={video.src}
-          muted
-          loop
-          playsInline
-          style={{ width: "100%", height: "auto", display: "block" }}
-        />
-        {/* Overlay gradient */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(30,22,14,0.9) 0%, rgba(30,22,14,0.1) 50%, transparent 100%)" }} />
-      </div>
+          {/* Barre top dorée */}
+          <div style={{
+            height: "2px",
+            background: "linear-gradient(90deg, transparent 0%, rgba(207,165,92,0.6) 40%, rgba(224,194,120,0.9) 60%, transparent 100%)",
+          }} />
 
-      {/* Label bas */}
-      <div style={{ padding: "16px 18px 18px", background: "linear-gradient(to bottom, rgba(30,22,14,0.85), rgba(20,14,8,0.97))" }}>
-        <div style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.15rem", fontWeight: 500, fontStyle: "italic", color: "#F5EDD8", lineHeight: 1.2 }}>
-          {video.label}
+          {/* Header overlay : tag + numéro */}
+          <div style={{ position: "relative" }}>
+            {/* Tag */}
+            <div style={{
+              position: "absolute", top: "18px", left: "20px", zIndex: 10,
+              display: "flex", alignItems: "center", gap: "7px",
+              padding: "6px 14px",
+              borderRadius: "100px",
+              background: "rgba(14,11,7,0.82)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid rgba(207,165,92,0.30)",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.4)",
+            }}>
+              <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#CFA55C", display: "inline-block", flexShrink: 0 }} />
+              <span style={{
+                fontFamily: "var(--font-inter)",
+                fontSize: "9.5px",
+                fontWeight: 600,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "#CFA55C",
+              }}>
+                {video.tag}
+              </span>
+            </div>
+
+            {/* Numéro watermark */}
+            <div style={{
+              position: "absolute", top: "12px", right: "20px", zIndex: 10,
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "52px",
+              fontWeight: 300,
+              fontStyle: "italic",
+              color: "rgba(207,165,92,0.07)",
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+              userSelect: "none",
+            }}>
+              {String(index + 1).padStart(2, "0")}
+            </div>
+
+            {/* Vidéo */}
+            <video
+              ref={videoRef}
+              src={video.src}
+              muted
+              loop
+              playsInline
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+            {/* Vignette */}
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(14,11,7,0.92) 0%, rgba(14,11,7,0.18) 40%, transparent 100%)", pointerEvents: "none" }} />
+          </div>
+
+          {/* Footer */}
+          <div style={{
+            padding: "20px 24px 22px",
+            background: "linear-gradient(180deg, rgba(14,11,7,0) 0%, #0E0B07 100%)",
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+            gap: "12px",
+          }}>
+            <div>
+              {/* Ligne décorative */}
+              <div style={{ width: "28px", height: "1px", background: "rgba(207,165,92,0.45)", marginBottom: "10px" }} />
+              <div style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "1.25rem",
+                fontWeight: 400,
+                fontStyle: "italic",
+                color: "#F5EDD8",
+                lineHeight: 1.2,
+                letterSpacing: "0.01em",
+              }}>
+                {video.label}
+              </div>
+              <div style={{
+                fontFamily: "var(--font-inter)",
+                fontSize: "9.5px",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "rgba(207,165,92,0.45)",
+                marginTop: "6px",
+              }}>
+                {video.location}
+              </div>
+            </div>
+
+            {/* Bouton voir */}
+            <div style={{
+              flexShrink: 0,
+              width: "38px",
+              height: "38px",
+              borderRadius: "50%",
+              border: "1px solid rgba(207,165,92,0.25)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(207,165,92,0.06)",
+            }}>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2.5 1.5L10 6L2.5 10.5V1.5Z" fill="#CFA55C" />
+              </svg>
+            </div>
+          </div>
+
         </div>
-        <div style={{ fontFamily: "var(--font-inter)", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(207,165,92,0.5)", marginTop: "4px" }}>
-          {video.location}
-        </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
