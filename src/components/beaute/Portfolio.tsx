@@ -4,9 +4,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 
 const videos = [
-  { src: "/videos/institut-beaute-1.mp4", label: "Institut de beauté", location: "Paris 16e", tag: "Essentiel" },
-  { src: "/videos/mood-massage.mp4", label: "Institut de massage", location: "Caen", tag: "Automatisé" },
-  { src: "/videos/institut-beaute-2.mp4", label: "Institut de beauté", location: "Lyon Centre", tag: "Automatisé" },
+  { src: "/videos/institut-beaute-1.mp4", label: "Institut de beauté / massage", location: "Argelès-Gazost" },
+  { src: "/videos/mood-massage.mp4", label: "Institut de massage", location: "Caen" },
+  { src: "/videos/institut-beaute-2.mp4", label: "Institut de beauté", location: "Lyon Centre" },
 ];
 
 function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index: number; isInView: boolean }) {
@@ -69,30 +69,6 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
 
           {/* Header overlay : tag + numéro */}
           <div style={{ position: "relative" }}>
-            {/* Tag */}
-            <div style={{
-              position: "absolute", top: "18px", left: "20px", zIndex: 10,
-              display: "flex", alignItems: "center", gap: "7px",
-              padding: "6px 14px",
-              borderRadius: "100px",
-              background: "rgba(14,11,7,0.82)",
-              backdropFilter: "blur(12px)",
-              border: "1px solid rgba(207,165,92,0.30)",
-              boxShadow: "0 2px 12px rgba(0,0,0,0.4)",
-            }}>
-              <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#CFA55C", display: "inline-block", flexShrink: 0 }} />
-              <span style={{
-                fontFamily: "var(--font-inter)",
-                fontSize: "9.5px",
-                fontWeight: 600,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: "#CFA55C",
-              }}>
-                {video.tag}
-              </span>
-            </div>
-
             {/* Numéro watermark */}
             <div style={{
               position: "absolute", top: "12px", right: "20px", zIndex: 10,
