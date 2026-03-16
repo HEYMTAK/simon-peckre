@@ -213,8 +213,8 @@ export default function Hero() {
                 marginBottom: "2.75rem",
               }}
             >
-              Des centaines de personnes cherchent un salon dans votre ville chaque mois. C&apos;est mathématique : sans site web pour les rassurer et prendre rendez-vous, vous perdez une partie de ces clients. Sans décrocher le téléphone, vous captez le flux Google Maps avec un site qui prouve votre expertise. Différenciez-vous avec un accueil digital chaleureux qui met en confiance, et un système de réservation fluide.{" "}
-              <span style={{ color: "#CFA55C", fontWeight: 500 }}>À partir de 350€.</span>
+              Chaque mois, des centaines de clients cherchent un salon dans votre ville. Pourtant, 56 % n&apos;ont pas confiance sans site web <span style={{ color: "rgba(245,237,216,0.35)", fontSize: "0.9em" }}>(Source : IFOP)</span>. C&apos;est mathématique : vous perdez une partie de ce trafic. Captez enfin ce flux Google Maps sans décrocher le téléphone. Différenciez-vous avec un accueil digital chaleureux qui prouve votre expertise et offre une réservation fluide.{" "}
+              <span style={{ color: "#CFA55C", fontWeight: 500 }}>Dès 350€.</span>
             </motion.p>
 
             {/* CTAs */}
