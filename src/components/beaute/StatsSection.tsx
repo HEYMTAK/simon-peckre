@@ -103,10 +103,11 @@ function StatCard({ value, suffix, prefix = "", title, desc, source, highlight =
       {/* Titre */}
       <div style={{
         fontFamily: "var(--font-inter)",
-        fontSize: "13px",
-        fontWeight: 600,
-        letterSpacing: "0.04em",
-        color: "#F5EDD8",
+        fontSize: "12px",
+        fontWeight: 700,
+        letterSpacing: "0.1em",
+        textTransform: "uppercase",
+        color: "rgba(207,165,92,0.8)",
         marginBottom: "10px",
       }}>
         {title}
@@ -114,11 +115,12 @@ function StatCard({ value, suffix, prefix = "", title, desc, source, highlight =
 
       {/* Description */}
       <p style={{
-        fontFamily: "var(--font-inter)",
-        fontSize: "12px",
-        lineHeight: 1.7,
-        color: "rgba(245,237,216,0.38)",
-        marginBottom: "14px",
+        fontFamily: "var(--font-cormorant), Georgia, serif",
+        fontStyle: "italic",
+        fontSize: "1.05rem",
+        lineHeight: 1.65,
+        color: "#F5EDD8",
+        marginBottom: "16px",
       }}>
         {desc}
       </p>
@@ -127,11 +129,11 @@ function StatCard({ value, suffix, prefix = "", title, desc, source, highlight =
       <span style={{
         fontFamily: "var(--font-inter)",
         fontSize: "10px",
-        letterSpacing: "0.1em",
+        letterSpacing: "0.12em",
         textTransform: "uppercase",
-        color: "rgba(207,165,92,0.3)",
+        color: "rgba(207,165,92,0.35)",
       }}>
-        — {source}
+        Source : {source}
       </span>
     </motion.div>
   );
