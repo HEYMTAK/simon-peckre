@@ -7,8 +7,8 @@
   --font-inter: 'Inter', system-ui, sans-serif;
 
   /* Palette Kaki Studio */
-  --bg-base:     #2E2214;
-  --bg-surface:  #3A2C1A;
+  --bg-base:     #4A3520;
+  --bg-surface:  #563F26;
   --gold:        #CFA55C;
   --gold-light:  #E8C07A;
   --sand:        #F5EDD8;
@@ -39,7 +39,7 @@ body {
 
 /* ─── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #2E2214; }
+::-webkit-scrollbar-track { background: #4A3520; }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
 /* ─── Selection ─────────────────────────────────────── */
