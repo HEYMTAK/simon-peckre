@@ -178,10 +178,10 @@ export default function Hero() {
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}>
-                naturel de Google Maps
+                de Google Maps
               </span>
               <br />
-              <span style={{ fontWeight: 300 }}>en réservations dans votre salon.</span>
+              <span style={{ fontWeight: 300 }}>en réservations chez vous !</span>
             </motion.h1>
 
             {/* Séparateur */}
