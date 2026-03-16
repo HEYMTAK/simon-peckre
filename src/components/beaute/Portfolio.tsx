@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const videos = [
   { src: "/videos/institut-beaute-1.mp4", label: "Institut de beauté / massage", location: "Argelès-Gazost" },
@@ -11,20 +11,28 @@ const videos = [
 
 function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index: number; isInView: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) el.play().catch(() => {});
-        else el.pause();
+        if (entry.isIntersecting) { el.play().catch(() => {}); setPlaying(true); }
+        else { el.pause(); setPlaying(false); }
       },
       { threshold: 0.3 }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  function togglePlay() {
+    const el = videoRef.current;
+    if (!el) return;
+    if (el.paused) { el.play(); setPlaying(true); }
+    else { el.pause(); setPlaying(false); }
+  }
 
   return (
     <motion.div
@@ -130,21 +138,35 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
               </div>
             </div>
 
-            {/* Bouton voir */}
-            <div style={{
-              flexShrink: 0,
-              width: "38px",
-              height: "38px",
-              borderRadius: "50%",
-              border: "1px solid rgba(207,165,92,0.25)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "rgba(207,165,92,0.06)",
-            }}>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2.5 1.5L10 6L2.5 10.5V1.5Z" fill="#CFA55C" />
-              </svg>
+            {/* Bouton play / pause */}
+            <div
+              onClick={togglePlay}
+              style={{
+                flexShrink: 0,
+                width: "38px",
+                height: "38px",
+                borderRadius: "50%",
+                border: "1px solid rgba(207,165,92,0.35)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: playing ? "rgba(207,165,92,0.14)" : "rgba(207,165,92,0.06)",
+                cursor: "pointer",
+                transition: "background 0.2s ease, border-color 0.2s ease",
+              }}
+            >
+              {playing ? (
+                /* Icône pause */
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <rect x="2.5" y="1.5" width="2.5" height="9" rx="1" fill="#CFA55C" />
+                  <rect x="7" y="1.5" width="2.5" height="9" rx="1" fill="#CFA55C" />
+                </svg>
+              ) : (
+                /* Icône play */
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 1.5L10 6L2.5 10.5V1.5Z" fill="#CFA55C" />
+                </svg>
+              )}
             </div>
           </div>
 
