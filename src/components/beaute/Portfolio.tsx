@@ -1,13 +1,109 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 const videos = [
   { src: "/videos/demo-salon1.mp4", label: "Institut de beauté", location: "Paris 16e", tag: "Essentiel" },
   { src: "/videos/mood-massage.mp4", label: "Institut de massage", location: "Caen", tag: "Automatisé" },
   { src: "/videos/demo-salon3.mp4", label: "Spa urbain", location: "Bordeaux", tag: "Automatisé" },
 ];
+
+function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index: number; isInView: boolean }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <motion.div
+      key={video.src}
+      initial={{ opacity: 0, y: 36 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.12 + 0.2, ease: [0.16, 1, 0.3, 1] }}
+      style={{
+        position: "relative",
+        borderRadius: "16px",
+        overflow: "hidden",
+        border: "1px solid rgba(207,165,92,0.1)",
+        boxShadow: "0 24px 48px rgba(0,0,0,0.3)",
+        cursor: "pointer",
+        transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease",
+      }}
+      whileHover={{ y: -6, transition: { duration: 0.3 } }}
+    >
+      {/* Tag */}
+      <div style={{
+        position: "absolute", top: "16px", left: "16px", zIndex: 10,
+        padding: "5px 12px",
+        borderRadius: "100px",
+        background: "rgba(46,34,20,0.75)",
+        backdropFilter: "blur(8px)",
+        border: "1px solid rgba(207,165,92,0.25)",
+        fontFamily: "var(--font-inter)",
+        fontSize: "10px",
+        fontWeight: 600,
+        letterSpacing: "0.1em",
+        textTransform: "uppercase",
+        color: "#CFA55C",
+      }}>
+        {video.tag}
+      </div>
+
+      {/* Numéro */}
+      <div style={{
+        position: "absolute", top: "14px", right: "16px", zIndex: 10,
+        fontFamily: "var(--font-cormorant), Georgia, serif",
+        fontSize: "13px",
+        fontWeight: 400,
+        color: "rgba(245,237,216,0.3)",
+        letterSpacing: "0.1em",
+      }}>
+        0{index + 1}
+      </div>
+
+      {/* Vidéo */}
+      <div style={{ position: "relative", background: "linear-gradient(160deg, rgba(60,44,26,0.8), rgba(30,22,14,0.95))" }}>
+        <video
+          ref={videoRef}
+          src={video.src}
+          muted
+          loop
+          playsInline
+          style={{ width: "100%", height: "auto", display: "block" }}
+        />
+        {/* Overlay gradient */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(30,22,14,0.9) 0%, rgba(30,22,14,0.1) 50%, transparent 100%)" }} />
+      </div>
+
+      {/* Label bas */}
+      <div style={{ padding: "16px 18px 18px", background: "linear-gradient(to bottom, rgba(30,22,14,0.85), rgba(20,14,8,0.97))" }}>
+        <div style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.15rem", fontWeight: 500, fontStyle: "italic", color: "#F5EDD8", lineHeight: 1.2 }}>
+          {video.label}
+        </div>
+        <div style={{ fontFamily: "var(--font-inter)", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(207,165,92,0.5)", marginTop: "4px" }}>
+          {video.location}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Portfolio() {
   const ref = useRef(null);
@@ -79,69 +175,7 @@ export default function Portfolio() {
         {/* ── Grille vidéos ── */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
           {videos.map((video, i) => (
-            <motion.div
-              key={video.src}
-              initial={{ opacity: 0, y: 36 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: i * 0.12 + 0.2, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                position: "relative",
-                borderRadius: "16px",
-                overflow: "hidden",
-                border: "1px solid rgba(207,165,92,0.1)",
-                boxShadow: "0 24px 48px rgba(0,0,0,0.3)",
-                cursor: "pointer",
-                transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease",
-              }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
-            >
-              {/* Tag */}
-              <div style={{
-                position: "absolute", top: "16px", left: "16px", zIndex: 10,
-                padding: "5px 12px",
-                borderRadius: "100px",
-                background: "rgba(46,34,20,0.75)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(207,165,92,0.25)",
-                fontFamily: "var(--font-inter)",
-                fontSize: "10px",
-                fontWeight: 600,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "#CFA55C",
-              }}>
-                {video.tag}
-              </div>
-
-              {/* Numéro */}
-              <div style={{
-                position: "absolute", top: "14px", right: "16px", zIndex: 10,
-                fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontSize: "13px",
-                fontWeight: 400,
-                color: "rgba(245,237,216,0.3)",
-                letterSpacing: "0.1em",
-              }}>
-                0{i + 1}
-              </div>
-
-              {/* Vidéo / placeholder */}
-              <div style={{ position: "relative", background: "linear-gradient(160deg, rgba(60,44,26,0.8), rgba(30,22,14,0.95))" }}>
-                <video src={video.src} autoPlay muted loop playsInline style={{ width: "100%", height: "auto", display: "block" }} />
-                {/* Overlay gradient */}
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(30,22,14,0.9) 0%, rgba(30,22,14,0.1) 50%, transparent 100%)" }} />
-              </div>
-
-              {/* Label bas */}
-              <div style={{ padding: "16px 18px 18px", background: "linear-gradient(to bottom, rgba(30,22,14,0.85), rgba(20,14,8,0.97))" }}>
-                <div style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.15rem", fontWeight: 500, fontStyle: "italic", color: "#F5EDD8", lineHeight: 1.2 }}>
-                  {video.label}
-                </div>
-                <div style={{ fontFamily: "var(--font-inter)", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(207,165,92,0.5)", marginTop: "4px" }}>
-                  {video.location}
-                </div>
-              </div>
-            </motion.div>
+            <VideoCard key={video.src} video={video} index={i} isInView={isInView} />
           ))}
         </div>
 
