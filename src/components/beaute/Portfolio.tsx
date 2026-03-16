@@ -58,7 +58,7 @@ export default function Portfolio() {
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,237,216,0.5)", marginBottom: "32px" }}>
-              Aux États-Unis, <span style={{ color: "#F5EDD8", fontWeight: 600 }}>83% des salons</span> possèdent déjà un site web. En France, démarquez-vous immédiatement. Quand un client hésite entre votre salon et celui d&apos;à côté sur Google Maps, c&apos;est la qualité de votre site qui fait pencher la balance.
+  Sur Google Maps, vos futurs clients hésitent souvent entre plusieurs adresses. Ce qu&apos;ils cherchent avant tout, c&apos;est d&apos;être rassurés. Une fiche Google donne vos horaires, mais un site web soigné prolonge l&apos;expérience et l&apos;atmosphère de votre salon avant même qu&apos;ils n&apos;en franchissent la porte. C&apos;est cette attention aux détails qui prouve votre professionnalisme et les invite à réserver chez vous en toute confiance.
             </p>
             {/* Mini-stats en ligne */}
             <div style={{ display: "flex", gap: "32px" }}>
