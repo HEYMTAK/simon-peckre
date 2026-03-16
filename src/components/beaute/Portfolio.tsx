@@ -117,8 +117,6 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
               playsInline
               style={{ width: "100%", height: "auto", display: "block" }}
             />
-            {/* Vignette */}
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(14,11,7,0.92) 0%, rgba(14,11,7,0.18) 40%, transparent 100%)", pointerEvents: "none" }} />
           </div>
 
           {/* Footer */}
