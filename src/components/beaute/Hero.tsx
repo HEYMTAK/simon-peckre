@@ -181,7 +181,7 @@ export default function Hero() {
                 de Google Maps
               </span>
               <br />
-              <span style={{ fontWeight: 300 }}>en réservations chez vous.</span>
+              <span style={{ fontWeight: 300 }}>en réservations.</span>
             </motion.h1>
 
             {/* Séparateur */}
