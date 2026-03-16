@@ -58,7 +58,7 @@ export default function Portfolio() {
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,237,216,0.5)", marginBottom: "32px" }}>
-  Sur Google Maps, vos futurs clients hésitent souvent entre plusieurs adresses. Ce qu&apos;ils cherchent avant tout, c&apos;est d&apos;être rassurés. Une fiche Google donne vos horaires, mais un site web soigné prolonge l&apos;expérience et l&apos;atmosphère de votre salon avant même qu&apos;ils n&apos;en franchissent la porte. C&apos;est cette attention aux détails qui prouve votre professionnalisme et les invite à réserver chez vous en toute confiance.
+  Sur Google Maps, vos futurs clients hésitent souvent entre plusieurs adresses. Ce qu&apos;ils cherchent avant tout, c&apos;est d&apos;être rassurés. Une fiche Google donne vos horaires, mais <span style={{ color: "#F5EDD8", fontWeight: 600 }}>un site web soigné prolonge l&apos;expérience et l&apos;atmosphère de votre salon</span> avant même qu&apos;ils n&apos;en franchissent la porte. C&apos;est cette attention aux détails qui prouve votre professionnalisme et <span style={{ color: "#F5EDD8", fontWeight: 600 }}>les invite à réserver chez vous en toute confiance.</span>
             </p>
             {/* Mini-stats en ligne */}
             <div style={{ display: "flex", gap: "32px" }}>
