@@ -12,6 +12,7 @@ const videos = [
 function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index: number; isInView: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const el = videoRef.current;
@@ -86,6 +87,36 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
               {String(index + 1).padStart(2, "0")}
             </div>
 
+            {/* Skeleton de chargement */}
+            {!loaded && (
+              <div style={{
+                position: "absolute", inset: 0,
+                background: "linear-gradient(160deg, #1a1208, #0E0B07)",
+                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "16px",
+                zIndex: 5,
+                minHeight: "220px",
+              }}>
+                {/* Spinner doré */}
+                <div style={{
+                  width: "36px", height: "36px",
+                  borderRadius: "50%",
+                  border: "2px solid rgba(207,165,92,0.12)",
+                  borderTopColor: "rgba(207,165,92,0.7)",
+                  animation: "spin 1s linear infinite",
+                }} />
+                <span style={{
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "9.5px",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "rgba(207,165,92,0.4)",
+                }}>
+                  Chargement…
+                </span>
+                <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+              </div>
+            )}
+
             {/* Vidéo */}
             <video
               ref={videoRef}
@@ -93,7 +124,8 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
               muted
               loop
               playsInline
-              style={{ width: "100%", height: "auto", display: "block" }}
+              onCanPlay={() => setLoaded(true)}
+              style={{ width: "100%", height: "auto", display: "block", opacity: loaded ? 1 : 0, transition: "opacity 0.4s ease" }}
             />
           </div>
 
