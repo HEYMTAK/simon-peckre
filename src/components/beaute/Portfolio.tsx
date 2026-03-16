@@ -172,10 +172,12 @@ export default function Portfolio() {
           </motion.div>
         </div>
 
-        {/* ── Grille vidéos ── */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+        {/* ── Escalier vidéos ── */}
+        <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "28px" }}>
           {videos.map((video, i) => (
-            <VideoCard key={video.src} video={video} index={i} isInView={isInView} />
+            <div key={video.src} style={{ width: "65%", marginLeft: `${i * 17.5}%` }}>
+              <VideoCard video={video} index={i} isInView={isInView} />
+            </div>
           ))}
         </div>
 
