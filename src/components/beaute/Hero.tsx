@@ -263,7 +263,7 @@ export default function Hero() {
                 style={{
                   padding: "14px 28px",
                   border: "1px solid rgba(196,169,106,0.22)",
-                  color: "rgba(232,223,208,0.65)",
+                  color: "#F5EDD8",
                   fontFamily: "var(--font-inter)",
                   fontSize: "13px",
                   fontWeight: 500,
@@ -284,7 +284,7 @@ export default function Hero() {
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLElement).style.borderColor = "rgba(196,169,106,0.22)";
-                  (e.currentTarget as HTMLElement).style.color = "rgba(232,223,208,0.65)";
+                  (e.currentTarget as HTMLElement).style.color = "#F5EDD8";
                   (e.currentTarget as HTMLElement).style.background = "rgba(196,169,106,0.04)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
@@ -326,7 +326,7 @@ export default function Hero() {
                     fontSize: "11px",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "rgba(245,237,216,0.55)",
+                    color: "#F5EDD8",
                   }}>{label}</span>
                 </div>
               ))}
