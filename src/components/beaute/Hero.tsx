@@ -213,7 +213,7 @@ export default function Hero() {
                 marginBottom: "2.75rem",
               }}
             >
-              Chaque mois, des centaines de clients cherchent un salon dans votre ville. Pourtant, 56 % n&apos;ont pas confiance sans site web <span style={{ color: "rgba(245,237,216,0.35)", fontSize: "0.9em" }}>(Source : IFOP)</span>. C&apos;est mathématique : vous perdez une partie de ce trafic. Captez enfin ce flux Google Maps sans décrocher le téléphone. Différenciez-vous avec un accueil digital chaleureux qui prouve votre expertise et offre une réservation fluide.{" "}
+              Chaque mois, des centaines de clients cherchent un salon dans votre ville. Pourtant, 56 % n&apos;ont pas confiance sans site web (Source : IFOP). C&apos;est mathématique : vous perdez ces clients potentiels. Différenciez-vous avec un accueil digital chaleureux qui prouve votre expertise et offre une réservation fluide.{" "}
               <span style={{ color: "#CFA55C", fontWeight: 500 }}>Dès 350€.</span>
             </motion.p>
 
@@ -326,7 +326,7 @@ export default function Hero() {
                     fontSize: "11px",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "rgba(196,169,106,0.4)",
+                    color: "rgba(245,237,216,0.55)",
                   }}>{label}</span>
                 </div>
               ))}
