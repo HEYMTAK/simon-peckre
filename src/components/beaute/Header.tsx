@@ -90,12 +90,12 @@ export default function Header() {
                 fontWeight: 500,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "rgba(232,223,208,0.45)",
+                color: "#F5EDD8",
                 textDecoration: "none",
                 transition: "color 0.25s ease",
               }}
               onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#CFA55C"}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(232,223,208,0.45)"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#F5EDD8"}
             >
               {l.label}
             </a>
