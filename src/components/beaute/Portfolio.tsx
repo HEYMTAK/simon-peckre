@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 const videos = [
   { src: "/videos/demo-salon1.mp4", label: "Institut de beauté", location: "Paris 16e", tag: "Essentiel" },
-  { src: "/videos/demo-salon2.mp4", label: "Salon de massage", location: "Lyon Centre", tag: "Automatisé" },
+  { src: "/videos/mood-massage.mp4", label: "Institut de massage", location: "Caen", tag: "Automatisé" },
   { src: "/videos/demo-salon3.mp4", label: "Spa urbain", location: "Bordeaux", tag: "Automatisé" },
 ];
 
@@ -126,14 +126,14 @@ export default function Portfolio() {
               </div>
 
               {/* Vidéo / placeholder */}
-              <div style={{ position: "relative", aspectRatio: "9/16", background: "linear-gradient(160deg, rgba(60,44,26,0.8), rgba(30,22,14,0.95))" }}>
-                <video src={video.src} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }} />
+              <div style={{ position: "relative", background: "linear-gradient(160deg, rgba(60,44,26,0.8), rgba(30,22,14,0.95))" }}>
+                <video src={video.src} autoPlay muted loop playsInline style={{ width: "100%", height: "auto", display: "block" }} />
                 {/* Overlay gradient */}
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(30,22,14,0.9) 0%, rgba(30,22,14,0.1) 50%, transparent 100%)" }} />
               </div>
 
               {/* Label bas */}
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 18px 18px" }}>
+              <div style={{ padding: "16px 18px 18px", background: "linear-gradient(to bottom, rgba(30,22,14,0.85), rgba(20,14,8,0.97))" }}>
                 <div style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.15rem", fontWeight: 500, fontStyle: "italic", color: "#F5EDD8", lineHeight: 1.2 }}>
                   {video.label}
                 </div>
