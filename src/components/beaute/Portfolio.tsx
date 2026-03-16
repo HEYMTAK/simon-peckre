@@ -13,14 +13,18 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const manuallyPaused = useRef(false);
 
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) { el.play().catch(() => {}); setPlaying(true); }
-        else { el.pause(); setPlaying(false); }
+        if (entry.isIntersecting) {
+          if (!manuallyPaused.current) { el.play().catch(() => {}); setPlaying(true); }
+        } else {
+          el.pause(); setPlaying(false);
+        }
       },
       { threshold: 0.3 }
     );
@@ -31,8 +35,8 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
   function togglePlay() {
     const el = videoRef.current;
     if (!el) return;
-    if (el.paused) { el.play(); setPlaying(true); }
-    else { el.pause(); setPlaying(false); }
+    if (el.paused) { manuallyPaused.current = false; el.play(); setPlaying(true); }
+    else { manuallyPaused.current = true; el.pause(); setPlaying(false); }
   }
 
   return (
