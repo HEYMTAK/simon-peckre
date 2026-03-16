@@ -169,7 +169,7 @@ export default function Hero() {
                 marginBottom: "2.25rem",
               }}
             >
-              Transformez vos visiteurs<br />
+              Convertissez le trafic<br />
               <span style={{
                 fontStyle: "italic",
                 fontWeight: 400,
@@ -178,10 +178,10 @@ export default function Hero() {
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}>
-                Google Maps
+                naturel de Google Maps
               </span>
               <br />
-              <span style={{ fontWeight: 300 }}>en clients fidèles.</span>
+              <span style={{ fontWeight: 300 }}>en réservations dans votre salon.</span>
             </motion.h1>
 
             {/* Séparateur */}
@@ -213,9 +213,8 @@ export default function Hero() {
                 marginBottom: "2.75rem",
               }}
             >
-              Vos avis Google attirent l&apos;attention. Votre site web premium déclenche
-              la réservation. Offrez à vos futurs clients l&apos;accueil digital qu&apos;ils méritent,{" "}
-              <span style={{ color: "#CFA55C", fontWeight: 500 }}>à partir de 350€.</span>
+              Des centaines de personnes cherchent un salon dans votre ville chaque mois. C&apos;est mathématique : sans site web pour les rassurer et prendre rendez-vous, vous perdez une partie de ces clients. Sans décrocher le téléphone, vous captez le flux Google Maps avec un site qui prouve votre expertise. Différenciez-vous avec un accueil digital chaleureux qui met en confiance, et un système de réservation fluide.{" "}
+              <span style={{ color: "#CFA55C", fontWeight: 500 }}>À partir de 350€.</span>
             </motion.p>
 
             {/* CTAs */}
