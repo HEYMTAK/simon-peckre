@@ -169,7 +169,7 @@ export default function Hero() {
                 marginBottom: "2.25rem",
               }}
             >
-              Convertissez le trafic<br />
+              Transformez le trafic<br />
               <span style={{
                 fontStyle: "italic",
                 fontWeight: 400,
