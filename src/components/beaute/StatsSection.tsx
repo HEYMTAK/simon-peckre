@@ -29,11 +29,11 @@ const stats = [
     source: "Digitaleo",
   },
   {
-    value: "80",
+    value: "75",
     suffix: "%",
-    title: "Vérifient le site web",
-    desc: "80% des consommateurs exigent un site web avant de se rendre sur place.",
-    source: "Médiamétrie",
+    title: "La confiance par l'image",
+    desc: "75% des internautes jugent la crédibilité de votre établissement uniquement sur le design de votre site web. Un bel accueil digital rassure instantanément.",
+    source: "Stanford",
     highlight: true,
   },
   {
@@ -44,12 +44,11 @@ const stats = [
     source: "Forbes",
   },
   {
-    value: "37",
+    value: "72",
     suffix: "%",
-    title: "De CA en plus",
-    desc: "+37% de revenus en moyenne pour un commerce avec réservation en ligne 24/7.",
-    source: "Capterra",
-    prefix: "+",
+    title: "Gagnent des clients",
+    desc: "72% des professionnels ayant créé un site web déclarent avoir gagné de nouveaux clients directement grâce à cet accueil digital.",
+    source: "France Num / CAPEB",
   },
 ];
 
