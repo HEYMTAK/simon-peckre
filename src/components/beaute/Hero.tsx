@@ -169,7 +169,7 @@ export default function Hero() {
                 marginBottom: "2.25rem",
               }}
             >
-              Transformez le trafic<br />
+              Invitez le trafic<br />
               <span style={{
                 fontStyle: "italic",
                 fontWeight: 400,
@@ -178,10 +178,10 @@ export default function Hero() {
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}>
-                de Google Maps
+                sur Google Maps
               </span>
               <br />
-              <span style={{ fontWeight: 300 }}>en réservations.</span>
+              <span style={{ fontWeight: 300 }}>chez vous !</span>
             </motion.h1>
 
             {/* Séparateur */}
