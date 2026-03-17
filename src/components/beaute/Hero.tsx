@@ -124,7 +124,7 @@ export default function Hero() {
       </div>
 
       {/* ══ CONTENU PRINCIPAL ═════════════════════════════════════════════════ */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-8 sm:px-14 pt-40 pb-32">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-8 sm:px-14 pb-32" style={{ paddingTop: "210px" }}>
 
         <div className="grid grid-cols-1 gap-16 items-center">
 
@@ -346,7 +346,7 @@ export default function Hero() {
         }}
         style={{
           position: "absolute",
-          bottom: "calc(42% + 60px)", right: "8%",
+          bottom: "calc(42% + 10px)", right: "8%",
           display: "flex", flexDirection: "column", alignItems: "center", gap: "10px",
         }}
       >
