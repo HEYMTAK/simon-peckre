@@ -2,201 +2,144 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Check, Zap, Star, ArrowRight } from "lucide-react";
-
-const plans = [
-  {
-    name: "L'Essentiel",
-    price: "350€",
-    badge: null,
-    icon: Star,
-    description: "La vitrine premium qui vous démarque immédiatement.",
-    features: [
-      "Site Vitrine Premium",
-      "Standing professionnel instantané",
-      "Optimisé Google Maps & SEO local",
-      "Mobile-first (100% responsive)",
-      "Formulaire de contact",
-      "Hébergement inclus 1 an",
-      "Livraison en 7 jours",
-    ],
-    cta: "Choisir L'Essentiel",
-    href: "#contact",
-    highlighted: false,
-  },
-  {
-    name: "L'Automatisé",
-    price: "425€",
-    badge: "Le plus populaire",
-    icon: Zap,
-    description:
-      "Votre site + module de réservation relié à votre agenda. Idéal pour capter les clients Google Maps la nuit et ne plus être interrompu en plein massage.",
-    features: [
-      "Tout L'Essentiel inclus",
-      "Module de réservation en ligne",
-      "Synchronisation agenda Google",
-      "Réservation en 3 clics",
-      "Génère du CA même salon fermé",
-      "Rappels automatiques par email",
-      "Support prioritaire 30 jours",
-    ],
-    cta: "Choisir L'Automatisé",
-    href: "#contact",
-    highlighted: true,
-  },
-];
+import { ArrowRight } from "lucide-react";
 
 export default function Pricing() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="tarifs" className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
+    <section id="offre" className="relative overflow-hidden" style={{ padding: "120px 0" }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.2), transparent)" }} />
 
-      {/* Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-yellow-500/4 blur-[100px] pointer-events-none" />
+      {/* Glow centré */}
+      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "600px", height: "400px", background: "radial-gradient(ellipse, rgba(207,165,92,0.07) 0%, transparent 70%)", filter: "blur(80px)", pointerEvents: "none" }} />
 
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
-        {/* Header */}
+      <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 48px" }} ref={ref}>
+
+        {/* En-tête */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ textAlign: "center", marginBottom: "60px" }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-500/20 bg-yellow-500/5 text-yellow-500 text-xs font-medium tracking-widest uppercase mb-5">
-            Tarifs transparents
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "14px", marginBottom: "28px" }}>
+            <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
+            <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
+              L&apos;offre
+            </span>
+            <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
           </div>
-          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Simple. Clair.{" "}
-            <span className="text-yellow-500">Sans surprise.</span>
+
+          <h2 style={{
+            fontFamily: "var(--font-cormorant), Georgia, serif",
+            fontSize: "clamp(2.4rem, 4vw, 3.8rem)",
+            fontWeight: 300,
+            lineHeight: 1.1,
+            color: "#F5EDD8",
+            letterSpacing: "-0.01em",
+            marginBottom: "32px",
+          }}>
+            Jugez sur pièce{" "}
+            <span style={{ fontStyle: "italic", color: "#CFA55C" }}>avant de vous engager.</span>
           </h2>
-          <p className="text-zinc-400 text-lg max-w-xl mx-auto">
-            Un paiement unique. Aucun abonnement caché. Votre site vous appartient.
-          </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          {plans.map((plan, i) => {
-            const Icon = plan.icon;
-            return (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className={`relative flex flex-col rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 ${
-                  plan.highlighted
-                    ? "border-yellow-500/50 bg-gradient-to-br from-zinc-900 to-zinc-950 shadow-2xl shadow-yellow-500/10"
-                    : "border-zinc-800/60 bg-zinc-900/40 hover:border-zinc-700"
-                }`}
-              >
-                {/* Badge */}
-                {plan.badge && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-yellow-500 text-zinc-950 text-xs font-bold rounded-full whitespace-nowrap">
-                    {plan.badge}
-                  </div>
-                )}
-
-                {/* Icon + Name */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`p-2.5 rounded-xl ${
-                      plan.highlighted
-                        ? "bg-yellow-500/20 text-yellow-400"
-                        : "bg-zinc-800 text-zinc-400"
-                    }`}
-                  >
-                    <Icon size={20} />
-                  </div>
-                  <h3 className="font-cinzel text-xl font-bold text-white">
-                    {plan.name}
-                  </h3>
-                </div>
-
-                {/* Price */}
-                <div className="mb-4">
-                  <span
-                    className={`font-cinzel text-5xl font-bold ${
-                      plan.highlighted ? "text-yellow-400" : "text-white"
-                    }`}
-                  >
-                    {plan.price}
-                  </span>
-                  <span className="text-zinc-500 text-sm ml-2">paiement unique</span>
-                </div>
-
-                {/* Description */}
-                <p className="text-zinc-400 text-sm leading-relaxed mb-7">
-                  {plan.description}
-                </p>
-
-                {/* Divider */}
-                <div className="w-full h-px bg-zinc-800/80 mb-7" />
-
-                {/* Features */}
-                <ul className="flex flex-col gap-3 mb-8 flex-1">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-sm">
-                      <Check
-                        size={16}
-                        className={`flex-shrink-0 mt-0.5 ${
-                          plan.highlighted ? "text-yellow-400" : "text-zinc-500"
-                        }`}
-                      />
-                      <span
-                        className={
-                          plan.highlighted ? "text-zinc-300" : "text-zinc-400"
-                        }
-                      >
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <a
-                  href={plan.href}
-                  className={`group flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-sm transition-all duration-200 ${
-                    plan.highlighted
-                      ? "bg-yellow-500 hover:bg-yellow-400 text-zinc-950 shadow-lg shadow-yellow-500/20 hover:shadow-yellow-500/30"
-                      : "bg-zinc-800 hover:bg-zinc-700 text-white"
-                  }`}
-                >
-                  {plan.cta}
-                  <ArrowRight
-                    size={16}
-                    className="group-hover:translate-x-1 transition-transform"
-                  />
-                </a>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Garantie */}
+        {/* Card principale */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 32 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-10 text-center"
+          transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            padding: "56px 64px",
+            borderRadius: "16px",
+            border: "1px solid rgba(207,165,92,0.25)",
+            background: "linear-gradient(145deg, rgba(207,165,92,0.08) 0%, rgba(255,255,255,0.02) 60%, rgba(207,165,92,0.05) 100%)",
+            boxShadow: "0 8px 64px rgba(0,0,0,0.3), inset 0 1px 0 rgba(245,237,216,0.04)",
+            position: "relative",
+            overflow: "hidden",
+          }}
         >
-          <p className="text-zinc-500 text-sm">
-            Besoin d&apos;un devis personnalisé ?{" "}
-            <a
-              href="#contact"
-              className="text-yellow-500 hover:text-yellow-400 underline underline-offset-4 transition-colors"
-            >
-              Contactez-moi directement
-            </a>
+          {/* Glow coin */}
+          <div style={{ position: "absolute", top: 0, right: 0, width: "350px", height: "250px", background: "radial-gradient(ellipse at 100% 0%, rgba(207,165,92,0.12), transparent 65%)", pointerEvents: "none" }} />
+
+          {/* Badge prix */}
+          <div style={{ marginBottom: "32px" }}>
+            <span style={{
+              display: "inline-block",
+              padding: "8px 20px",
+              borderRadius: "100px",
+              background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
+              fontFamily: "var(--font-inter)",
+              fontSize: "12px",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "#2E2214",
+            }}>
+              Maquette sur-mesure — 50€ remboursés*
+            </span>
+          </div>
+
+          <p style={{
+            fontFamily: "var(--font-inter)",
+            fontSize: "1.05rem",
+            lineHeight: 1.9,
+            color: "rgba(245,237,216,0.65)",
+            marginBottom: "48px",
+            maxWidth: "640px",
+          }}>
+            Je sais qu&apos;il est difficile de se projeter. C&apos;est pourquoi je vous propose de concevoir la maquette sur-mesure de la page d&apos;accueil de votre futur site en moins d&apos;une semaine. Pour garantir un travail de haute qualité et filtrer les demandes, cette création initiale est facturée <span style={{ color: "#CFA55C", fontWeight: 600 }}>50&nbsp;€</span>. La bonne nouvelle&nbsp;? Ces 50&nbsp;€ seront intégralement déduits de votre facture finale si vous décidez de valider le projet. C&apos;est un premier pas sans risque vers votre nouvelle vitrine digitale.
+          </p>
+
+          {/* CTA */}
+          <a
+            href="#contact"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "12px",
+              padding: "16px 40px",
+              background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
+              color: "#2E2214",
+              fontFamily: "var(--font-inter)",
+              fontSize: "13px",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              borderRadius: "4px",
+              boxShadow: "0 8px 32px rgba(196,169,106,0.25), 0 2px 8px rgba(196,169,106,0.15)",
+              textDecoration: "none",
+              transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(196,169,106,0.4), 0 4px 12px rgba(196,169,106,0.2)";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(196,169,106,0.25), 0 2px 8px rgba(196,169,106,0.15)";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+            }}
+          >
+            Lancer ma maquette pour 50€
+            <ArrowRight size={16} />
+          </a>
+
+          {/* Note */}
+          <p style={{
+            marginTop: "20px",
+            fontFamily: "var(--font-inter)",
+            fontSize: "11px",
+            color: "rgba(245,237,216,0.3)",
+            letterSpacing: "0.04em",
+          }}>
+            * Les 50€ sont intégralement remboursés si vous validez le projet complet.
           </p>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.12), transparent)" }} />
     </section>
   );
 }

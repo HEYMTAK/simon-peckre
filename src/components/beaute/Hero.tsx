@@ -154,6 +154,30 @@ export default function Hero() {
               </span>
             </motion.div>
 
+            {/* Badge prix */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+              style={{ marginBottom: "1.5rem" }}
+            >
+              <span style={{
+                display: "inline-block",
+                padding: "6px 16px",
+                border: "1px solid rgba(207,165,92,0.35)",
+                borderRadius: "100px",
+                background: "rgba(207,165,92,0.08)",
+                fontFamily: "var(--font-inter)",
+                fontSize: "11px",
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "#CFA55C",
+              }}>
+                Votre site sur-mesure dès 350€
+              </span>
+            </motion.div>
+
             {/* H1 — Cormorant, typographie éditoriale */}
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
@@ -161,15 +185,15 @@ export default function Hero() {
               transition={{ duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontSize: "clamp(3.6rem, 8vw, 7.2rem)",
+                fontSize: "clamp(2.8rem, 6vw, 5.8rem)",
                 fontWeight: 300,
-                lineHeight: 1.02,
+                lineHeight: 1.06,
                 letterSpacing: "-0.02em",
                 color: "#F5EDD8",
                 marginBottom: "2.25rem",
               }}
             >
-              Invitez le trafic<br />
+              Transformez les visiteurs de{" "}
               <span style={{
                 fontStyle: "italic",
                 fontWeight: 400,
@@ -178,10 +202,9 @@ export default function Hero() {
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}>
-                sur Google Maps
-              </span>
-              <br />
-              <span style={{ fontWeight: 300 }}>chez vous !</span>
+                Google Maps
+              </span>{" "}
+              en réservations dans votre salon.
             </motion.h1>
 
             {/* Séparateur */}
@@ -203,18 +226,16 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               style={{
-                fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontStyle: "italic",
+                fontFamily: "var(--font-inter)",
                 fontWeight: 400,
-                fontSize: "clamp(0.95rem, 1.8vw, 1.2rem)",
-                lineHeight: 1.7,
-                color: "rgba(240,234,224,0.85)",
-                maxWidth: "520px",
+                fontSize: "clamp(0.95rem, 1.6vw, 1.1rem)",
+                lineHeight: 1.8,
+                color: "rgba(245,237,216,0.7)",
+                maxWidth: "600px",
                 marginBottom: "2.75rem",
               }}
             >
-              Chaque mois, des centaines de clients cherchent un salon dans votre ville. Pourtant, 56 % n&apos;ont pas confiance sans site web (Source : IFOP). C&apos;est mathématique : vous perdez ces clients potentiels. Différenciez-vous avec un accueil digital chaleureux qui prouve votre expertise et offre une réservation fluide.{" "}
-              <span style={{ color: "#CFA55C", fontWeight: 500 }}>Dès 350€.</span>
+              Chaque mois, des centaines de clients cherchent un moment de détente dans votre ville. Or, 80&nbsp;% des Français se renseignent d&apos;abord en ligne avant de franchir votre porte. Sans site web pour les rassurer, 70&nbsp;% d&apos;entre eux fuient par simple facilité de sélection. Offrez-leur un accueil digital à la hauteur de la qualité de vos soins.
             </motion.p>
 
             {/* CTAs */}
@@ -226,7 +247,7 @@ export default function Hero() {
             >
               {/* Bouton primaire */}
               <a
-                href="#tarifs"
+                href="#offre"
                 className="group inline-flex items-center gap-3"
                 style={{
                   padding: "14px 32px",
@@ -252,7 +273,7 @@ export default function Hero() {
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
-                Découvrir l&apos;offre
+                Demander ma maquette (50€ remboursés*)
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
               </a>
 
@@ -289,7 +310,7 @@ export default function Hero() {
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
-                Voir les réalisations
+                Voir mes réalisations
                 <MoveRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />
               </a>
             </motion.div>

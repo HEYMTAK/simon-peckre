@@ -22,42 +22,49 @@ function useCounter(target: number, duration: number, isInView: boolean) {
 
 const stats = [
   {
-    value: "86",
+    value: 80,
+    prefix: "",
     suffix: "%",
-    title: "Consultent Google Maps",
-    desc: "86% des Français utilisent Maps pour trouver un établissement de proximité.",
-    source: "Digitaleo",
+    title: "Le Réflexe de Vérification",
+    desc: "8 Français sur 10 se renseignent sur un site web avant de se rendre physiquement dans un commerce. S'ils ne trouvent que votre fiche Maps sans vitrine, la majorité passe au concurrent.",
+    source: "France Num / Fevad",
+    highlight: false,
   },
   {
-    value: "75",
+    value: 75,
+    prefix: "",
     suffix: "%",
-    title: "La confiance par l'image",
-    desc: "75% des internautes jugent la crédibilité de votre établissement uniquement sur le design de votre site web. Un bel accueil digital rassure instantanément.",
+    title: "La Confiance par le Design",
+    desc: "75\u00a0% des internautes jugent la crédibilité et le professionnalisme de votre établissement uniquement sur le design de votre site web. Un bel accueil digital rassure instantanément.",
     source: "Stanford",
     highlight: true,
   },
   {
-    value: "31",
+    value: 25,
+    prefix: "+",
     suffix: "%",
-    title: "Fuient sans site",
-    desc: "31% des clients refusent un pro sans site, le jugeant non professionnel.",
-    source: "Forbes",
+    title: "L'Augmentation du Panier Moyen",
+    desc: "Détailler l'ambiance et les bienfaits de vos soins sur un site immersif donne envie. L'expérience visuelle justifie vos tarifs et augmente l'achat de prestations ou produits complémentaires de 15 à 26\u00a0%.",
+    source: "LS Institut / Fideneo",
+    highlight: false,
   },
   {
-    value: "72",
+    value: 1065,
+    prefix: "",
     suffix: "%",
-    title: "Gagnent des clients",
-    desc: "72% des professionnels ayant créé un site web déclarent avoir gagné de nouveaux clients directement grâce à cet accueil digital.",
-    source: "France Num / CAPEB",
+    title: "L'Impact Visuel SEO",
+    desc: "Les fiches Google liées à un site web riche en photos professionnelles (cabines, soins) reçoivent 1065\u00a0% de clics supplémentaires vers leur réservation.",
+    source: "BrightLocal",
+    highlight: false,
   },
 ];
 
-function StatCard({ value, suffix, prefix = "", title, desc, source, highlight = false, delay = 0 }: {
-  value: string; suffix: string; prefix?: string; title: string; desc: string; source: string; highlight?: boolean; delay?: number;
+function StatCard({ value, prefix = "", suffix, title, desc, source, highlight = false, delay = 0 }: {
+  value: number; suffix: string; prefix?: string; title: string; desc: string; source: string; highlight?: boolean; delay?: number;
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const num = useCounter(parseInt(value), 1.6, isInView);
+  const num = useCounter(value, 2, isInView);
 
   return (
     <motion.div
@@ -72,7 +79,8 @@ function StatCard({ value, suffix, prefix = "", title, desc, source, highlight =
         border: highlight ? "1px solid rgba(207,165,92,0.35)" : "1px solid rgba(207,165,92,0.1)",
         background: highlight
           ? "linear-gradient(145deg, rgba(207,165,92,0.09) 0%, rgba(46,34,20,0.4) 100%)"
-          : "rgba(46,34,20,0.25)",
+          : "rgba(255,255,255,0.04)",
+        boxShadow: "0 4px 32px rgba(0,0,0,0.18)",
         transition: "transform 0.35s ease, box-shadow 0.35s ease",
         overflow: "hidden",
       }}
@@ -83,7 +91,7 @@ function StatCard({ value, suffix, prefix = "", title, desc, source, highlight =
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "80px", background: "radial-gradient(ellipse at 50% 0%, rgba(207,165,92,0.12), transparent 70%)", pointerEvents: "none" }} />
       )}
 
-      {/* Numéro */}
+      {/* Numéro animé */}
       <div style={{
         fontFamily: "var(--font-cormorant), Georgia, serif",
         fontSize: "clamp(3rem, 5vw, 4.2rem)",
@@ -114,11 +122,10 @@ function StatCard({ value, suffix, prefix = "", title, desc, source, highlight =
 
       {/* Description */}
       <p style={{
-        fontFamily: "var(--font-cormorant), Georgia, serif",
-        fontStyle: "italic",
-        fontSize: "1.05rem",
-        lineHeight: 1.65,
-        color: "#F5EDD8",
+        fontFamily: "var(--font-inter)",
+        fontSize: "0.875rem",
+        lineHeight: 1.7,
+        color: "rgba(245,237,216,0.6)",
         marginBottom: "16px",
       }}>
         {desc}
@@ -162,7 +169,7 @@ export default function StatsSection() {
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "28px" }}>
               <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
               <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
-                Pourquoi un site web
+                Chiffres clés
               </span>
             </div>
             <h2 style={{
@@ -173,9 +180,8 @@ export default function StatsSection() {
               color: "#F5EDD8",
               letterSpacing: "-0.01em",
             }}>
-              Votre fiche Maps<br />attire.{" "}
-              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>Votre site</span><br />
-              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>convertit.</span>
+              Ce que vos futurs clients<br />
+              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>regardent vraiment.</span>
             </h2>
           </motion.div>
 
@@ -185,13 +191,13 @@ export default function StatsSection() {
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.85, color: "rgba(245,237,216,0.5)" }}>
-              Aujourd&apos;hui vos futurs clients vous cherchent sur smartphone. Ils voient vos avis, mais exigent un site professionnel pour se rassurer. Sans site, ils filent chez le concurrent. Avec notre{" "}
-              <span style={{ color: "#CFA55C", fontWeight: 600 }}>module de réservation (+75€)</span>, votre site agit comme un réceptionniste 24/7 — le client réserve en 3 clics, même quand votre salon est fermé.
+              Les chiffres parlent d&apos;eux-mêmes. Dans un secteur où l&apos;image et la confiance sont tout, investir dans un site web professionnel n&apos;est pas une option — c&apos;est la condition sine qua non pour{" "}
+              <span style={{ color: "#CFA55C", fontWeight: 600 }}>transformer la curiosité en réservation.</span>
             </p>
           </motion.div>
         </div>
 
-        {/* ── Grille stats ── */}
+        {/* ── Grille stats 4 cards ── */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
           {stats.map((stat, i) => (
             <StatCard key={stat.title} {...stat} delay={i * 0.1 + 0.2} />

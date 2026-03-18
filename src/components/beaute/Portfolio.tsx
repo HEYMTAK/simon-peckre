@@ -243,9 +243,9 @@ export default function Portfolio() {
               color: "#F5EDD8",
               letterSpacing: "-0.01em",
             }}>
-              Un standing<br />
-              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>professionnel</span><br />
-              instantané.
+              Un standing{" "}
+              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>professionnel</span>{" "}
+              instantané, à votre image.
             </h2>
           </motion.div>
 
@@ -254,22 +254,9 @@ export default function Portfolio() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,237,216,0.5)", marginBottom: "32px" }}>
-  Sur Google Maps, vos futurs clients hésitent souvent entre plusieurs adresses. Ce qu&apos;ils cherchent avant tout, c&apos;est d&apos;être rassurés. Une fiche Google donne vos horaires, mais <span style={{ color: "#F5EDD8", fontWeight: 600 }}>un site web soigné prolonge l&apos;expérience et l&apos;atmosphère de votre salon</span> avant même qu&apos;ils n&apos;en franchissent la porte. C&apos;est cette attention aux détails qui prouve votre professionnalisme et <span style={{ color: "#F5EDD8", fontWeight: 600 }}>les invite à réserver chez vous en toute confiance.</span>
+            <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,237,216,0.55)", marginBottom: "32px" }}>
+              Parce que l&apos;esthétique est le cœur de votre métier, nous créons un site qui respecte votre propre Direction Artistique à 100&nbsp;%. Couleurs apaisantes, typographies élégantes, galeries photos immersives... Nous prolongeons l&apos;expérience sensorielle de votre salon directement sur l&apos;écran (et surtout sur mobile&nbsp;!) de votre future cliente. C&apos;est cette attention aux détails qui déclenche le coup de cœur.
             </p>
-            {/* Mini-stats en ligne */}
-            <div style={{ display: "flex", gap: "32px" }}>
-              {[
-                { n: "83%", l: "Salons US en ligne" },
-                { n: "7j", l: "Délai livraison" },
-                { n: "350€", l: "À partir de" },
-              ].map(({ n, l }) => (
-                <div key={l}>
-                  <div style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.8rem", fontWeight: 500, color: "#CFA55C", lineHeight: 1 }}>{n}</div>
-                  <div style={{ fontFamily: "var(--font-inter)", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(207,165,92,0.4)", marginTop: "4px" }}>{l}</div>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
 
@@ -290,6 +277,58 @@ export default function Portfolio() {
         >
           * Vos propres réalisations remplaceront ces aperçus.
         </motion.p>
+
+        {/* ── Sous-section duo parfait ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            marginTop: "80px",
+            padding: "48px 56px",
+            borderRadius: "16px",
+            border: "1px solid rgba(207,165,92,0.2)",
+            background: "linear-gradient(135deg, rgba(207,165,92,0.07) 0%, rgba(255,255,255,0.02) 100%)",
+            boxShadow: "0 4px 40px rgba(0,0,0,0.2)",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          {/* Glow décoratif */}
+          <div style={{ position: "absolute", top: 0, right: 0, width: "300px", height: "200px", background: "radial-gradient(ellipse at 100% 0%, rgba(207,165,92,0.1), transparent 70%)", pointerEvents: "none" }} />
+
+          <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "24px" }}>
+            <div style={{ width: "32px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
+            <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
+              Rentabilité
+            </span>
+          </div>
+
+          <h3 style={{
+            fontFamily: "var(--font-cormorant), Georgia, serif",
+            fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
+            fontWeight: 300,
+            lineHeight: 1.1,
+            color: "#F5EDD8",
+            letterSpacing: "-0.01em",
+            marginBottom: "20px",
+          }}>
+            Le duo parfait pour{" "}
+            <span style={{ fontStyle: "italic", color: "#CFA55C" }}>votre rentabilité.</span>
+          </h3>
+
+          <p style={{
+            fontFamily: "var(--font-inter)",
+            fontSize: "1rem",
+            lineHeight: 1.85,
+            color: "rgba(245,237,216,0.6)",
+            maxWidth: "680px",
+          }}>
+            Le client est séduit par vos photos&nbsp;? En un clic sur notre bouton «&nbsp;Réserver&nbsp;», il est redirigé de manière fluide vers votre agenda Planity. Le site web s&apos;occupe de la séduction, Planity s&apos;occupe de l&apos;encaissement. Le résultat&nbsp;? Une baisse spectaculaire des «&nbsp;lapins&nbsp;» (rendez-vous non honorés) de près de{" "}
+            <span style={{ color: "#CFA55C", fontWeight: 600 }}>75&nbsp;%</span>{" "}
+            (Source&nbsp;: Planity Pro).
+          </p>
+        </motion.div>
       </div>
 
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.12), transparent)" }} />

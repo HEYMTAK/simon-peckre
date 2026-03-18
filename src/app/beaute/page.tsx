@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Header from "@/components/beaute/Header";
 import Hero from "@/components/beaute/Hero";
+import PainSection from "@/components/beaute/PainSection";
 import Portfolio from "@/components/beaute/Portfolio";
+import SeoSection from "@/components/beaute/SeoSection";
 import StatsSection from "@/components/beaute/StatsSection";
 import Pricing from "@/components/beaute/Pricing";
 import Contact from "@/components/beaute/Contact";
+import SourcesSection from "@/components/beaute/SourcesSection";
 
 export const metadata: Metadata = {
   title: "Simon Peckre — Sites Web pour Instituts de Beauté & Salons de Massage",
@@ -24,10 +27,13 @@ export default function BeautePage() {
     <main className="min-h-screen">
       <Header />
       <Hero />
+      <PainSection />
       <Portfolio />
+      <SeoSection />
       <StatsSection />
       <Pricing />
       <Contact />
+      <SourcesSection />
     </main>
   );
 }
