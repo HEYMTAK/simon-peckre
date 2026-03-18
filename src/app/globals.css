@@ -4,7 +4,7 @@
 
 :root {
   --font-cormorant: 'Cormorant Garamond', Georgia, serif;
-  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-inter: 'Lora', Georgia, serif;
 
   /* Palette Kaki Studio */
   --bg-base:     #1E160D;
@@ -41,7 +41,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
 }
 
 /* ─── Scrollbar ─────────────────────────────────────── */
