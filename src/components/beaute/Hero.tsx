@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ backgroundColor: "#4A3520" }}
+      style={{ backgroundColor: "transparent" }}
     >
       {/* ══ FOND — calques de lumière chaude ══════════════════════════════════ */}
       <div className="absolute inset-0 pointer-events-none">

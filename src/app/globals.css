@@ -7,8 +7,8 @@
   --font-inter: 'Inter', system-ui, sans-serif;
 
   /* Palette Kaki Studio */
-  --bg-base:     #4A3520;
-  --bg-surface:  #563F26;
+  --bg-base:     #1C1712;
+  --bg-surface:  #241D15;
   --gold:        #CFA55C;
   --gold-light:  #E8C07A;
   --sand:        #F5EDD8;
@@ -29,6 +29,13 @@ html {
 
 body {
   background-color: var(--bg-base);
+  /* Fond spa : ambre chaud haut-gauche + sauge nature bas-droite + pierre centrale */
+  background-image:
+    radial-gradient(ellipse 70% 55% at 15% 0%,   rgba(190, 145, 65, 0.13) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 100%,  rgba(100, 125, 90, 0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 50% 45%,   rgba(160, 125, 75, 0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 25% at 90% 10%,   rgba(170, 140, 100, 0.07) 0%, transparent 50%);
+  background-attachment: fixed;
   color: var(--sand);
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -39,7 +46,7 @@ body {
 
 /* ─── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #4A3520; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
 /* ─── Selection ─────────────────────────────────────── */

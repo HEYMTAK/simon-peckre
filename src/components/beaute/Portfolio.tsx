@@ -72,7 +72,7 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
         }}
       >
         {/* Inner card */}
-        <div style={{ borderRadius: "19px", overflow: "hidden", background: "#3A2A14" }}>
+        <div style={{ borderRadius: "19px", overflow: "hidden", background: "#201910" }}>
 
           {/* Header overlay : tag + numéro */}
           <div style={{ position: "relative", lineHeight: 0, fontSize: 0 }}>
@@ -95,7 +95,7 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
             {!loaded && (
               <div style={{
                 position: "absolute", inset: 0,
-                background: "linear-gradient(160deg, #3A2A14, #2E2010)",
+                background: "linear-gradient(160deg, #201910, #181310)",
                 display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "16px",
                 zIndex: 5,
                 minHeight: "220px",
@@ -136,7 +136,7 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
           {/* Footer */}
           <div style={{
             padding: "20px 24px 22px",
-            background: "linear-gradient(180deg, rgba(58,42,20,0) 0%, #3A2A14 100%)",
+            background: "linear-gradient(180deg, rgba(32,25,16,0) 0%, #201910 100%)",
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "space-between",
