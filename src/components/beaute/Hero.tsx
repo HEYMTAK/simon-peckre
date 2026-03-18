@@ -12,29 +12,37 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ backgroundColor: "#FAF9F6" }}
+      style={{ backgroundColor: "#1A1008" }}
     >
-      {/* ══ IMAGE DE FOND — photo spa/massage en fondu ════════════════════════ */}
+      {/* ══ IMAGE DE FOND — photo spa/massage ════════════════════════════════ */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Photo spa — pleine visibilité */}
+        {/* Photo spa chaude */}
         <div style={{
           position: "absolute", inset: 0,
-          backgroundImage: "url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1920&q=80')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1920&q=80')",
           backgroundSize: "cover",
-          backgroundPosition: "center 40%",
+          backgroundPosition: "center 35%",
           opacity: 1,
         }} />
 
-        {/* Overlay clair gauche — zone texte lisible */}
+        {/* Overlay sombre brun chaud — texte blanc lisible */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(105deg, rgba(250,249,246,0.93) 0%, rgba(250,249,246,0.82) 45%, rgba(250,249,246,0.40) 75%, transparent 100%)",
+          background: "linear-gradient(110deg, rgba(18,10,4,0.88) 0%, rgba(18,10,4,0.72) 55%, rgba(18,10,4,0.45) 100%)",
         }} />
 
-        {/* Fondu bas — raccord avec le reste du site */}
+        {/* Fondu bas — raccord avec page claire */}
         <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0, height: "220px",
-          background: "linear-gradient(to bottom, transparent 60%, #FAF9F6 100%)",
+          position: "absolute", bottom: 0, left: 0, right: 0, height: "260px",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(18,10,4,0.6) 60%, #FAF9F6 100%)",
+        }} />
+
+        {/* Lueur ambre douce — profondeur */}
+        <div style={{
+          position: "absolute", bottom: "20%", left: "5%",
+          width: "45%", height: "50%",
+          background: "radial-gradient(ellipse, rgba(180,130,55,0.14) 0%, transparent 65%)",
+          filter: "blur(50px)",
         }} />
       </div>
 
@@ -119,7 +127,7 @@ export default function Hero() {
                 fontWeight: 500,
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
-                color: "#A67C52",
+                color: "rgba(232,185,106,0.8)",
               }}>
                 Instituts de beauté · Salons de massage
               </span>
@@ -135,15 +143,15 @@ export default function Hero() {
               <span style={{
                 display: "inline-block",
                 padding: "6px 16px",
-                border: "1px solid rgba(166,124,82,0.3)",
+                border: "1px solid rgba(232,185,106,0.35)",
                 borderRadius: "100px",
-                background: "rgba(166,124,82,0.08)",
+                background: "rgba(232,185,106,0.10)",
                 fontFamily: "var(--font-inter)",
                 fontSize: "11px",
                 fontWeight: 600,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#A67C52",
+                color: "#E8B96A",
               }}>
                 Votre site sur-mesure dès 350€
               </span>
@@ -156,19 +164,22 @@ export default function Hero() {
               transition={{ duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontSize: "clamp(2.8rem, 6vw, 5.8rem)",
-                fontWeight: 600,
+                fontSize: "clamp(3rem, 6.5vw, 6.2rem)",
+                fontWeight: 700,
                 lineHeight: 1.06,
                 letterSpacing: "-0.02em",
-                color: "#2C2318",
+                color: "#FAF9F6",
                 marginBottom: "2.25rem",
               }}
             >
               Transformez les visiteurs de{" "}
               <span style={{
                 fontStyle: "italic",
-                fontWeight: 600,
-                color: "#A67C52",
+                fontWeight: 700,
+                background: "linear-gradient(135deg, #E8B96A 0%, #F5D08A 50%, #E0A84E 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}>
                 Google Maps
               </span>{" "}
@@ -198,26 +209,26 @@ export default function Hero() {
                 fontWeight: 400,
                 fontSize: "clamp(1rem, 1.7vw, 1.15rem)",
                 lineHeight: 2,
-                color: "#6B5E52",
+                color: "rgba(245,237,216,0.65)",
                 maxWidth: "620px",
                 marginBottom: "2.75rem",
               }}
             >
               <p style={{ marginBottom: "0.9em" }}>
-                <span style={{ color: "#A67C52", fontWeight: 700, fontSize: "1.08em" }}>80 %</span>
+                <span style={{ color: "#E8B96A", fontWeight: 700, fontSize: "1.08em" }}>80 %</span>
                 {" "}des Français se renseignent{" "}
-                <span style={{ color: "#2C2318", fontWeight: 600 }}>d&apos;abord en ligne</span>{" "}
+                <span style={{ color: "#FAF9F6", fontWeight: 600 }}>d&apos;abord en ligne</span>{" "}
                 avant de franchir votre porte.
               </p>
               <p style={{ marginBottom: "0.9em" }}>
                 Sans site web pour les rassurer,{" "}
-                <span style={{ color: "#A67C52", fontWeight: 700, fontSize: "1.08em" }}>70 %</span>
+                <span style={{ color: "#E8B96A", fontWeight: 700, fontSize: "1.08em" }}>70 %</span>
                 {" "}d&apos;entre eux{" "}
-                <span style={{ color: "#2C2318", fontWeight: 600 }}>fuient par simple facilité de sélection.</span>
+                <span style={{ color: "#FAF9F6", fontWeight: 600 }}>fuient par simple facilité de sélection.</span>
               </p>
               <p>
                 Offrez-leur un{" "}
-                <span style={{ color: "#2C2318", fontWeight: 600 }}>accueil digital à la hauteur</span>{" "}
+                <span style={{ color: "#FAF9F6", fontWeight: 600 }}>accueil digital à la hauteur</span>{" "}
                 de la qualité de vos soins.
               </p>
             </motion.div>
@@ -305,7 +316,7 @@ export default function Hero() {
               style={{
                 marginTop: "3.5rem",
                 paddingTop: "2rem",
-                borderTop: "1px solid rgba(166,124,82,0.15)",
+                borderTop: "1px solid rgba(232,185,106,0.2)",
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "2rem",
@@ -322,14 +333,14 @@ export default function Hero() {
                     fontSize: "1.7rem",
                     fontWeight: 500,
                     lineHeight: 1,
-                    color: "#A67C52",
+                    color: "#E8B96A",
                   }}>{n}</span>
                   <span style={{
                     fontFamily: "var(--font-inter)",
                     fontSize: "11px",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "#6B5E52",
+                    color: "rgba(245,237,216,0.45)",
                   }}>{label}</span>
                 </div>
               ))}
