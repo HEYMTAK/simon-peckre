@@ -221,22 +221,39 @@ export default function Hero() {
             />
 
             {/* Sous-titre */}
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 fontFamily: "var(--font-inter)",
                 fontWeight: 400,
-                fontSize: "clamp(0.95rem, 1.6vw, 1.1rem)",
-                lineHeight: 1.8,
-                color: "rgba(245,237,216,0.7)",
-                maxWidth: "600px",
+                fontSize: "clamp(1rem, 1.7vw, 1.15rem)",
+                lineHeight: 2,
+                color: "rgba(245,237,216,0.62)",
+                maxWidth: "620px",
                 marginBottom: "2.75rem",
               }}
             >
-              Chaque mois, des centaines de clients cherchent un moment de détente dans votre ville. Or, 80&nbsp;% des Français se renseignent d&apos;abord en ligne avant de franchir votre porte. Sans site web pour les rassurer, 70&nbsp;% d&apos;entre eux fuient par simple facilité de sélection. Offrez-leur un accueil digital à la hauteur de la qualité de vos soins.
-            </motion.p>
+              <p style={{ marginBottom: "0.9em" }}>
+                Chaque mois, des centaines de clients cherchent{" "}
+                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>un moment de détente dans votre ville.</span>
+              </p>
+              <p style={{ marginBottom: "0.9em" }}>
+                Or,{" "}
+                <span style={{ color: "#CFA55C", fontWeight: 700, fontSize: "1.08em" }}>80 %</span>
+                {" "}des Français se renseignent{" "}
+                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>d&apos;abord en ligne</span>{" "}
+                avant de franchir votre porte.
+              </p>
+              <p>
+                Sans site web pour les rassurer,{" "}
+                <span style={{ color: "#CFA55C", fontWeight: 700, fontSize: "1.08em" }}>70 %</span>
+                {" "}d&apos;entre eux{" "}
+                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>fuient chez le concurrent</span>{" "}
+                par simple facilité de sélection.
+              </p>
+            </motion.div>
 
             {/* CTAs */}
             <motion.div
