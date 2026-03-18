@@ -233,22 +233,21 @@ export default function Hero() {
               }}
             >
               <p style={{ marginBottom: "0.9em" }}>
-                Chaque mois, des centaines de clients cherchent{" "}
-                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>un moment de détente dans votre ville.</span>
-              </p>
-              <p style={{ marginBottom: "0.9em" }}>
-                Or,{" "}
                 <span style={{ color: "#CFA55C", fontWeight: 700, fontSize: "1.08em" }}>80 %</span>
                 {" "}des Français se renseignent{" "}
                 <span style={{ color: "#F5EDD8", fontWeight: 600 }}>d&apos;abord en ligne</span>{" "}
                 avant de franchir votre porte.
               </p>
-              <p>
+              <p style={{ marginBottom: "0.9em" }}>
                 Sans site web pour les rassurer,{" "}
                 <span style={{ color: "#CFA55C", fontWeight: 700, fontSize: "1.08em" }}>70 %</span>
                 {" "}d&apos;entre eux{" "}
-                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>fuient chez le concurrent</span>{" "}
-                par simple facilité de sélection.
+                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>fuient par simple facilité de sélection.</span>
+              </p>
+              <p>
+                Offrez-leur un{" "}
+                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>accueil digital à la hauteur</span>{" "}
+                de la qualité de vos soins.
               </p>
             </motion.div>
 
