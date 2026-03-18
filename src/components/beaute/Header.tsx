@@ -31,9 +31,9 @@ export default function Header() {
         top: 0, left: 0, right: 0,
         zIndex: 50,
         transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)",
-        backgroundColor: scrolled ? "rgba(16,14,10,0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(16px) saturate(1.4)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(196,169,106,0.1)" : "1px solid transparent",
+        backgroundColor: scrolled ? "rgba(250,249,246,0.92)" : "rgba(250,249,246,0.92)",
+        backdropFilter: "blur(12px)",
+        borderBottom: "1px solid rgba(166,124,82,0.15)",
       }}
     >
       <div style={{
@@ -60,9 +60,9 @@ export default function Header() {
             textDecoration: "none",
           }}
         >
-          <span style={{ color: "#CFA55C", fontStyle: "italic" }}>Kaki</span>
+          <span style={{ color: "#A67C52", fontStyle: "italic" }}>Kaki</span>
           <span style={{
-            color: "#F5EDD8",
+            color: "#2C2318",
             fontStyle: "normal",
             marginLeft: "6px",
           }}>Studio</span>
@@ -71,7 +71,7 @@ export default function Header() {
             width: "5px",
             height: "5px",
             borderRadius: "50%",
-            background: "#CFA55C",
+            background: "#A67C52",
             marginLeft: "3px",
             marginBottom: "2px",
             alignSelf: "flex-end",
@@ -90,12 +90,12 @@ export default function Header() {
                 fontWeight: 500,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#F5EDD8",
+                color: "#2C2318",
                 textDecoration: "none",
                 transition: "color 0.25s ease",
               }}
-              onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#CFA55C"}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#F5EDD8"}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#A67C52"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#2C2318"}
             >
               {l.label}
             </a>
@@ -117,25 +117,25 @@ export default function Header() {
               fontWeight: 600,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
-              color: "#2E2214",
+              color: "white",
               textDecoration: "none",
               padding: "11px 26px",
-              background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 40%, #CFA55C 100%)",
+              background: "linear-gradient(135deg, #A67C52 0%, #C4966A 40%, #A67C52 100%)",
               backgroundSize: "200% 200%",
               borderRadius: "100px",
               transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)",
-              boxShadow: "0 0 0 1px rgba(232,192,122,0.4), 0 4px 20px rgba(207,165,92,0.25), inset 0 1px 0 rgba(255,255,255,0.25)",
+              boxShadow: "0 0 0 1px rgba(166,124,82,0.4), 0 4px 20px rgba(166,124,82,0.2), inset 0 1px 0 rgba(255,255,255,0.15)",
               overflow: "hidden",
             }}
             onMouseEnter={e => {
               const el = e.currentTarget as HTMLElement;
-              el.style.boxShadow = "0 0 0 1px rgba(232,192,122,0.6), 0 8px 32px rgba(207,165,92,0.45), inset 0 1px 0 rgba(255,255,255,0.3)";
+              el.style.boxShadow = "0 0 0 1px rgba(166,124,82,0.6), 0 8px 32px rgba(166,124,82,0.35), inset 0 1px 0 rgba(255,255,255,0.2)";
               el.style.transform = "translateY(-2px) scale(1.02)";
               el.style.backgroundPosition = "100% 100%";
             }}
             onMouseLeave={e => {
               const el = e.currentTarget as HTMLElement;
-              el.style.boxShadow = "0 0 0 1px rgba(232,192,122,0.4), 0 4px 20px rgba(207,165,92,0.25), inset 0 1px 0 rgba(255,255,255,0.25)";
+              el.style.boxShadow = "0 0 0 1px rgba(166,124,82,0.4), 0 4px 20px rgba(166,124,82,0.2), inset 0 1px 0 rgba(255,255,255,0.15)";
               el.style.transform = "translateY(0) scale(1)";
               el.style.backgroundPosition = "0% 0%";
             }}
@@ -165,7 +165,7 @@ export default function Header() {
               transition: "transform 0.3s ease",
             }}>
               <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                <path d="M1.5 6.5L6.5 1.5M6.5 1.5H2.5M6.5 1.5V5.5" stroke="#2E2214" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M1.5 6.5L6.5 1.5M6.5 1.5H2.5M6.5 1.5V5.5" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </span>
           </a>
@@ -180,7 +180,7 @@ export default function Header() {
             background: "none",
             border: "none",
             cursor: "pointer",
-            color: "rgba(196,169,106,0.7)",
+            color: "#A67C52",
             padding: "4px",
             transition: "color 0.2s ease",
           }}
@@ -199,9 +199,9 @@ export default function Header() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             style={{
               overflow: "hidden",
-              background: "rgba(16,14,10,0.97)",
+              background: "rgba(250,249,246,0.98)",
               backdropFilter: "blur(20px)",
-              borderTop: "1px solid rgba(196,169,106,0.1)",
+              borderTop: "1px solid rgba(166,124,82,0.15)",
             }}
           >
             <div style={{
@@ -219,7 +219,7 @@ export default function Header() {
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "1.5rem",
                     fontWeight: 400,
-                    color: "rgba(232,223,208,0.7)",
+                    color: "#2C2318",
                     textDecoration: "none",
                     transition: "color 0.2s ease",
                   }}
@@ -233,8 +233,8 @@ export default function Header() {
                 style={{
                   marginTop: "8px",
                   padding: "14px 24px",
-                  background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
-                  color: "#2E2214",
+                  background: "linear-gradient(135deg, #A67C52 0%, #C4966A 100%)",
+                  color: "white",
                   fontFamily: "var(--font-inter)",
                   fontSize: "12px",
                   fontWeight: 600,

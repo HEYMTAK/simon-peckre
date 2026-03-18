@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ backgroundColor: "#1E160D" }}
+      style={{ backgroundColor: "#FAF9F6" }}
     >
       {/* ══ IMAGE DE FOND — photo spa/massage en fondu ════════════════════════ */}
       <div className="absolute inset-0 pointer-events-none">
@@ -25,22 +25,16 @@ export default function Hero() {
           opacity: 1,
         }} />
 
-        {/* Overlay sombre gauche — zone texte lisible */}
+        {/* Overlay clair gauche — zone texte lisible */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(105deg, rgba(15,9,4,0.88) 0%, rgba(15,9,4,0.72) 40%, rgba(15,9,4,0.30) 70%, rgba(15,9,4,0.15) 100%)",
+          background: "linear-gradient(105deg, rgba(250,249,246,0.93) 0%, rgba(250,249,246,0.82) 45%, rgba(250,249,246,0.40) 75%, transparent 100%)",
         }} />
 
         {/* Fondu bas — raccord avec le reste du site */}
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0, height: "220px",
-          background: "linear-gradient(to bottom, transparent, #1E160D)",
-        }} />
-
-        {/* Voile ambre subtil — chaleur */}
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(180,130,55,0.12) 0%, transparent 65%)",
+          background: "linear-gradient(to bottom, transparent 60%, #FAF9F6 100%)",
         }} />
       </div>
 
@@ -56,7 +50,7 @@ export default function Hero() {
           top: "-200px", right: "-200px",
           width: "700px", height: "700px",
           borderRadius: "50%",
-          border: "1px solid rgba(196,169,106,0.07)",
+          border: "1px solid rgba(166,124,82,0.08)",
         }}
       />
       <motion.div
@@ -68,7 +62,7 @@ export default function Hero() {
           top: "-100px", right: "-100px",
           width: "500px", height: "500px",
           borderRadius: "50%",
-          border: "1px solid rgba(196,169,106,0.05)",
+          border: "1px solid rgba(166,124,82,0.08)",
         }}
       />
 
@@ -81,7 +75,7 @@ export default function Hero() {
           position: "absolute", pointerEvents: "none",
           top: "42%", left: 0,
           width: "15%", height: "1px",
-          background: "linear-gradient(90deg, rgba(196,169,106,0.3), transparent)",
+          background: "linear-gradient(90deg, rgba(166,124,82,0.3), transparent)",
           transformOrigin: "left",
         }}
       />
@@ -94,7 +88,7 @@ export default function Hero() {
         fontWeight: 300,
         fontSize: "clamp(220px, 28vw, 420px)",
         lineHeight: 1,
-        color: "rgba(196,169,106,0.028)",
+        color: "rgba(166,124,82,0.04)",
         letterSpacing: "-0.04em",
       }}>
         01
@@ -117,7 +111,7 @@ export default function Hero() {
             >
               <div style={{
                 width: "32px", height: "1px",
-                background: "rgba(196,169,106,0.6)",
+                background: "rgba(166,124,82,0.6)",
               }} />
               <span style={{
                 fontFamily: "var(--font-inter)",
@@ -125,7 +119,7 @@ export default function Hero() {
                 fontWeight: 500,
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
-                color: "rgba(196,169,106,0.7)",
+                color: "#A67C52",
               }}>
                 Instituts de beauté · Salons de massage
               </span>
@@ -141,21 +135,21 @@ export default function Hero() {
               <span style={{
                 display: "inline-block",
                 padding: "6px 16px",
-                border: "1px solid rgba(207,165,92,0.35)",
+                border: "1px solid rgba(166,124,82,0.3)",
                 borderRadius: "100px",
-                background: "rgba(207,165,92,0.08)",
+                background: "rgba(166,124,82,0.08)",
                 fontFamily: "var(--font-inter)",
                 fontSize: "11px",
                 fontWeight: 600,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#CFA55C",
+                color: "#A67C52",
               }}>
                 Votre site sur-mesure dès 350€
               </span>
             </motion.div>
 
-            {/* H1 — Cormorant, typographie éditoriale */}
+            {/* H1 — Playfair Display, typographie éditoriale */}
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
@@ -163,21 +157,18 @@ export default function Hero() {
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontSize: "clamp(2.8rem, 6vw, 5.8rem)",
-                fontWeight: 300,
+                fontWeight: 600,
                 lineHeight: 1.06,
                 letterSpacing: "-0.02em",
-                color: "#F5EDD8",
+                color: "#2C2318",
                 marginBottom: "2.25rem",
               }}
             >
               Transformez les visiteurs de{" "}
               <span style={{
                 fontStyle: "italic",
-                fontWeight: 400,
-                background: "linear-gradient(135deg, #CFA55C 0%, #E2C98A 45%, #CFA55C 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
+                fontWeight: 600,
+                color: "#A67C52",
               }}>
                 Google Maps
               </span>{" "}
@@ -191,7 +182,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 width: "48px", height: "1px",
-                background: "rgba(196,169,106,0.45)",
+                background: "rgba(166,124,82,0.45)",
                 marginBottom: "1.75rem",
                 transformOrigin: "left",
               }}
@@ -207,26 +198,26 @@ export default function Hero() {
                 fontWeight: 400,
                 fontSize: "clamp(1rem, 1.7vw, 1.15rem)",
                 lineHeight: 2,
-                color: "rgba(245,237,216,0.62)",
+                color: "#6B5E52",
                 maxWidth: "620px",
                 marginBottom: "2.75rem",
               }}
             >
               <p style={{ marginBottom: "0.9em" }}>
-                <span style={{ color: "#CFA55C", fontWeight: 700, fontSize: "1.08em" }}>80 %</span>
+                <span style={{ color: "#A67C52", fontWeight: 700, fontSize: "1.08em" }}>80 %</span>
                 {" "}des Français se renseignent{" "}
-                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>d&apos;abord en ligne</span>{" "}
+                <span style={{ color: "#2C2318", fontWeight: 600 }}>d&apos;abord en ligne</span>{" "}
                 avant de franchir votre porte.
               </p>
               <p style={{ marginBottom: "0.9em" }}>
                 Sans site web pour les rassurer,{" "}
-                <span style={{ color: "#CFA55C", fontWeight: 700, fontSize: "1.08em" }}>70 %</span>
+                <span style={{ color: "#A67C52", fontWeight: 700, fontSize: "1.08em" }}>70 %</span>
                 {" "}d&apos;entre eux{" "}
-                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>fuient par simple facilité de sélection.</span>
+                <span style={{ color: "#2C2318", fontWeight: 600 }}>fuient par simple facilité de sélection.</span>
               </p>
               <p>
                 Offrez-leur un{" "}
-                <span style={{ color: "#F5EDD8", fontWeight: 600 }}>accueil digital à la hauteur</span>{" "}
+                <span style={{ color: "#2C2318", fontWeight: 600 }}>accueil digital à la hauteur</span>{" "}
                 de la qualité de vos soins.
               </p>
             </motion.div>
@@ -244,25 +235,25 @@ export default function Hero() {
                 className="group inline-flex items-center gap-3"
                 style={{
                   padding: "14px 32px",
-                  background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
-                  color: "#2E2214",
+                  background: "linear-gradient(135deg, #A67C52 0%, #C4966A 100%)",
+                  color: "white",
                   fontFamily: "var(--font-inter)",
                   fontSize: "13px",
                   fontWeight: 600,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   borderRadius: "4px",
-                  boxShadow: "0 8px 32px rgba(196,169,106,0.2), 0 2px 8px rgba(196,169,106,0.15)",
+                  boxShadow: "0 8px 32px rgba(166,124,82,0.2), 0 2px 8px rgba(166,124,82,0.15)",
                   transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
                   textDecoration: "none",
                   whiteSpace: "nowrap",
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(196,169,106,0.35), 0 4px 12px rgba(196,169,106,0.2)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(166,124,82,0.35), 0 4px 12px rgba(166,124,82,0.2)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(196,169,106,0.2), 0 2px 8px rgba(196,169,106,0.15)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(166,124,82,0.2), 0 2px 8px rgba(166,124,82,0.15)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
@@ -276,30 +267,28 @@ export default function Hero() {
                 className="group inline-flex items-center gap-3"
                 style={{
                   padding: "14px 28px",
-                  border: "1px solid rgba(196,169,106,0.22)",
-                  color: "#F5EDD8",
+                  border: "1px solid rgba(166,124,82,0.35)",
+                  color: "#2C2318",
                   fontFamily: "var(--font-inter)",
                   fontSize: "13px",
                   fontWeight: 500,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   borderRadius: "4px",
-                  background: "rgba(196,169,106,0.04)",
+                  background: "transparent",
                   transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
                   textDecoration: "none",
                   backdropFilter: "blur(8px)",
                   whiteSpace: "nowrap",
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(196,169,106,0.5)";
-                  (e.currentTarget as HTMLElement).style.color = "#CFA55C";
-                  (e.currentTarget as HTMLElement).style.background = "rgba(196,169,106,0.07)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(166,124,82,0.6)";
+                  (e.currentTarget as HTMLElement).style.color = "#A67C52";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(196,169,106,0.22)";
-                  (e.currentTarget as HTMLElement).style.color = "#F5EDD8";
-                  (e.currentTarget as HTMLElement).style.background = "rgba(196,169,106,0.04)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(166,124,82,0.35)";
+                  (e.currentTarget as HTMLElement).style.color = "#2C2318";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
@@ -316,7 +305,7 @@ export default function Hero() {
               style={{
                 marginTop: "3.5rem",
                 paddingTop: "2rem",
-                borderTop: "1px solid rgba(196,169,106,0.1)",
+                borderTop: "1px solid rgba(166,124,82,0.15)",
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "2rem",
@@ -333,14 +322,14 @@ export default function Hero() {
                     fontSize: "1.7rem",
                     fontWeight: 500,
                     lineHeight: 1,
-                    color: "#CFA55C",
+                    color: "#A67C52",
                   }}>{n}</span>
                   <span style={{
                     fontFamily: "var(--font-inter)",
                     fontSize: "11px",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "#F5EDD8",
+                    color: "#6B5E52",
                   }}>{label}</span>
                 </div>
               ))}
@@ -369,7 +358,7 @@ export default function Hero() {
           fontSize: "9px",
           letterSpacing: "0.22em",
           textTransform: "uppercase",
-          color: "rgba(196,169,106,0.45)",
+          color: "rgba(166,124,82,0.5)",
           writingMode: "vertical-rl",
           textOrientation: "mixed",
           transform: "rotate(180deg)",
@@ -381,13 +370,13 @@ export default function Hero() {
           transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
           style={{
             width: "1px", height: "52px",
-            background: "linear-gradient(to bottom, rgba(196,169,106,0.6), transparent)",
+            background: "linear-gradient(to bottom, rgba(166,124,82,0.4), transparent)",
             transformOrigin: "top",
           }}
         />
         {/* Flèche bas */}
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ opacity: 0.4 }}>
-          <path d="M1 1L5 5L9 1" stroke="#CFA55C" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M1 1L5 5L9 1" stroke="#A67C52" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </motion.div>
 

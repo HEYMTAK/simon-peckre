@@ -3,64 +3,45 @@
 @tailwind utilities;
 
 :root {
-  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-cormorant: 'Playfair Display', Georgia, serif;
   --font-inter: 'DM Sans', system-ui, sans-serif;
 
-  /* Palette Kaki Studio */
-  --bg-base:     #1E160D;
-  --bg-surface:  #271D10;
-  --gold:        #CFA55C;
-  --gold-light:  #E8C07A;
-  --sand:        #F5EDD8;
-  --sand-muted:  #B0A08A;
-  --sage:        #96A882;
-  --border:      rgba(207,165,92,0.16);
+  /* Palette Organic Luxury */
+  --bg-base:      #FAF9F6;
+  --bg-surface:   #F3F0EB;
+  --bg-accent:    #EDE8E0;
+  --gold:         #A67C52;
+  --gold-light:   #C4966A;
+  --text-primary: #2C2318;
+  --text-muted:   #6B5E52;
+  --border:       rgba(166,124,82,0.18);
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; padding: 0; margin: 0; }
+html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg-base);
-  /* Fond spa : ambre chaud haut-gauche + sauge nature bas-droite + pierre centrale */
-  background-image:
-    radial-gradient(ellipse 70% 50% at 15% 0%,   rgba(207, 165, 92, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 85% 100%,  rgba(160, 110, 55, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 30% at 50% 50%,   rgba(180, 135, 70, 0.06) 0%, transparent 65%),
-    radial-gradient(ellipse 25% 20% at 92% 8%,    rgba(207, 165, 92, 0.08) 0%, transparent 50%);
-  background-attachment: fixed;
-  color: var(--sand);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  color: var(--text-primary);
+  font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
-/* ─── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-track { background: var(--bg-surface); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-/* ─── Selection ─────────────────────────────────────── */
-::selection { background: rgba(196,169,106,0.18); color: var(--gold-light); }
+::selection { background: rgba(166,124,82,0.15); color: var(--gold); }
 
-/* ─── Cormorant utility classes ─────────────────────── */
 .font-display {
   font-family: var(--font-cormorant), Georgia, serif;
-  font-feature-settings: "kern" 1, "liga" 1;
 }
 
-/* ─── Section dividers ──────────────────────────────── */
 .divider-gold {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0.25;
+  opacity: 0.3;
 }
