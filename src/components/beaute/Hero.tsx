@@ -16,51 +16,31 @@ export default function Hero() {
     >
       {/* ══ IMAGE DE FOND — photo spa/massage en fondu ════════════════════════ */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Photo spa */}
+        {/* Photo spa — pleine visibilité */}
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: "url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1920&q=80')",
           backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.28,
+          backgroundPosition: "center 40%",
+          opacity: 1,
         }} />
 
-        {/* Overlay chaud principal — fondu profond */}
+        {/* Overlay sombre gauche — zone texte lisible */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(135deg, rgba(20,13,6,0.92) 0%, rgba(35,22,10,0.80) 45%, rgba(20,13,6,0.88) 100%)",
+          background: "linear-gradient(105deg, rgba(15,9,4,0.88) 0%, rgba(15,9,4,0.72) 40%, rgba(15,9,4,0.30) 70%, rgba(15,9,4,0.15) 100%)",
         }} />
 
-        {/* Voile ambré — haut */}
+        {/* Fondu bas — raccord avec le reste du site */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0, height: "220px",
+          background: "linear-gradient(to bottom, transparent, #1E160D)",
+        }} />
+
+        {/* Voile ambre subtil — chaleur */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "radial-gradient(ellipse 90% 60% at 50% 0%, rgba(200,150,65,0.22) 0%, transparent 65%)",
-        }} />
-
-        {/* Glow miel — droite */}
-        <div style={{
-          position: "absolute",
-          top: "0%", right: "-5%",
-          width: "55%", height: "80%",
-          background: "radial-gradient(ellipse, rgba(190,140,65,0.18) 0%, transparent 58%)",
-          filter: "blur(40px)",
-        }} />
-
-        {/* Glow cannelle — bas gauche */}
-        <div style={{
-          position: "absolute",
-          bottom: "-5%", left: "-5%",
-          width: "50%", height: "60%",
-          background: "radial-gradient(ellipse, rgba(160,110,50,0.16) 0%, transparent 58%)",
-          filter: "blur(50px)",
-        }} />
-
-        {/* Grain subtil */}
-        <div style={{
-          position: "absolute", inset: 0,
-          opacity: 0.03,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)'/%3E%3C/svg%3E")`,
-          backgroundSize: "280px 280px",
+          background: "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(180,130,55,0.12) 0%, transparent 65%)",
         }} />
       </div>
 
