@@ -4,9 +4,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const videos = [
-  { src: "/videos/institut-beaute-1.mp4", label: "Institut de beauté / massage", location: "Argelès-Gazost" },
-  { src: "/videos/mood-massage.mp4", label: "Institut de massage", location: "Troyes" },
   { src: "/videos/institut-beaute-2.mp4", label: "Institut de beauté", location: "Romans-sur-Isère" },
+  { src: "/videos/mood-massage.mp4", label: "Institut de massage", location: "Troyes" },
+  { src: "/videos/institut-beaute-1.mp4", label: "Institut de beauté / massage", location: "Argelès-Gazost" },
 ];
 
 function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index: number; isInView: boolean }) {
