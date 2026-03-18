@@ -7,8 +7,8 @@
   --font-inter: 'Inter', system-ui, sans-serif;
 
   /* Palette Kaki Studio */
-  --bg-base:     #2C3A2A;
-  --bg-surface:  #364539;
+  --bg-base:     #1E160D;
+  --bg-surface:  #271D10;
   --gold:        #CFA55C;
   --gold-light:  #E8C07A;
   --sand:        #F5EDD8;
@@ -31,10 +31,10 @@ body {
   background-color: var(--bg-base);
   /* Fond spa : ambre chaud haut-gauche + sauge nature bas-droite + pierre centrale */
   background-image:
-    radial-gradient(ellipse 70% 50% at 15% 0%,   rgba(207, 165, 92, 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 85% 100%,  rgba(90, 120, 80, 0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 30% at 50% 50%,   rgba(180, 200, 160, 0.04) 0%, transparent 65%),
-    radial-gradient(ellipse 25% 20% at 92% 8%,    rgba(207, 165, 92, 0.07) 0%, transparent 50%);
+    radial-gradient(ellipse 70% 50% at 15% 0%,   rgba(207, 165, 92, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 100%,  rgba(160, 110, 55, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 50% 50%,   rgba(180, 135, 70, 0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 25% 20% at 92% 8%,    rgba(207, 165, 92, 0.08) 0%, transparent 50%);
   background-attachment: fixed;
   color: var(--sand);
   font-family: var(--font-inter), system-ui, sans-serif;
