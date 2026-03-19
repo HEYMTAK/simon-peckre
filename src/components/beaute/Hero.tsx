@@ -12,37 +12,58 @@ export default function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ backgroundColor: "#1A1008" }}
+      style={{ backgroundColor: "transparent" }}
     >
-      {/* ══ IMAGE DE FOND — photo spa/massage ════════════════════════════════ */}
+      {/* ══ FOND — calques de lumière chaude ══════════════════════════════════ */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Photo spa chaude */}
+
+        {/* Voile ambré principal — haut centre */}
         <div style={{
           position: "absolute", inset: 0,
-          backgroundImage: "url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1920&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "center 35%",
-          opacity: 1,
+          background: "radial-gradient(ellipse 95% 70% at 50% 0%, rgba(220,165,80,0.28) 0%, transparent 65%)",
         }} />
 
-        {/* Overlay sombre brun chaud — texte blanc lisible */}
+        {/* Glow pêche/miel — droite */}
+        <div style={{
+          position: "absolute",
+          top: "0%", right: "-5%",
+          width: "55%", height: "80%",
+          background: "radial-gradient(ellipse, rgba(210,155,75,0.22) 0%, transparent 58%)",
+          filter: "blur(30px)",
+        }} />
+
+        {/* Glow cannelle — bas gauche */}
+        <div style={{
+          position: "absolute",
+          bottom: "-5%", left: "-5%",
+          width: "50%", height: "60%",
+          background: "radial-gradient(ellipse, rgba(190,130,60,0.2) 0%, transparent 58%)",
+          filter: "blur(40px)",
+        }} />
+
+        {/* Halo centre — chaleur ambiante */}
+        <div style={{
+          position: "absolute",
+          top: "30%", left: "50%", transform: "translateX(-50%)",
+          width: "70%", height: "40%",
+          background: "radial-gradient(ellipse, rgba(200,150,65,0.12) 0%, transparent 65%)",
+          filter: "blur(55px)",
+        }} />
+
+        {/* Grain / texture tissu */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(110deg, rgba(18,10,4,0.88) 0%, rgba(18,10,4,0.72) 55%, rgba(18,10,4,0.45) 100%)",
+          opacity: 0.04,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)'/%3E%3C/svg%3E")`,
+          backgroundSize: "280px 280px",
         }} />
 
-        {/* Fondu bas — raccord avec page claire */}
+        {/* Grille très fine */}
         <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0, height: "260px",
-          background: "linear-gradient(to bottom, transparent 0%, rgba(18,10,4,0.6) 60%, #FAF9F6 100%)",
-        }} />
-
-        {/* Lueur ambre douce — profondeur */}
-        <div style={{
-          position: "absolute", bottom: "20%", left: "5%",
-          width: "45%", height: "50%",
-          background: "radial-gradient(ellipse, rgba(180,130,55,0.14) 0%, transparent 65%)",
-          filter: "blur(50px)",
+          position: "absolute", inset: 0,
+          backgroundImage:
+            "linear-gradient(rgba(196,169,106,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(196,169,106,0.03) 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
         }} />
       </div>
 
@@ -58,7 +79,7 @@ export default function Hero() {
           top: "-200px", right: "-200px",
           width: "700px", height: "700px",
           borderRadius: "50%",
-          border: "1px solid rgba(166,124,82,0.08)",
+          border: "1px solid rgba(196,169,106,0.07)",
         }}
       />
       <motion.div
@@ -70,7 +91,7 @@ export default function Hero() {
           top: "-100px", right: "-100px",
           width: "500px", height: "500px",
           borderRadius: "50%",
-          border: "1px solid rgba(166,124,82,0.08)",
+          border: "1px solid rgba(196,169,106,0.05)",
         }}
       />
 
@@ -83,7 +104,7 @@ export default function Hero() {
           position: "absolute", pointerEvents: "none",
           top: "42%", left: 0,
           width: "15%", height: "1px",
-          background: "linear-gradient(90deg, rgba(166,124,82,0.3), transparent)",
+          background: "linear-gradient(90deg, rgba(196,169,106,0.3), transparent)",
           transformOrigin: "left",
         }}
       />
@@ -96,7 +117,7 @@ export default function Hero() {
         fontWeight: 300,
         fontSize: "clamp(220px, 28vw, 420px)",
         lineHeight: 1,
-        color: "rgba(166,124,82,0.04)",
+        color: "rgba(196,169,106,0.028)",
         letterSpacing: "-0.04em",
       }}>
         01
@@ -119,7 +140,7 @@ export default function Hero() {
             >
               <div style={{
                 width: "32px", height: "1px",
-                background: "rgba(166,124,82,0.6)",
+                background: "rgba(196,169,106,0.6)",
               }} />
               <span style={{
                 fontFamily: "var(--font-inter)",
@@ -127,7 +148,7 @@ export default function Hero() {
                 fontWeight: 500,
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
-                color: "rgba(232,185,106,0.8)",
+                color: "rgba(196,169,106,0.7)",
               }}>
                 Instituts de beauté · Salons de massage
               </span>
@@ -143,40 +164,40 @@ export default function Hero() {
               <span style={{
                 display: "inline-block",
                 padding: "6px 16px",
-                border: "1px solid rgba(232,185,106,0.35)",
+                border: "1px solid rgba(207,165,92,0.35)",
                 borderRadius: "100px",
-                background: "rgba(232,185,106,0.10)",
+                background: "rgba(207,165,92,0.08)",
                 fontFamily: "var(--font-inter)",
                 fontSize: "11px",
                 fontWeight: 600,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#E8B96A",
+                color: "#CFA55C",
               }}>
                 Votre site sur-mesure dès 350€
               </span>
             </motion.div>
 
-            {/* H1 — Playfair Display, typographie éditoriale */}
+            {/* H1 — Cormorant, typographie éditoriale */}
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontSize: "clamp(3rem, 6.5vw, 6.2rem)",
-                fontWeight: 700,
+                fontSize: "clamp(2.8rem, 6vw, 5.8rem)",
+                fontWeight: 300,
                 lineHeight: 1.06,
                 letterSpacing: "-0.02em",
-                color: "#FAF9F6",
+                color: "#F5EDD8",
                 marginBottom: "2.25rem",
               }}
             >
               Transformez les visiteurs de{" "}
               <span style={{
                 fontStyle: "italic",
-                fontWeight: 700,
-                background: "linear-gradient(135deg, #E8B96A 0%, #F5D08A 50%, #E0A84E 100%)",
+                fontWeight: 400,
+                background: "linear-gradient(135deg, #CFA55C 0%, #E2C98A 45%, #CFA55C 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -193,45 +214,29 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 width: "48px", height: "1px",
-                background: "rgba(166,124,82,0.45)",
+                background: "rgba(196,169,106,0.45)",
                 marginBottom: "1.75rem",
                 transformOrigin: "left",
               }}
             />
 
             {/* Sous-titre */}
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 fontFamily: "var(--font-inter)",
                 fontWeight: 400,
-                fontSize: "clamp(1rem, 1.7vw, 1.15rem)",
-                lineHeight: 2,
-                color: "rgba(245,237,216,0.65)",
-                maxWidth: "620px",
+                fontSize: "clamp(0.95rem, 1.6vw, 1.1rem)",
+                lineHeight: 1.8,
+                color: "rgba(245,237,216,0.7)",
+                maxWidth: "600px",
                 marginBottom: "2.75rem",
               }}
             >
-              <p style={{ marginBottom: "0.9em" }}>
-                <span style={{ color: "#E8B96A", fontWeight: 700, fontSize: "1.08em" }}>80 %</span>
-                {" "}des Français se renseignent{" "}
-                <span style={{ color: "#FAF9F6", fontWeight: 600 }}>d&apos;abord en ligne</span>{" "}
-                avant de franchir votre porte.
-              </p>
-              <p style={{ marginBottom: "0.9em" }}>
-                Sans site web pour les rassurer,{" "}
-                <span style={{ color: "#E8B96A", fontWeight: 700, fontSize: "1.08em" }}>70 %</span>
-                {" "}d&apos;entre eux{" "}
-                <span style={{ color: "#FAF9F6", fontWeight: 600 }}>fuient par simple facilité de sélection.</span>
-              </p>
-              <p>
-                Offrez-leur un{" "}
-                <span style={{ color: "#FAF9F6", fontWeight: 600 }}>accueil digital à la hauteur</span>{" "}
-                de la qualité de vos soins.
-              </p>
-            </motion.div>
+              Chaque mois, des centaines de clients cherchent un moment de détente dans votre ville. Or, 80&nbsp;% des Français se renseignent d&apos;abord en ligne avant de franchir votre porte. Sans site web pour les rassurer, 70&nbsp;% d&apos;entre eux fuient par simple facilité de sélection. Offrez-leur un accueil digital à la hauteur de la qualité de vos soins.
+            </motion.p>
 
             {/* CTAs */}
             <motion.div
@@ -246,25 +251,25 @@ export default function Hero() {
                 className="group inline-flex items-center gap-3"
                 style={{
                   padding: "14px 32px",
-                  background: "linear-gradient(135deg, #A67C52 0%, #C4966A 100%)",
-                  color: "white",
+                  background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
+                  color: "#2E2214",
                   fontFamily: "var(--font-inter)",
                   fontSize: "13px",
                   fontWeight: 600,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   borderRadius: "4px",
-                  boxShadow: "0 8px 32px rgba(166,124,82,0.2), 0 2px 8px rgba(166,124,82,0.15)",
+                  boxShadow: "0 8px 32px rgba(196,169,106,0.2), 0 2px 8px rgba(196,169,106,0.15)",
                   transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
                   textDecoration: "none",
                   whiteSpace: "nowrap",
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(166,124,82,0.35), 0 4px 12px rgba(166,124,82,0.2)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(196,169,106,0.35), 0 4px 12px rgba(196,169,106,0.2)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(166,124,82,0.2), 0 2px 8px rgba(166,124,82,0.15)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(196,169,106,0.2), 0 2px 8px rgba(196,169,106,0.15)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
@@ -278,28 +283,30 @@ export default function Hero() {
                 className="group inline-flex items-center gap-3"
                 style={{
                   padding: "14px 28px",
-                  border: "1px solid rgba(166,124,82,0.35)",
-                  color: "#2C2318",
+                  border: "1px solid rgba(196,169,106,0.22)",
+                  color: "#F5EDD8",
                   fontFamily: "var(--font-inter)",
                   fontSize: "13px",
                   fontWeight: 500,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   borderRadius: "4px",
-                  background: "transparent",
+                  background: "rgba(196,169,106,0.04)",
                   transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
                   textDecoration: "none",
                   backdropFilter: "blur(8px)",
                   whiteSpace: "nowrap",
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(166,124,82,0.6)";
-                  (e.currentTarget as HTMLElement).style.color = "#A67C52";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(196,169,106,0.5)";
+                  (e.currentTarget as HTMLElement).style.color = "#CFA55C";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(196,169,106,0.07)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(166,124,82,0.35)";
-                  (e.currentTarget as HTMLElement).style.color = "#2C2318";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(196,169,106,0.22)";
+                  (e.currentTarget as HTMLElement).style.color = "#F5EDD8";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(196,169,106,0.04)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
@@ -316,7 +323,7 @@ export default function Hero() {
               style={{
                 marginTop: "3.5rem",
                 paddingTop: "2rem",
-                borderTop: "1px solid rgba(232,185,106,0.2)",
+                borderTop: "1px solid rgba(196,169,106,0.1)",
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "2rem",
@@ -333,14 +340,14 @@ export default function Hero() {
                     fontSize: "1.7rem",
                     fontWeight: 500,
                     lineHeight: 1,
-                    color: "#E8B96A",
+                    color: "#CFA55C",
                   }}>{n}</span>
                   <span style={{
                     fontFamily: "var(--font-inter)",
                     fontSize: "11px",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "rgba(245,237,216,0.45)",
+                    color: "#F5EDD8",
                   }}>{label}</span>
                 </div>
               ))}
@@ -369,7 +376,7 @@ export default function Hero() {
           fontSize: "9px",
           letterSpacing: "0.22em",
           textTransform: "uppercase",
-          color: "rgba(166,124,82,0.5)",
+          color: "rgba(196,169,106,0.45)",
           writingMode: "vertical-rl",
           textOrientation: "mixed",
           transform: "rotate(180deg)",
@@ -381,13 +388,13 @@ export default function Hero() {
           transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
           style={{
             width: "1px", height: "52px",
-            background: "linear-gradient(to bottom, rgba(166,124,82,0.4), transparent)",
+            background: "linear-gradient(to bottom, rgba(196,169,106,0.6), transparent)",
             transformOrigin: "top",
           }}
         />
         {/* Flèche bas */}
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ opacity: 0.4 }}>
-          <path d="M1 1L5 5L9 1" stroke="#A67C52" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M1 1L5 5L9 1" stroke="#CFA55C" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </motion.div>
 

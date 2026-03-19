@@ -9,8 +9,11 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="relative overflow-hidden" style={{ padding: "120px 0", background: "#2C2318" }}>
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(166,124,82,0.3), transparent)" }} />
+    <section id="contact" className="relative overflow-hidden" style={{ padding: "120px 0" }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.2), transparent)" }} />
+
+      {/* Glow bas gauche */}
+      <div style={{ position: "absolute", bottom: 0, left: "20%", width: "500px", height: "400px", background: "radial-gradient(ellipse, rgba(207,165,92,0.07) 0%, transparent 70%)", filter: "blur(80px)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 48px", textAlign: "center" }} ref={ref}>
 
@@ -21,11 +24,11 @@ export default function Contact() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "14px", marginBottom: "32px" }}
         >
-          <div style={{ width: "40px", height: "1px", background: "rgba(166,124,82,0.5)" }} />
-          <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(166,124,82,0.8)" }}>
+          <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
+          <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
             Passez à l&apos;action
           </span>
-          <div style={{ width: "40px", height: "1px", background: "rgba(166,124,82,0.5)" }} />
+          <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
         </motion.div>
 
         {/* Titre */}
@@ -36,15 +39,15 @@ export default function Contact() {
           style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
             fontSize: "clamp(2.8rem, 5vw, 4.8rem)",
-            fontWeight: 700,
+            fontWeight: 300,
             lineHeight: 1.06,
-            color: "#FAF9F6",
+            color: "#F5EDD8",
             letterSpacing: "-0.02em",
             marginBottom: "28px",
           }}
         >
           Prêt(e) à remplir{" "}
-          <span style={{ fontStyle: "italic", color: "#A67C52" }}>votre agenda ?</span>
+          <span style={{ fontStyle: "italic", color: "#CFA55C" }}>votre agenda ?</span>
         </motion.h2>
 
         {/* Texte */}
@@ -56,7 +59,7 @@ export default function Contact() {
             fontFamily: "var(--font-inter)",
             fontSize: "1.05rem",
             lineHeight: 1.85,
-            color: "rgba(250,249,246,0.65)",
+            color: "rgba(245,237,216,0.6)",
             maxWidth: "620px",
             margin: "0 auto 48px",
           }}
@@ -79,24 +82,24 @@ export default function Contact() {
               alignItems: "center",
               gap: "12px",
               padding: "18px 48px",
-              background: "#A67C52",
-              color: "white",
+              background: "linear-gradient(135deg, #CFA55C 0%, #E8C07A 100%)",
+              color: "#2E2214",
               fontFamily: "var(--font-inter)",
               fontSize: "13px",
               fontWeight: 700,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               borderRadius: "4px",
-              boxShadow: "0 8px 40px rgba(166,124,82,0.3), 0 2px 8px rgba(166,124,82,0.2)",
+              boxShadow: "0 8px 40px rgba(196,169,106,0.3), 0 2px 8px rgba(196,169,106,0.2)",
               textDecoration: "none",
               transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 16px 56px rgba(166,124,82,0.45), 0 4px 16px rgba(166,124,82,0.25)";
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 16px 56px rgba(196,169,106,0.45), 0 4px 16px rgba(196,169,106,0.25)";
               (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 40px rgba(166,124,82,0.3), 0 2px 8px rgba(166,124,82,0.2)";
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 40px rgba(196,169,106,0.3), 0 2px 8px rgba(196,169,106,0.2)";
               (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
             }}
           >
@@ -113,7 +116,7 @@ export default function Contact() {
           style={{
             marginTop: "80px",
             paddingTop: "40px",
-            borderTop: "1px solid rgba(166,124,82,0.3)",
+            borderTop: "1px solid rgba(207,165,92,0.1)",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -125,7 +128,7 @@ export default function Contact() {
             fontSize: "1.2rem",
             fontWeight: 400,
             fontStyle: "italic",
-            color: "rgba(250,249,246,0.35)",
+            color: "rgba(245,237,216,0.35)",
           }}>
             Kaki Studio · Webdesign premium pour instituts &amp; salons
           </p>
@@ -133,7 +136,7 @@ export default function Contact() {
             fontFamily: "var(--font-inter)",
             fontSize: "11px",
             letterSpacing: "0.1em",
-            color: "rgba(250,249,246,0.2)",
+            color: "rgba(245,237,216,0.2)",
           }}>
             © {new Date().getFullYear()} Kaki Studio — Tous droits réservés
           </p>

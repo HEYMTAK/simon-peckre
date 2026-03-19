@@ -76,21 +76,28 @@ function StatCard({ value, prefix = "", suffix, title, desc, source, highlight =
         position: "relative",
         padding: "36px 32px",
         borderRadius: "16px",
-        border: "1px solid rgba(166,124,82,0.15)",
-        background: "#FAF9F6",
-        boxShadow: "0 4px 30px rgba(44,35,24,0.06)",
+        border: highlight ? "1px solid rgba(207,165,92,0.35)" : "1px solid rgba(207,165,92,0.1)",
+        background: highlight
+          ? "linear-gradient(145deg, rgba(207,165,92,0.09) 0%, rgba(46,34,20,0.4) 100%)"
+          : "rgba(255,255,255,0.04)",
+        boxShadow: "0 4px 32px rgba(0,0,0,0.18)",
         transition: "transform 0.35s ease, box-shadow 0.35s ease",
         overflow: "hidden",
       }}
       whileHover={{ y: -4, transition: { duration: 0.25 } }}
     >
+      {/* Glow intérieur si highlight */}
+      {highlight && (
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "80px", background: "radial-gradient(ellipse at 50% 0%, rgba(207,165,92,0.12), transparent 70%)", pointerEvents: "none" }} />
+      )}
+
       {/* Numéro animé */}
       <div style={{
         fontFamily: "var(--font-cormorant), Georgia, serif",
         fontSize: "clamp(3rem, 5vw, 4.2rem)",
-        fontWeight: 700,
+        fontWeight: 300,
         lineHeight: 1,
-        color: "#A67C52",
+        color: highlight ? "#E8C07A" : "#CFA55C",
         letterSpacing: "-0.02em",
         marginBottom: "16px",
       }}>
@@ -98,16 +105,16 @@ function StatCard({ value, prefix = "", suffix, title, desc, source, highlight =
       </div>
 
       {/* Séparateur */}
-      <div style={{ width: "28px", height: "1px", background: "rgba(166,124,82,0.25)", marginBottom: "16px" }} />
+      <div style={{ width: "28px", height: "1px", background: highlight ? "rgba(207,165,92,0.5)" : "rgba(207,165,92,0.25)", marginBottom: "16px" }} />
 
       {/* Titre */}
       <div style={{
         fontFamily: "var(--font-inter)",
         fontSize: "12px",
-        fontWeight: 600,
+        fontWeight: 700,
         letterSpacing: "0.1em",
         textTransform: "uppercase",
-        color: "#2C2318",
+        color: "rgba(207,165,92,0.8)",
         marginBottom: "10px",
       }}>
         {title}
@@ -116,9 +123,9 @@ function StatCard({ value, prefix = "", suffix, title, desc, source, highlight =
       {/* Description */}
       <p style={{
         fontFamily: "var(--font-inter)",
-        fontSize: "14px",
+        fontSize: "0.875rem",
         lineHeight: 1.7,
-        color: "#6B5E52",
+        color: "rgba(245,237,216,0.6)",
         marginBottom: "16px",
       }}>
         {desc}
@@ -127,11 +134,12 @@ function StatCard({ value, prefix = "", suffix, title, desc, source, highlight =
       {/* Source */}
       <span style={{
         fontFamily: "var(--font-inter)",
-        fontSize: "12px",
-        letterSpacing: "0.06em",
-        color: "rgba(107,94,82,0.6)",
+        fontSize: "10px",
+        letterSpacing: "0.12em",
+        textTransform: "uppercase",
+        color: "rgba(207,165,92,0.35)",
       }}>
-        ({source})
+        Source : {source}
       </span>
     </motion.div>
   );
@@ -142,9 +150,12 @@ export default function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="roi" className="relative overflow-hidden" style={{ padding: "120px 0", background: "#F3F0EB" }}>
+    <section id="roi" className="relative overflow-hidden" style={{ padding: "120px 0" }}>
 
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(166,124,82,0.2), transparent)" }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.2), transparent)" }} />
+
+      {/* Glow droit */}
+      <div style={{ position: "absolute", top: "10%", right: "-8%", width: "45%", height: "70%", background: "radial-gradient(ellipse, rgba(207,165,92,0.06) 0%, transparent 65%)", filter: "blur(60px)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 48px" }} ref={ref}>
 
@@ -156,21 +167,21 @@ export default function StatsSection() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "28px" }}>
-              <div style={{ width: "40px", height: "1px", background: "rgba(166,124,82,0.5)" }} />
-              <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#A67C52" }}>
+              <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
+              <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
                 Chiffres clés
               </span>
             </div>
             <h2 style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(2.8rem, 4.5vw, 4.2rem)",
-              fontWeight: 700,
+              fontWeight: 300,
               lineHeight: 1.05,
-              color: "#2C2318",
+              color: "#F5EDD8",
               letterSpacing: "-0.01em",
             }}>
               Ce que vos futurs clients<br />
-              <span style={{ fontStyle: "italic", color: "#A67C52" }}>regardent vraiment.</span>
+              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>regardent vraiment.</span>
             </h2>
           </motion.div>
 
@@ -179,9 +190,9 @@ export default function StatsSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.85, color: "#6B5E52" }}>
+            <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.85, color: "rgba(245,237,216,0.5)" }}>
               Les chiffres parlent d&apos;eux-mêmes. Dans un secteur où l&apos;image et la confiance sont tout, investir dans un site web professionnel n&apos;est pas une option — c&apos;est la condition sine qua non pour{" "}
-              <span style={{ color: "#A67C52", fontWeight: 600 }}>transformer la curiosité en réservation.</span>
+              <span style={{ color: "#CFA55C", fontWeight: 600 }}>transformer la curiosité en réservation.</span>
             </p>
           </motion.div>
         </div>
@@ -194,7 +205,7 @@ export default function StatsSection() {
         </div>
       </div>
 
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(166,124,82,0.12), transparent)" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.12), transparent)" }} />
     </section>
   );
 }

@@ -47,8 +47,8 @@ export default function SourcesSection() {
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <section className="relative overflow-hidden" style={{ padding: "60px 0 40px", background: "#F3F0EB" }}>
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(166,124,82,0.1), transparent)" }} />
+    <section className="relative overflow-hidden" style={{ padding: "60px 0 40px" }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.1), transparent)" }} />
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 48px" }} ref={ref}>
 
@@ -66,11 +66,11 @@ export default function SourcesSection() {
           }}>
             <span style={{
               fontFamily: "var(--font-inter)",
-              fontSize: "12px",
+              fontSize: "11px",
               fontWeight: 600,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "#6B5E52",
+              color: "rgba(245,237,216,0.3)",
             }}>
               📊 Nos données s&apos;appuient sur des études prouvées.
             </span>
@@ -81,7 +81,7 @@ export default function SourcesSection() {
             fontFamily: "var(--font-inter)",
             fontSize: "11px",
             lineHeight: 1.7,
-            color: "rgba(107,94,82,0.7)",
+            color: "rgba(245,237,216,0.25)",
             marginBottom: "16px",
             maxWidth: "700px",
           }}>
@@ -94,10 +94,10 @@ export default function SourcesSection() {
               <div key={i} style={{
                 fontFamily: "var(--font-inter)",
                 fontSize: "11px",
-                color: "rgba(107,94,82,0.7)",
+                color: "rgba(245,237,216,0.25)",
                 lineHeight: 1.6,
               }}>
-                <span style={{ color: "rgba(166,124,82,0.6)", fontWeight: 600 }}>{source.label}</span>
+                <span style={{ color: "rgba(207,165,92,0.35)", fontWeight: 600 }}>{source.label}</span>
                 {" — "}
                 {source.detail}
               </div>

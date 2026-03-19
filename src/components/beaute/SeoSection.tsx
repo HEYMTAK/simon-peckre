@@ -29,9 +29,12 @@ export default function SeoSection() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="relative overflow-hidden" style={{ padding: "100px 0", background: "#FAF9F6" }}>
+    <section className="relative overflow-hidden" style={{ padding: "100px 0" }}>
       {/* Séparateur haut */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(166,124,82,0.2), transparent)" }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.2), transparent)" }} />
+
+      {/* Glow droite */}
+      <div style={{ position: "absolute", top: "20%", right: "-8%", width: "40%", height: "60%", background: "radial-gradient(ellipse, rgba(207,165,92,0.06) 0%, transparent 65%)", filter: "blur(60px)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 48px" }} ref={ref}>
 
@@ -43,29 +46,29 @@ export default function SeoSection() {
           style={{ marginBottom: "72px" }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "28px" }}>
-            <div style={{ width: "40px", height: "1px", background: "rgba(166,124,82,0.5)" }} />
-            <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#A67C52" }}>
+            <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
+            <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
               SEO Local
             </span>
           </div>
           <h2 style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
             fontSize: "clamp(2.4rem, 4vw, 3.8rem)",
-            fontWeight: 700,
+            fontWeight: 300,
             lineHeight: 1.08,
-            color: "#2C2318",
+            color: "#F5EDD8",
             letterSpacing: "-0.01em",
             marginBottom: "24px",
             maxWidth: "700px",
           }}>
             Ne laissez plus vos concurrents{" "}
-            <span style={{ fontStyle: "italic", color: "#A67C52" }}>monopoliser Google.</span>
+            <span style={{ fontStyle: "italic", color: "#CFA55C" }}>monopoliser Google.</span>
           </h2>
           <p style={{
             fontFamily: "var(--font-inter)",
             fontSize: "1rem",
             lineHeight: 1.85,
-            color: "#6B5E52",
+            color: "rgba(245,237,216,0.6)",
             maxWidth: "620px",
           }}>
             Avoir un beau site, c&apos;est bien. Être trouvé, c&apos;est mieux. Notre structure web est conçue pour aspirer la clientèle locale prête à acheter.
@@ -87,9 +90,8 @@ export default function SeoSection() {
                 alignItems: "start",
                 padding: "40px 48px",
                 borderRadius: "16px",
-                border: "1px solid rgba(166,124,82,0.12)",
-                background: i === 1 ? "rgba(166,124,82,0.04)" : "#F3F0EB",
-                boxShadow: "0 2px 16px rgba(44,35,24,0.05)",
+                border: "1px solid rgba(207,165,92,0.1)",
+                background: i === 1 ? "rgba(207,165,92,0.04)" : "rgba(255,255,255,0.02)",
                 position: "relative",
                 overflow: "hidden",
                 marginBottom: "16px",
@@ -102,7 +104,7 @@ export default function SeoSection() {
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "1rem",
                   fontWeight: 300,
-                  color: "#A67C52",
+                  color: "rgba(207,165,92,0.3)",
                   letterSpacing: "0.1em",
                 }}>
                   {bloc.number}
@@ -114,9 +116,9 @@ export default function SeoSection() {
                 <h3 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "clamp(1.4rem, 2.2vw, 1.85rem)",
-                  fontWeight: 600,
+                  fontWeight: 400,
                   fontStyle: "italic",
-                  color: "#2C2318",
+                  color: "#F5EDD8",
                   marginBottom: "14px",
                   lineHeight: 1.2,
                 }}>
@@ -126,7 +128,7 @@ export default function SeoSection() {
                   fontFamily: "var(--font-inter)",
                   fontSize: "0.95rem",
                   lineHeight: 1.8,
-                  color: "#6B5E52",
+                  color: "rgba(245,237,216,0.55)",
                   maxWidth: "640px",
                 }}>
                   {bloc.text}
@@ -135,14 +137,14 @@ export default function SeoSection() {
 
               {/* Ligne déco gauche */}
               {i === 1 && (
-                <div style={{ position: "absolute", left: 0, top: "20%", bottom: "20%", width: "2px", background: "linear-gradient(to bottom, transparent, rgba(166,124,82,0.4), transparent)" }} />
+                <div style={{ position: "absolute", left: 0, top: "20%", bottom: "20%", width: "2px", background: "linear-gradient(to bottom, transparent, rgba(207,165,92,0.4), transparent)" }} />
               )}
             </motion.div>
           ))}
         </div>
       </div>
 
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(166,124,82,0.12), transparent)" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.12), transparent)" }} />
     </section>
   );
 }

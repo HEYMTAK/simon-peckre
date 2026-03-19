@@ -72,7 +72,7 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
         }}
       >
         {/* Inner card */}
-        <div style={{ borderRadius: "19px", overflow: "hidden", background: "#1A1208" }}>
+        <div style={{ borderRadius: "19px", overflow: "hidden", background: "#1E2A1C" }}>
 
           {/* Header overlay : tag + numéro */}
           <div style={{ position: "relative", lineHeight: 0, fontSize: 0 }}>
@@ -95,7 +95,7 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
             {!loaded && (
               <div style={{
                 position: "absolute", inset: 0,
-                background: "linear-gradient(160deg, #1A1208, #120E06)",
+                background: "linear-gradient(160deg, #1E2A1C, #161E14)",
                 display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "16px",
                 zIndex: 5,
                 minHeight: "220px",
@@ -136,7 +136,7 @@ function VideoCard({ video, index, isInView }: { video: typeof videos[0]; index:
           {/* Footer */}
           <div style={{
             padding: "20px 24px 22px",
-            background: "linear-gradient(180deg, rgba(26,18,8,0) 0%, #1A1208 100%)",
+            background: "linear-gradient(180deg, rgba(30,42,28,0) 0%, #1E2A1C 100%)",
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "space-between",
@@ -211,10 +211,13 @@ export default function Portfolio() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="portfolio" className="relative overflow-hidden" style={{ padding: "120px 0", background: "#F3F0EB" }}>
+    <section id="portfolio" className="relative overflow-hidden" style={{ padding: "120px 0" }}>
 
       {/* Séparateur haut */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(166,124,82,0.2), transparent)" }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.2), transparent)" }} />
+
+      {/* Glow ambré gauche */}
+      <div style={{ position: "absolute", top: "20%", left: "-10%", width: "40%", height: "60%", background: "radial-gradient(ellipse, rgba(207,165,92,0.06) 0%, transparent 65%)", filter: "blur(60px)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 48px" }} ref={ref}>
 
@@ -227,21 +230,21 @@ export default function Portfolio() {
           >
             {/* Label */}
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "28px" }}>
-              <div style={{ width: "40px", height: "1px", background: "rgba(166,124,82,0.5)" }} />
-              <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#A67C52" }}>
+              <div style={{ width: "40px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
+              <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
                 Réalisations
               </span>
             </div>
             <h2 style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(2.8rem, 4.5vw, 4.2rem)",
-              fontWeight: 700,
+              fontWeight: 300,
               lineHeight: 1.05,
-              color: "#2C2318",
+              color: "#F5EDD8",
               letterSpacing: "-0.01em",
             }}>
               Un standing{" "}
-              <span style={{ fontStyle: "italic", color: "#A67C52" }}>professionnel</span>{" "}
+              <span style={{ fontStyle: "italic", color: "#CFA55C" }}>professionnel</span>{" "}
               instantané, à votre image.
             </h2>
           </motion.div>
@@ -251,7 +254,7 @@ export default function Portfolio() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.8, color: "#6B5E52", marginBottom: "32px" }}>
+            <p style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,237,216,0.55)", marginBottom: "32px" }}>
               Parce que l&apos;esthétique est le cœur de votre métier, nous créons un site qui respecte votre propre Direction Artistique à 100&nbsp;%. Couleurs apaisantes, typographies élégantes, galeries photos immersives... Nous prolongeons l&apos;expérience sensorielle de votre salon directement sur l&apos;écran (et surtout sur mobile&nbsp;!) de votre future cliente. C&apos;est cette attention aux détails qui déclenche le coup de cœur.
             </p>
           </motion.div>
@@ -270,7 +273,7 @@ export default function Portfolio() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.6 }}
-          style={{ textAlign: "center", fontFamily: "var(--font-inter)", fontSize: "11px", color: "rgba(44,35,24,0.3)", marginTop: "32px", letterSpacing: "0.06em" }}
+          style={{ textAlign: "center", fontFamily: "var(--font-inter)", fontSize: "11px", color: "rgba(245,237,216,0.2)", marginTop: "32px", letterSpacing: "0.06em" }}
         >
           * Vos propres réalisations remplaceront ces aperçus.
         </motion.p>
@@ -284,16 +287,19 @@ export default function Portfolio() {
             marginTop: "80px",
             padding: "48px 56px",
             borderRadius: "16px",
-            border: "1px solid rgba(166,124,82,0.2)",
-            background: "#FAF9F6",
-            boxShadow: "0 4px 24px rgba(44,35,24,0.06)",
+            border: "1px solid rgba(207,165,92,0.2)",
+            background: "linear-gradient(135deg, rgba(207,165,92,0.07) 0%, rgba(255,255,255,0.02) 100%)",
+            boxShadow: "0 4px 40px rgba(0,0,0,0.2)",
             position: "relative",
             overflow: "hidden",
           }}
         >
+          {/* Glow décoratif */}
+          <div style={{ position: "absolute", top: 0, right: 0, width: "300px", height: "200px", background: "radial-gradient(ellipse at 100% 0%, rgba(207,165,92,0.1), transparent 70%)", pointerEvents: "none" }} />
+
           <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "24px" }}>
-            <div style={{ width: "32px", height: "1px", background: "rgba(166,124,82,0.5)" }} />
-            <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#A67C52" }}>
+            <div style={{ width: "32px", height: "1px", background: "rgba(207,165,92,0.5)" }} />
+            <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(207,165,92,0.65)" }}>
               Rentabilité
             </span>
           </div>
@@ -301,31 +307,31 @@ export default function Portfolio() {
           <h3 style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
             fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-            fontWeight: 700,
+            fontWeight: 300,
             lineHeight: 1.1,
-            color: "#2C2318",
+            color: "#F5EDD8",
             letterSpacing: "-0.01em",
             marginBottom: "20px",
           }}>
             Le duo parfait pour{" "}
-            <span style={{ fontStyle: "italic", color: "#A67C52" }}>votre rentabilité.</span>
+            <span style={{ fontStyle: "italic", color: "#CFA55C" }}>votre rentabilité.</span>
           </h3>
 
           <p style={{
             fontFamily: "var(--font-inter)",
             fontSize: "1rem",
             lineHeight: 1.85,
-            color: "#6B5E52",
+            color: "rgba(245,237,216,0.6)",
             maxWidth: "680px",
           }}>
             Le client est séduit par vos photos&nbsp;? En un clic sur notre bouton «&nbsp;Réserver&nbsp;», il est redirigé de manière fluide vers votre agenda Planity. Le site web s&apos;occupe de la séduction, Planity s&apos;occupe de l&apos;encaissement. Le résultat&nbsp;? Une baisse spectaculaire des «&nbsp;lapins&nbsp;» (rendez-vous non honorés) de près de{" "}
-            <span style={{ color: "#A67C52", fontWeight: 700 }}>75&nbsp;%</span>{" "}
+            <span style={{ color: "#CFA55C", fontWeight: 600 }}>75&nbsp;%</span>{" "}
             (Source&nbsp;: Planity Pro).
           </p>
         </motion.div>
       </div>
 
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(166,124,82,0.12), transparent)" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(207,165,92,0.12), transparent)" }} />
     </section>
   );
 }
